@@ -1,102 +1,97 @@
-/* =========================================================
+/* ==========================================================
    Air Tahiti Tools
-   ui.css
-   Version : 0.1.0
-   Description : Composants UI communs
-========================================================= */
+   File      : ui.css
+   Version   : 0.2.0
+   Updated   : 26/07/2026
+   Description : Composants UI
+========================================================== */
 
-/* ---------- CARTES ---------- */
+/* ==========================================================
+   CARTES
+========================================================== */
 
 .card{
-    background:var(--card-bg);
+    background:var(--card);
     border:1px solid var(--border);
-    border-radius:20px;
+    border-radius:var(--radius-l);
     padding:20px;
+    box-shadow:var(--shadow-small);
     margin-bottom:18px;
-    box-shadow:0 8px 24px rgba(0,0,0,.06);
 }
+
+/* ==========================================================
+   TITRES
+========================================================== */
 
 .card-title{
-    font-size:1rem;
+    margin-bottom:18px;
+    color:var(--text);
+    font-size:1.05rem;
     font-weight:600;
-    margin-bottom:16px;
-    color:var(--text-primary);
 }
 
-/* ---------- LABEL ---------- */
+/* ==========================================================
+   LABELS
+========================================================== */
 
 .label{
     display:block;
-    font-size:.90rem;
-    font-weight:600;
     margin-bottom:8px;
     color:var(--text-secondary);
+    font-size:.90rem;
+    font-weight:600;
 }
 
-/* ---------- INPUT ---------- */
+/* ==========================================================
+   INPUTS
+========================================================== */
 
-.input{
-    width:100%;
-    height:54px;
-
-    padding:0 16px;
-
-    border-radius:14px;
-    border:1px solid var(--border);
-
-    background:var(--surface);
-
-    color:var(--text-primary);
-
-    font-size:1rem;
-
-    outline:none;
-
-    transition:.20s;
-}
-
-.input:focus{
-
-    border-color:var(--primary);
-
-    box-shadow:0 0 0 3px rgba(220,40,40,.15);
-
-}
-
-/* ---------- SELECT ---------- */
-
+.input,
 .select{
 
     width:100%;
-    height:54px;
-
-    border-radius:14px;
-
-    padding:0 16px;
+    height:56px;
 
     border:1px solid var(--border);
+    border-radius:var(--radius-m);
 
     background:var(--surface);
 
-    color:var(--text-primary);
+    color:var(--text);
+
+    padding:0 16px;
 
     font-size:1rem;
 
-    outline:none;
-
-    cursor:pointer;
+    transition:
+        border-color var(--animation),
+        box-shadow var(--animation);
 
 }
 
-/* ---------- BOUTONS ---------- */
+.input:focus,
+.select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(198,40,40,.12);
+
+}
+
+/* ==========================================================
+   BOUTONS
+========================================================== */
 
 .button{
 
-    height:52px;
+    height:54px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:var(--radius-m);
 
     cursor:pointer;
 
@@ -104,7 +99,15 @@
 
     font-weight:600;
 
-    transition:.20s;
+    transition:
+        transform .15s,
+        opacity .15s;
+
+}
+
+.button:active{
+
+    transform:scale(.98);
 
 }
 
@@ -112,13 +115,7 @@
 
     background:var(--primary);
 
-    color:white;
-
-}
-
-.button-primary:hover{
-
-    transform:translateY(-1px);
+    color:#FFF;
 
 }
 
@@ -126,19 +123,15 @@
 
     background:var(--surface);
 
-    color:var(--text-primary);
+    color:var(--text);
 
     border:1px solid var(--border);
 
 }
 
-.button-secondary:hover{
-
-    background:var(--card-bg);
-
-}
-
-/* ---------- GROUPE DE BOUTONS ---------- */
+/* ==========================================================
+   GROUPES
+========================================================== */
 
 .button-group{
 
@@ -150,17 +143,21 @@
 
 }
 
-/* ---------- SEGMENTED CONTROL ---------- */
+/* ==========================================================
+   SEGMENTED CONTROL
+========================================================== */
 
 .segmented{
 
     display:flex;
 
+    padding:4px;
+
     background:var(--surface);
 
-    border-radius:14px;
+    border-radius:var(--radius-m);
 
-    padding:4px;
+    border:1px solid var(--border);
 
     margin-bottom:20px;
 
@@ -170,21 +167,21 @@
 
     flex:1;
 
-    height:42px;
+    height:44px;
 
     border:none;
 
-    background:transparent;
+    background:none;
 
-    border-radius:10px;
+    border-radius:12px;
+
+    color:var(--text-secondary);
 
     cursor:pointer;
 
     font-weight:600;
 
-    color:var(--text-secondary);
-
-    transition:.20s;
+    transition:all .18s ease;
 
 }
 
@@ -192,11 +189,13 @@
 
     background:var(--primary);
 
-    color:white;
+    color:#FFF;
 
 }
 
-/* ---------- RESULTATS ---------- */
+/* ==========================================================
+   RESULTATS
+========================================================== */
 
 .result{
 
@@ -228,36 +227,41 @@
 
     font-weight:700;
 
-    color:var(--text-primary);
+    font-variant-numeric:tabular-nums;
+
+    color:var(--text);
 
 }
 
-/* ---------- TOAST ---------- */
+/* ==========================================================
+   TOAST
+========================================================== */
 
 .toast{
 
     position:fixed;
 
     left:50%;
-    bottom:30px;
+
+    bottom:28px;
 
     transform:translateX(-50%);
 
-    background:rgba(30,30,30,.95);
+    background:#1C1C1E;
 
-    color:#fff;
+    color:white;
 
     padding:12px 20px;
 
-    border-radius:12px;
-
-    font-size:.9rem;
+    border-radius:14px;
 
     opacity:0;
 
     pointer-events:none;
 
-    transition:.25s;
+    transition:opacity .25s ease;
+
+    z-index:9999;
 
 }
 
@@ -267,22 +271,14 @@
 
 }
 
-/* ---------- ESPACEMENTS ---------- */
+/* ==========================================================
+   ESPACEMENTS
+========================================================== */
 
-.mb-16{
-
-    margin-bottom:16px;
-
-}
-
-.mb-20{
-
-    margin-bottom:20px;
-
-}
-
-.mb-24{
-
-    margin-bottom:24px;
-
-}
+.mb-8{margin-bottom:8px;}
+.mb-12{margin-bottom:12px;}
+.mb-16{margin-bottom:16px;}
+.mb-20{margin-bottom:20px;}
+.mb-24{margin-bottom:24px;}
+.mt-20{margin-top:20px;}
+.w-100{width:100%;}
