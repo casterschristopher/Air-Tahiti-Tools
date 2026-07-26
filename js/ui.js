@@ -1,115 +1,130 @@
-/* ==========================================================
-   Air Tahiti Tools
-   ui.js
-   Version : 0.1.0
-   Description : Fonctions UI communes
-========================================================== */
+/*==========================================================
+ AIR TAHITI TOOLS
+ UI / PWA
+ Version 2.0
+==========================================================*/
 
-/**
- * Affiche un toast temporaire.
- * @param {string} message
- */
-function showToast(message = "Copié !") {
+"use strict";
 
-    const toast = document.getElementById("toast");
+/*==========================================================
+LOCAL STORAGE KEYS
+==========================================================*/
 
-    if (!toast) return;
+const STORAGE = {
+    theme: "att_theme",
+    language: "att_language",
+    density: "att_density"
+};
 
-    toast.textContent = message;
+/*==========================================================
+APPLY THEME
+==========================================================*/
 
-    toast.classList.add("show");
+function applyTheme() {
 
-    clearTimeout(window.toastTimer);
+    const theme =
+        localStorage.getItem(STORAGE.theme) || "red";
 
-    window.toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2000);
+    document.body.classList.remove(
+        "theme-red",
+        "theme-black"
+    );
 
-}
-
-/**
- * Active un bouton d'un contrôle segmenté.
- * @param {HTMLElement} button
- */
-function activateSegment(button) {
-
-    const container = button.parentElement;
-
-    container.querySelectorAll(".segment").forEach(segment => {
-        segment.classList.remove("active");
-    });
-
-    button.classList.add("active");
+    document.body.classList.add(
+        theme === "black"
+            ? "theme-black"
+            : "theme-red"
+    );
 
 }
 
-/**
- * Copie un texte dans le presse-papiers.
- * @param {string} text
- */
-async function copyToClipboard(text) {
+/*==========================================================
+DEFAULT SETTINGS
+==========================================================*/
+
+function initializeSettings() {
+
+    if (!localStorage.getItem(STORAGE.theme)) {
+
+        localStorage.setItem(STORAGE.theme, "red");
+
+    }
+
+    if (!localStorage.getItem(STORAGE.language)) {
+
+        localStorage.setItem(STORAGE.language, "en");
+
+    }
+
+    if (!localStorage.getItem(STORAGE.density)) {
+
+        localStorage.setItem(STORAGE.density, "0.800");
+
+    }
+
+    applyTheme();
+
+}
+
+/*==========================================================
+REGISTER SERVICE WORKER
+==========================================================*/
+
+async function registerServiceWorker() {
+
+    if (!("serviceWorker" in navigator))
+        return;
 
     try {
 
-        await navigator.clipboard.writeText(text);
+        const registration =
+            await navigator.serviceWorker.register(
+                "../service-worker.js"
+            );
 
-        showToast("Copié !");
+        registration.update();
 
-    } catch (error) {
+        console.log("Service Worker registered");
+
+    }
+
+    catch (error) {
 
         console.error(error);
 
-        showToast("Erreur de copie");
-
     }
 
 }
 
-/**
- * Formate un nombre avec 3 décimales.
- * @param {number|string} value
- * @returns {string}
- */
-function formatNumber(value) {
+/*==========================================================
+CHECK UPDATE
+==========================================================*/
 
-    const number = Number(value);
+if ("serviceWorker" in navigator) {
 
-    if (Number.isNaN(number)) {
+    navigator.serviceWorker.addEventListener(
+        "controllerchange",
+        () => {
 
-        return "0.000";
+            console.log("Application updated.");
+
+        }
+
+    );
+
+}
+
+/*==========================================================
+INIT
+==========================================================*/
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        initializeSettings();
+
+        registerServiceWorker();
 
     }
-
-    return number.toFixed(3);
-
-}
-
-/**
- * Vide tous les champs possédant la classe .input
- */
-function clearInputs() {
-
-    document.querySelectorAll(".input").forEach(input => {
-
-        input.value = "";
-
-    });
-
-}
-
-/**
- * Initialise les composants UI.
- */
-document.addEventListener("DOMContentLoaded", () => {
-
-    document.querySelectorAll(".segment").forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            activateSegment(button);
-
-        });
-
-    });
-
-});
+);
