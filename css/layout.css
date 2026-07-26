@@ -1,0 +1,193 @@
+/* =========================================================
+   Air Tahiti Tools
+   layout.css
+   Version : 0.1.0
+   Description : Structure générale de l'application
+========================================================= */
+
+/* ---------- RESET ---------- */
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+/* ---------- HTML / BODY ---------- */
+
+html{
+    font-size:16px;
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+
+    font-family:-apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+    background:var(--background);
+    color:var(--text-primary);
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+}
+
+/* ---------- SAFE AREA IOS ---------- */
+
+body{
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+}
+
+/* ---------- APPLICATION ---------- */
+
+.app{
+
+    width:100%;
+    max-width:700px;
+
+    margin:0 auto;
+
+    display:flex;
+    flex-direction:column;
+
+    flex:1;
+}
+
+/* ---------- HEADER ---------- */
+
+header{
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    backdrop-filter:blur(24px);
+
+    background:var(--header-bg);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+/* ---------- CONTENU ---------- */
+
+main{
+
+    flex:1;
+
+    padding:24px 18px 40px;
+
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+
+    padding:18px;
+
+    text-align:center;
+
+    color:var(--text-secondary);
+
+    font-size:.80rem;
+
+}
+
+/* ---------- TITRES ---------- */
+
+h1{
+
+    font-size:1.85rem;
+    font-weight:700;
+
+    color:var(--text-primary);
+
+}
+
+h2{
+
+    font-size:1.25rem;
+    font-weight:600;
+
+    color:var(--text-primary);
+
+}
+
+h3{
+
+    font-size:1rem;
+    font-weight:600;
+
+    color:var(--text-primary);
+
+}
+
+/* ---------- PARAGRAPHES ---------- */
+
+p{
+
+    line-height:1.6;
+
+    color:var(--text-secondary);
+
+}
+
+/* ---------- ESPACEMENTS ---------- */
+
+.section{
+
+    margin-bottom:24px;
+
+}
+
+.section:last-child{
+
+    margin-bottom:0;
+
+}
+
+/* ---------- FLEX ---------- */
+
+.row{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+
+}
+
+.column{
+
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (min-width:768px){
+
+    main{
+
+        padding:36px;
+
+    }
+
+}
