@@ -1,21 +1,22 @@
-/* =========================================================
+/* ==========================================================
    Air Tahiti Tools
-   layout.css
-   Version : 0.1.0
+   File      : layout.css
+   Version   : 0.2.0
+   Updated   : 26/07/2026
    Description : Structure générale de l'application
-========================================================= */
+========================================================== */
 
-/* ---------- RESET ---------- */
+/* ==========================================================
+   RESET
+========================================================== */
 
 *,
 *::before,
 *::after{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
-
-/* ---------- HTML / BODY ---------- */
 
 html{
     font-size:16px;
@@ -24,150 +25,170 @@ html{
 }
 
 body{
+
     min-height:100vh;
+
     display:flex;
     flex-direction:column;
 
-    font-family:-apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
     background:var(--background);
-    color:var(--text-primary);
+    color:var(--text);
 
     transition:
-        background .25s ease,
-        color .25s ease;
-}
+        background var(--animation),
+        color var(--animation);
 
-/* ---------- SAFE AREA IOS ---------- */
-
-body{
     padding-top:env(safe-area-inset-top);
     padding-bottom:env(safe-area-inset-bottom);
+
 }
 
-/* ---------- APPLICATION ---------- */
+/* ==========================================================
+   APP
+========================================================== */
 
 .app{
 
     width:100%;
-    max-width:700px;
+    max-width:760px;
 
-    margin:0 auto;
+    margin:auto;
 
     display:flex;
     flex-direction:column;
 
     flex:1;
+
 }
 
-/* ---------- HEADER ---------- */
+/* ==========================================================
+   HEADER
+========================================================== */
 
-header{
+.header{
 
     position:sticky;
+
     top:0;
 
     z-index:100;
 
-    backdrop-filter:blur(24px);
+    padding:18px;
 
-    background:var(--header-bg);
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    background:var(--header);
+
+    backdrop-filter:blur(18px);
 
     border-bottom:1px solid var(--border);
 
 }
 
-/* ---------- CONTENU ---------- */
+/* ==========================================================
+   MAIN
+========================================================== */
 
-main{
+.main{
 
     flex:1;
 
-    padding:24px 18px 40px;
+    width:100%;
+
+    padding:24px 18px 36px;
 
 }
 
-/* ---------- FOOTER ---------- */
+/* ==========================================================
+   FOOTER
+========================================================== */
 
-footer{
+.footer{
 
-    padding:18px;
+    padding:20px;
 
     text-align:center;
 
     color:var(--text-secondary);
 
-    font-size:.80rem;
+    font-size:.85rem;
 
 }
 
-/* ---------- TITRES ---------- */
+/* ==========================================================
+   TYPOGRAPHIE
+========================================================== */
 
 h1{
 
-    font-size:1.85rem;
-    font-weight:700;
+    font-size:1.70rem;
 
-    color:var(--text-primary);
+    font-weight:700;
 
 }
 
 h2{
 
-    font-size:1.25rem;
-    font-weight:600;
+    font-size:1.20rem;
 
-    color:var(--text-primary);
+    font-weight:600;
 
 }
 
 h3{
 
     font-size:1rem;
+
     font-weight:600;
 
-    color:var(--text-primary);
-
 }
-
-/* ---------- PARAGRAPHES ---------- */
 
 p{
 
-    line-height:1.6;
-
     color:var(--text-secondary);
 
-}
-
-/* ---------- ESPACEMENTS ---------- */
-
-.section{
-
-    margin-bottom:24px;
+    line-height:1.6;
 
 }
 
-.section:last-child{
-
-    margin-bottom:0;
-
-}
-
-/* ---------- FLEX ---------- */
+/* ==========================================================
+   UTILITAIRES
+========================================================== */
 
 .row{
 
     display:flex;
+
     align-items:center;
+
+    gap:16px;
+
+}
+
+.row-between{
+
+    display:flex;
+
+    align-items:center;
+
     justify-content:space-between;
+
     gap:16px;
 
 }
@@ -175,16 +196,40 @@ p{
 .column{
 
     display:flex;
+
     flex-direction:column;
-    gap:16px;
 
 }
 
-/* ---------- RESPONSIVE ---------- */
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.w-100{
+
+    width:100%;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
 
 @media (min-width:768px){
 
-    main{
+    .main{
 
         padding:36px;
 
