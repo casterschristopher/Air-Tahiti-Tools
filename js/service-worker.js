@@ -1,16 +1,18 @@
 /*==========================================================
  AIR TAHITI TOOLS
  Service Worker
- Version 1.0
+ Version 2.0
 ==========================================================*/
 
-const CACHE_NAME = "air-tahiti-tools-v1";
+"use strict";
+
+const CACHE_NAME = "att-v2.0.0";
 
 /*==========================================================
-FILES TO CACHE
+STATIC FILES
 ==========================================================*/
 
-const FILES_TO_CACHE = [
+const STATIC_FILES = [
 
     "./",
     "./index.html",
@@ -46,8 +48,7 @@ self.addEventListener("install", event => {
     event.waitUntil(
 
         caches.open(CACHE_NAME)
-
-            .then(cache => cache.addAll(FILES_TO_CACHE))
+            .then(cache => cache.addAll(STATIC_FILES))
 
     );
 
@@ -65,23 +66,19 @@ self.addEventListener("activate", event => {
 
         caches.keys()
 
-            .then(keys =>
+            .then(keys => Promise.all(
 
-                Promise.all(
+                keys.map(key => {
 
-                    keys.map(key => {
+                    if (key !== CACHE_NAME) {
 
-                        if (key !== CACHE_NAME) {
+                        return caches.delete(key);
 
-                            return caches.delete(key);
+                    }
 
-                        }
+                })
 
-                    })
-
-                )
-
-            )
+            ))
 
     );
 
@@ -95,41 +92,82 @@ FETCH
 
 self.addEventListener("fetch", event => {
 
-    event.respondWith(
+    if (event.request.method !== "GET")
+        return;
 
-        caches.match(event.request)
+    const request = event.request;
 
-            .then(response => {
+    /*------------------------------
+      HTML → Network First
+    ------------------------------*/
 
-                if (response) {
+    if (request.destination === "document") {
+
+        event.respondWith(
+
+            fetch(request)
+
+                .then(response => {
+
+                    const clone = response.clone();
+
+                    caches.open(CACHE_NAME)
+
+                        .then(cache => {
+
+                            cache.put(request, clone);
+
+                        });
 
                     return response;
 
-                }
+                })
 
-                return fetch(event.request)
+                .catch(() => caches.match(request))
+
+        );
+
+        return;
+
+    }
+
+    /*------------------------------
+      CSS / JS / Images → Cache First
+    ------------------------------*/
+
+    event.respondWith(
+
+        caches.match(request)
+
+            .then(cacheResponse => {
+
+                if (cacheResponse)
+                    return cacheResponse;
+
+                return fetch(request)
 
                     .then(networkResponse => {
 
                         if (
-                            !networkResponse ||
-                            networkResponse.status !== 200 ||
-                            networkResponse.type !== "basic"
+                            networkResponse &&
+                            networkResponse.status === 200
                         ) {
 
-                            return networkResponse;
+                            const clone =
+                                networkResponse.clone();
+
+                            caches.open(CACHE_NAME)
+
+                                .then(cache => {
+
+                                    cache.put(
+                                        request,
+                                        clone
+                                    );
+
+                                });
 
                         }
-
-                        const copy = networkResponse.clone();
-
-                        caches.open(CACHE_NAME)
-
-                            .then(cache => {
-
-                                cache.put(event.request, copy);
-
-                            });
 
                         return networkResponse;
 
