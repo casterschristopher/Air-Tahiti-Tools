@@ -4,62 +4,172 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Fuel Tools - Air Tahiti Tools</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/ui.css">
 
 </head>
 
 <body>
 
-<div class="background-pattern"></div>
+<div class="app">
 
-<main class="container">
+    <header class="card" style="margin:0;border-radius:0;border:none;box-shadow:none;">
 
-    <header class="header">
+        <div class="row">
 
-        <h1>⛽ Fuel Tools</h1>
+            <button
+                class="button button-secondary"
+                onclick="location.href='../index.html'"
+                style="width:80px;">
 
-        <p class="subtitle">
-            Jet A-1 Converter & Uplift Calculator
-        </p>
+                ← Retour
+
+            </button>
+
+            <h1 style="font-size:1.4rem;">
+                ⛽ Fuel Tools
+            </h1>
+
+            <div style="width:80px;"></div>
+
+        </div>
 
     </header>
 
-    <nav class="tabs">
+    <main>
 
-        <button class="tab active">
-            Converter
-        </button>
+        <!-- Segments -->
 
-        <button class="tab">
-            Uplift
-        </button>
+        <div class="segmented">
 
-    </nav>
+            <button class="segment active">
+                Converter
+            </button>
 
-    <section class="card">
+            <button class="segment">
+                Uplift
+            </button>
 
-        <h2>Converter</h2>
+        </div>
 
-        <p>
-            Le convertisseur Jet A-1 sera ajouté dans le prochain sprint.
-        </p>
+        <!-- Converter -->
 
-    </section>
+        <div class="card">
 
-    <a href="../index.html" class="card">
+            <h2 class="card-title">
+                Fuel Converter
+            </h2>
 
-        ← Retour au Dashboard
+            <label class="label">
+                Value
+            </label>
 
-    </a>
+            <input
+                id="fuelValue"
+                class="input mb-20"
+                type="number"
+                placeholder="250.000">
 
-</main>
+            <label class="label">
+                Unit
+            </label>
 
-<script src="../js/app.js"></script>
+            <select
+                id="fuelUnit"
+                class="select mb-20">
+
+                <option value="kg">Kilograms</option>
+                <option value="liters">Litres</option>
+                <option value="usg">US Gallons</option>
+                <option value="impg">Imperial Gallons</option>
+
+            </select>
+
+            <label class="label">
+                Density
+            </label>
+
+            <input
+                id="density"
+                class="input"
+                type="number"
+                value="0.800"
+                step="0.001">
+
+        </div>
+
+        <!-- Résultats -->
+
+        <div class="card">
+
+            <h2 class="card-title">
+                Results
+            </h2>
+
+            <div class="result">
+                <span class="result-label">Kilograms</span>
+                <span id="kgResult" class="result-value">0.000</span>
+            </div>
+
+            <div class="result">
+                <span class="result-label">Litres</span>
+                <span id="litersResult" class="result-value">0.000</span>
+            </div>
+
+            <div class="result">
+                <span class="result-label">US Gallons</span>
+                <span id="usResult" class="result-value">0.000</span>
+            </div>
+
+            <div class="result">
+                <span class="result-label">Imperial Gallons</span>
+                <span id="impResult" class="result-value">0.000</span>
+            </div>
+
+        </div>
+
+        <!-- Boutons -->
+
+        <div class="button-group">
+
+            <button
+                id="copyButton"
+                class="button button-primary">
+
+                Copy
+
+            </button>
+
+            <button
+                id="resetButton"
+                class="button button-secondary">
+
+                Reset
+
+            </button>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        Air Tahiti Tools · Fuel Module
+
+    </footer>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="../js/ui.js"></script>
 <script src="../js/fuel.js"></script>
 
 </body>
