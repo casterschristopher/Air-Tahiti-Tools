@@ -1,29 +1,66 @@
 /*==========================================================
  AIR TAHITI TOOLS
  UI / PWA
- Version 2.0
+ Version 3.0
 ==========================================================*/
 
 "use strict";
 
 /*==========================================================
-LOCAL STORAGE KEYS
+LOCAL STORAGE
 ==========================================================*/
 
 const STORAGE = {
+
     theme: "att_theme",
     language: "att_language",
     density: "att_density"
+
 };
 
 /*==========================================================
-APPLY THEME
+DEFAULT SETTINGS
+==========================================================*/
+
+const DEFAULT_SETTINGS = {
+
+    theme: "red",
+    language: "en",
+    density: "0.800"
+
+};
+
+/*==========================================================
+INITIALIZE SETTINGS
+==========================================================*/
+
+function initializeSettings() {
+
+    Object.keys(DEFAULT_SETTINGS).forEach(key => {
+
+        if (!localStorage.getItem(STORAGE[key])) {
+
+            localStorage.setItem(
+                STORAGE[key],
+                DEFAULT_SETTINGS[key]
+            );
+
+        }
+
+    });
+
+    applyTheme();
+
+}
+
+/*==========================================================
+THEME
 ==========================================================*/
 
 function applyTheme() {
 
     const theme =
-        localStorage.getItem(STORAGE.theme) || "red";
+        localStorage.getItem(STORAGE.theme);
 
     document.body.classList.remove(
         "theme-red",
@@ -39,35 +76,7 @@ function applyTheme() {
 }
 
 /*==========================================================
-DEFAULT SETTINGS
-==========================================================*/
-
-function initializeSettings() {
-
-    if (!localStorage.getItem(STORAGE.theme)) {
-
-        localStorage.setItem(STORAGE.theme, "red");
-
-    }
-
-    if (!localStorage.getItem(STORAGE.language)) {
-
-        localStorage.setItem(STORAGE.language, "en");
-
-    }
-
-    if (!localStorage.getItem(STORAGE.density)) {
-
-        localStorage.setItem(STORAGE.density, "0.800");
-
-    }
-
-    applyTheme();
-
-}
-
-/*==========================================================
-REGISTER SERVICE WORKER
+SERVICE WORKER
 ==========================================================*/
 
 async function registerServiceWorker() {
@@ -77,14 +86,22 @@ async function registerServiceWorker() {
 
     try {
 
+        const swPath =
+            `${location.origin}${location.pathname.includes("/pages/")
+                ? "/service-worker.js"
+                : "./service-worker.js"}`;
+
         const registration =
             await navigator.serviceWorker.register(
-                "../service-worker.js"
+                swPath,
+                {
+                    scope: "./"
+                }
             );
 
-        registration.update();
+        console.log("Service Worker Ready");
 
-        console.log("Service Worker registered");
+        registration.update();
 
     }
 
@@ -97,7 +114,23 @@ async function registerServiceWorker() {
 }
 
 /*==========================================================
-CHECK UPDATE
+ONLINE / OFFLINE
+==========================================================*/
+
+window.addEventListener("online", () => {
+
+    console.log("Online");
+
+});
+
+window.addEventListener("offline", () => {
+
+    console.log("Offline");
+
+});
+
+/*==========================================================
+APP UPDATE
 ==========================================================*/
 
 if ("serviceWorker" in navigator) {
@@ -106,7 +139,7 @@ if ("serviceWorker" in navigator) {
         "controllerchange",
         () => {
 
-            console.log("Application updated.");
+            window.location.reload();
 
         }
 
