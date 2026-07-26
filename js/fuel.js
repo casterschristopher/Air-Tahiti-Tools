@@ -1,252 +1,222 @@
-/* ==========================================================
-   AIR TAHITI TOOLS
-   Fuel Tools
-   Version 1.0
-========================================================== */
+/*==========================================================
+ AIR TAHITI TOOLS
+ Fuel Engine v1.0
+==========================================================*/
 
 "use strict";
 
-/*==========================================================
-  CONSTANTS
-==========================================================*/
-
-const KG_PER_US_GAL = 3.785411784;
-const KG_PER_IMP_GAL = 4.54609;
-
 const DEFAULT_DENSITY = 0.800;
+const LITRES_PER_US_GALLON = 3.785411784;
+const LITRES_PER_IMP_GALLON = 4.54609;
 
-/*==========================================================
-  DOM
-==========================================================*/
-
+const densityInput = document.getElementById("density");
 const kgInput = document.getElementById("kg");
-const litreInput = document.getElementById("litres");
+const litresInput = document.getElementById("litres");
 const usInput = document.getElementById("usGallons");
 const impInput = document.getElementById("impGallons");
-const densityInput = document.getElementById("density");
 
 const copyButton = document.getElementById("copyButton");
 const resetButton = document.getElementById("resetButton");
 
-/*==========================================================
-  UTILITIES
-==========================================================*/
+let activeField = null;
+let updating = false;
 
-function round(value) {
+/*==========================================================*/
+
+function format(value) {
     return Number(value).toFixed(3);
 }
 
-function density() {
+function getDensity() {
 
     let d = parseFloat(densityInput.value);
 
     if (isNaN(d))
         d = DEFAULT_DENSITY;
 
-    if (d < 0.700)
-        d = 0.700;
+    d = Math.max(0.700, Math.min(0.850, d));
 
-    if (d > 0.850)
-        d = 0.850;
-
-    densityInput.value = d.toFixed(3);
+    densityInput.value = format(d);
 
     return d;
-}
-
-function clearFields(except) {
-
-    const fields = [
-        kgInput,
-        litreInput,
-        usInput,
-        impInput
-    ];
-
-    fields.forEach(field => {
-
-        if (field !== except) {
-
-            field.value = "";
-
-        }
-
-    });
 
 }
 
-/*==========================================================
-  CONVERSIONS
-==========================================================*/
+/*==========================================================*/
 
-function fromKg() {
+function updateFromKg() {
 
     const kg = parseFloat(kgInput.value);
 
-    if (isNaN(kg))
-        return;
+    if (isNaN(kg)) return;
 
-    const d = density();
+    const density = getDensity();
 
-    litreInput.value = round(kg / d);
+    const litres = kg / density;
 
-    usInput.value = round((kg / d) / KG_PER_US_GAL);
-
-    impInput.value = round((kg / d) / KG_PER_IMP_GAL);
-
-}
-
-function fromLitres() {
-
-    const litres = parseFloat(litreInput.value);
-
-    if (isNaN(litres))
-        return;
-
-    const d = density();
-
-    const kg = litres * d;
-
-    kgInput.value = round(kg);
-
-    usInput.value = round(litres / KG_PER_US_GAL);
-
-    impInput.value = round(litres / KG_PER_IMP_GAL);
+    litresInput.value = format(litres);
+    usInput.value = format(litres / LITRES_PER_US_GALLON);
+    impInput.value = format(litres / LITRES_PER_IMP_GALLON);
 
 }
 
-function fromUS() {
+function updateFromLitres() {
+
+    const litres = parseFloat(litresInput.value);
+
+    if (isNaN(litres)) return;
+
+    const density = getDensity();
+
+    kgInput.value = format(litres * density);
+    usInput.value = format(litres / LITRES_PER_US_GALLON);
+    impInput.value = format(litres / LITRES_PER_IMP_GALLON);
+
+}
+
+function updateFromUS() {
 
     const us = parseFloat(usInput.value);
 
-    if (isNaN(us))
-        return;
+    if (isNaN(us)) return;
 
-    const litres = us * KG_PER_US_GAL;
+    const litres = us * LITRES_PER_US_GALLON;
 
-    litreInput.value = round(litres);
+    litresInput.value = format(litres);
 
-    const kg = litres * density();
+    const density = getDensity();
 
-    kgInput.value = round(kg);
-
-    impInput.value = round(litres / KG_PER_IMP_GAL);
+    kgInput.value = format(litres * density);
+    impInput.value = format(litres / LITRES_PER_IMP_GALLON);
 
 }
 
-function fromIMP() {
+function updateFromIMP() {
 
     const imp = parseFloat(impInput.value);
 
-    if (isNaN(imp))
-        return;
+    if (isNaN(imp)) return;
 
-    const litres = imp * KG_PER_IMP_GAL;
+    const litres = imp * LITRES_PER_IMP_GALLON;
 
-    litreInput.value = round(litres);
+    litresInput.value = format(litres);
 
-    const kg = litres * density();
+    const density = getDensity();
 
-    kgInput.value = round(kg);
-
-    usInput.value = round(litres / KG_PER_US_GAL);
+    kgInput.value = format(litres * density);
+    usInput.value = format(litres / LITRES_PER_US_GALLON);
 
 }
 
-/*==========================================================
-  EVENTS
-==========================================================*/
+/*==========================================================*/
+
+function refresh() {
+
+    if (updating)
+        return;
+
+    updating = true;
+
+    switch (activeField) {
+
+        case "kg":
+            updateFromKg();
+            break;
+
+        case "litres":
+            updateFromLitres();
+            break;
+
+        case "us":
+            updateFromUS();
+            break;
+
+        case "imp":
+            updateFromIMP();
+            break;
+
+    }
+
+    updating = false;
+
+}
+
+/*==========================================================*/
 
 kgInput.addEventListener("input", () => {
 
-    clearFields(kgInput);
-
-    fromKg();
+    activeField = "kg";
+    refresh();
 
 });
 
-litreInput.addEventListener("input", () => {
+litresInput.addEventListener("input", () => {
 
-    clearFields(litreInput);
-
-    fromLitres();
+    activeField = "litres";
+    refresh();
 
 });
 
 usInput.addEventListener("input", () => {
 
-    clearFields(usInput);
-
-    fromUS();
+    activeField = "us";
+    refresh();
 
 });
 
 impInput.addEventListener("input", () => {
 
-    clearFields(impInput);
-
-    fromIMP();
-
-});
-
-densityInput.addEventListener("input", () => {
-
-    if (kgInput.value !== "")
-        fromKg();
-
-    else if (litreInput.value !== "")
-        fromLitres();
-
-    else if (usInput.value !== "")
-        fromUS();
-
-    else if (impInput.value !== "")
-        fromIMP();
+    activeField = "imp";
+    refresh();
 
 });
 
-/*==========================================================
-  COPY
-==========================================================*/
+densityInput.addEventListener("input", refresh);
+
+/*==========================================================*/
+
+resetButton.addEventListener("click", () => {
+
+    kgInput.value = "";
+    litresInput.value = "";
+    usInput.value = "";
+    impInput.value = "";
+
+    densityInput.value = format(DEFAULT_DENSITY);
+
+    activeField = null;
+
+});
+
+/*==========================================================*/
 
 copyButton.addEventListener("click", async () => {
 
     const text =
-`Fuel Conversion
+`Jet A-1 Fuel
 
 Density : ${densityInput.value}
 
 Kilograms : ${kgInput.value}
 
-Litres : ${litreInput.value}
+Litres : ${litresInput.value}
 
 US Gallons : ${usInput.value}
 
-Imp Gallons : ${impInput.value}`;
+Imperial Gallons : ${impInput.value}`;
 
-    await navigator.clipboard.writeText(text);
+    try {
 
-    alert("Copied.");
+        await navigator.clipboard.writeText(text);
 
-});
+    } catch {
 
-/*==========================================================
-  RESET
-==========================================================*/
+        console.log(text);
 
-resetButton.addEventListener("click", () => {
-
-    kgInput.value = "";
-    litreInput.value = "";
-    usInput.value = "";
-    impInput.value = "";
-
-    densityInput.value = DEFAULT_DENSITY.toFixed(3);
+    }
 
 });
 
-/*==========================================================
-  INIT
-==========================================================*/
+/*==========================================================*/
 
-densityInput.value = DEFAULT_DENSITY.toFixed(3);
+densityInput.value = format(DEFAULT_DENSITY);
