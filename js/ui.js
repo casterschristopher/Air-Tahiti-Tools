@@ -1,7 +1,7 @@
 /*==========================================================
  AIR TAHITI TOOLS
  UI / PWA
- Version 3.0
+ Version 4.0
 ==========================================================*/
 
 "use strict";
@@ -18,11 +18,7 @@ const STORAGE = {
 
 };
 
-/*==========================================================
-DEFAULT SETTINGS
-==========================================================*/
-
-const DEFAULT_SETTINGS = {
+const DEFAULTS = {
 
     theme: "red",
     language: "en",
@@ -31,18 +27,18 @@ const DEFAULT_SETTINGS = {
 };
 
 /*==========================================================
-INITIALIZE SETTINGS
+INITIALIZATION
 ==========================================================*/
 
 function initializeSettings() {
 
-    Object.keys(DEFAULT_SETTINGS).forEach(key => {
+    Object.keys(DEFAULTS).forEach(key => {
 
         if (!localStorage.getItem(STORAGE[key])) {
 
             localStorage.setItem(
                 STORAGE[key],
-                DEFAULT_SETTINGS[key]
+                DEFAULTS[key]
             );
 
         }
@@ -68,9 +64,11 @@ function applyTheme() {
     );
 
     document.body.classList.add(
+
         theme === "black"
             ? "theme-black"
             : "theme-red"
+
     );
 
 }
@@ -86,35 +84,32 @@ async function registerServiceWorker() {
 
     try {
 
-        const swPath =
-            `${location.origin}${location.pathname.includes("/pages/")
-                ? "/service-worker.js"
-                : "./service-worker.js"}`;
-
         const registration =
             await navigator.serviceWorker.register(
-                swPath,
-                {
-                    scope: "./"
-                }
+                "/service-worker.js"
             );
 
-        console.log("Service Worker Ready");
+        await registration.update();
 
-        registration.update();
+        console.log(
+            "✔ Service Worker registered"
+        );
 
     }
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Service Worker error:",
+            error
+        );
 
     }
 
 }
 
 /*==========================================================
-ONLINE / OFFLINE
+ONLINE STATUS
 ==========================================================*/
 
 window.addEventListener("online", () => {
@@ -130,13 +125,15 @@ window.addEventListener("offline", () => {
 });
 
 /*==========================================================
-APP UPDATE
+AUTO UPDATE
 ==========================================================*/
 
 if ("serviceWorker" in navigator) {
 
     navigator.serviceWorker.addEventListener(
+
         "controllerchange",
+
         () => {
 
             window.location.reload();
@@ -152,7 +149,9 @@ INIT
 ==========================================================*/
 
 document.addEventListener(
+
     "DOMContentLoaded",
+
     () => {
 
         initializeSettings();
@@ -160,4 +159,5 @@ document.addEventListener(
         registerServiceWorker();
 
     }
+
 );
