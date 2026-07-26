@@ -1,222 +1,243 @@
 /*==========================================================
  AIR TAHITI TOOLS
- Fuel Engine v1.0
+ Fuel Tools PRO
+ Version 2.0
 ==========================================================*/
 
 "use strict";
 
-const DEFAULT_DENSITY = 0.800;
-const LITRES_PER_US_GALLON = 3.785411784;
-const LITRES_PER_IMP_GALLON = 4.54609;
+/*==========================================================
+CONSTANTS
+==========================================================*/
 
+const US_GAL = 3.785411784;
+const IMP_GAL = 4.54609;
+
+/*==========================================================
+DOM - CONVERTER
+==========================================================*/
+
+const valueInput = document.getElementById("value");
+const unitSelect = document.getElementById("unit");
 const densityInput = document.getElementById("density");
-const kgInput = document.getElementById("kg");
-const litresInput = document.getElementById("litres");
-const usInput = document.getElementById("usGallons");
-const impInput = document.getElementById("impGallons");
 
-const copyButton = document.getElementById("copyButton");
-const resetButton = document.getElementById("resetButton");
+const kgOutput = document.getElementById("kg");
+const litresOutput = document.getElementById("litres");
+const usgOutput = document.getElementById("usg");
+const impOutput = document.getElementById("imp");
 
-let activeField = null;
-let updating = false;
+const copyConverter = document.getElementById("copyConverter");
+const resetConverter = document.getElementById("resetConverter");
 
-/*==========================================================*/
+/*==========================================================
+DOM - UPLIFT
+==========================================================*/
 
-function format(value) {
-    return Number(value).toFixed(3);
-}
+const fobInput = document.getElementById("fob");
+const requiredInput = document.getElementById("requiredFuel");
+const upliftDensity = document.getElementById("upliftDensity");
 
-function getDensity() {
+const fuelToAdd = document.getElementById("fuelToAdd");
+const fuelToAddL = document.getElementById("fuelToAddL");
 
-    let d = parseFloat(densityInput.value);
+const copyUplift = document.getElementById("copyUplift");
+const resetUplift = document.getElementById("resetUplift");
 
-    if (isNaN(d))
-        d = DEFAULT_DENSITY;
+/*==========================================================
+DEFAULT DENSITY
+==========================================================*/
 
-    d = Math.max(0.700, Math.min(0.850, d));
+const savedDensity =
+    localStorage.getItem("att_density") || "0.800";
 
-    densityInput.value = format(d);
+if (densityInput)
+    densityInput.value = savedDensity;
 
-    return d;
+if (upliftDensity)
+    upliftDensity.value = savedDensity;
 
-}
+/*==========================================================
+CONVERTER
+==========================================================*/
 
-/*==========================================================*/
+function convertFuel() {
 
-function updateFromKg() {
+    if (!valueInput) return;
 
-    const kg = parseFloat(kgInput.value);
+    const value = parseFloat(valueInput.value);
 
-    if (isNaN(kg)) return;
+    if (isNaN(value)) {
 
-    const density = getDensity();
+        kgOutput.value = "";
+        litresOutput.value = "";
+        usgOutput.value = "";
+        impOutput.value = "";
 
-    const litres = kg / density;
-
-    litresInput.value = format(litres);
-    usInput.value = format(litres / LITRES_PER_US_GALLON);
-    impInput.value = format(litres / LITRES_PER_IMP_GALLON);
-
-}
-
-function updateFromLitres() {
-
-    const litres = parseFloat(litresInput.value);
-
-    if (isNaN(litres)) return;
-
-    const density = getDensity();
-
-    kgInput.value = format(litres * density);
-    usInput.value = format(litres / LITRES_PER_US_GALLON);
-    impInput.value = format(litres / LITRES_PER_IMP_GALLON);
-
-}
-
-function updateFromUS() {
-
-    const us = parseFloat(usInput.value);
-
-    if (isNaN(us)) return;
-
-    const litres = us * LITRES_PER_US_GALLON;
-
-    litresInput.value = format(litres);
-
-    const density = getDensity();
-
-    kgInput.value = format(litres * density);
-    impInput.value = format(litres / LITRES_PER_IMP_GALLON);
-
-}
-
-function updateFromIMP() {
-
-    const imp = parseFloat(impInput.value);
-
-    if (isNaN(imp)) return;
-
-    const litres = imp * LITRES_PER_IMP_GALLON;
-
-    litresInput.value = format(litres);
-
-    const density = getDensity();
-
-    kgInput.value = format(litres * density);
-    usInput.value = format(litres / LITRES_PER_US_GALLON);
-
-}
-
-/*==========================================================*/
-
-function refresh() {
-
-    if (updating)
         return;
 
-    updating = true;
+    }
 
-    switch (activeField) {
+    const density = parseFloat(densityInput.value) || 0.800;
+
+    let kg;
+
+    switch (unitSelect.value) {
 
         case "kg":
-            updateFromKg();
+            kg = value;
             break;
 
-        case "litres":
-            updateFromLitres();
+        case "litre":
+            kg = value * density;
             break;
 
-        case "us":
-            updateFromUS();
+        case "usg":
+            kg = value * US_GAL * density;
             break;
 
         case "imp":
-            updateFromIMP();
+            kg = value * IMP_GAL * density;
             break;
 
     }
 
-    updating = false;
+    const litres = kg / density;
+
+    kgOutput.value = kg.toFixed(3);
+    litresOutput.value = litres.toFixed(3);
+    usgOutput.value = (litres / US_GAL).toFixed(3);
+    impOutput.value = (litres / IMP_GAL).toFixed(3);
 
 }
 
-/*==========================================================*/
+/*==========================================================
+UPLIFT
+==========================================================*/
 
-kgInput.addEventListener("input", () => {
+function calculateUplift() {
 
-    activeField = "kg";
-    refresh();
+    if (!fobInput) return;
 
-});
+    const fob = parseFloat(fobInput.value) || 0;
+    const required = parseFloat(requiredInput.value) || 0;
+    const density = parseFloat(upliftDensity.value) || 0.800;
 
-litresInput.addEventListener("input", () => {
+    const addKg = Math.max(required - fob, 0);
+    const addL = addKg / density;
 
-    activeField = "litres";
-    refresh();
+    fuelToAdd.value = addKg.toFixed(3);
+    fuelToAddL.value = addL.toFixed(3);
 
-});
+}
 
-usInput.addEventListener("input", () => {
+/*==========================================================
+COPY
+==========================================================*/
 
-    activeField = "us";
-    refresh();
-
-});
-
-impInput.addEventListener("input", () => {
-
-    activeField = "imp";
-    refresh();
-
-});
-
-densityInput.addEventListener("input", refresh);
-
-/*==========================================================*/
-
-resetButton.addEventListener("click", () => {
-
-    kgInput.value = "";
-    litresInput.value = "";
-    usInput.value = "";
-    impInput.value = "";
-
-    densityInput.value = format(DEFAULT_DENSITY);
-
-    activeField = null;
-
-});
-
-/*==========================================================*/
-
-copyButton.addEventListener("click", async () => {
+async function copyConverterResult() {
 
     const text =
-`Jet A-1 Fuel
+`Fuel Conversion
 
-Density : ${densityInput.value}
+kg : ${kgOutput.value}
+L : ${litresOutput.value}
+US gal : ${usgOutput.value}
+Imp gal : ${impOutput.value}
+Density : ${densityInput.value}`;
 
-Kilograms : ${kgInput.value}
+    await navigator.clipboard.writeText(text);
 
-Litres : ${litresInput.value}
+}
 
-US Gallons : ${usInput.value}
+async function copyUpliftResult() {
 
-Imperial Gallons : ${impInput.value}`;
+    const text =
+`Fuel Uplift
 
-    try {
+FOB : ${fobInput.value} kg
+Required : ${requiredInput.value} kg
+Add : ${fuelToAdd.value} kg
+Add : ${fuelToAddL.value} L
+Density : ${upliftDensity.value}`;
 
-        await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(text);
 
-    } catch {
+}
 
-        console.log(text);
+/*==========================================================
+RESET
+==========================================================*/
 
-    }
+function resetConverterValues() {
+
+    valueInput.value = "";
+
+    densityInput.value = savedDensity;
+
+    kgOutput.value = "";
+    litresOutput.value = "";
+    usgOutput.value = "";
+    impOutput.value = "";
+
+}
+
+function resetUpliftValues() {
+
+    fobInput.value = "";
+    requiredInput.value = "";
+
+    upliftDensity.value = savedDensity;
+
+    fuelToAdd.value = "";
+    fuelToAddL.value = "";
+
+}
+
+/*==========================================================
+TABS
+==========================================================*/
+
+document.querySelectorAll(".tab").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(".tab")
+            .forEach(tab => tab.classList.remove("active"));
+
+        document.querySelectorAll(".tab-page")
+            .forEach(page => page.classList.remove("active"));
+
+        button.classList.add("active");
+
+        document
+            .getElementById(button.dataset.tab)
+            .classList.add("active");
+
+    });
 
 });
 
-/*==========================================================*/
+/*==========================================================
+EVENTS
+==========================================================*/
 
-densityInput.value = format(DEFAULT_DENSITY);
+valueInput?.addEventListener("input", convertFuel);
+densityInput?.addEventListener("input", convertFuel);
+unitSelect?.addEventListener("change", convertFuel);
+
+fobInput?.addEventListener("input", calculateUplift);
+requiredInput?.addEventListener("input", calculateUplift);
+upliftDensity?.addEventListener("input", calculateUplift);
+
+copyConverter?.addEventListener("click", copyConverterResult);
+copyUplift?.addEventListener("click", copyUpliftResult);
+
+resetConverter?.addEventListener("click", resetConverterValues);
+resetUplift?.addEventListener("click", resetUpliftValues);
+
+/*==========================================================
+INIT
+==========================================================*/
+
+convertFuel();
+calculateUplift();
