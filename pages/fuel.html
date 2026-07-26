@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fuel Tools</title>
 
-    <title>Fuel Tools</title>
-
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/ui.css">
-    <link rel="stylesheet" href="../css/fuel.css">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/ui.css">
+<link rel="stylesheet" href="../css/fuel.css">
 
 </head>
 
@@ -21,124 +18,174 @@
 
 <div class="app">
 
-    <header class="fuel-header">
+<header class="fuel-header">
 
-        <div class="fuel-title">
+<div class="fuel-title">
+<h1>Fuel Tools</h1>
+<p>Jet A-1 Utilities</p>
+</div>
 
-            <h1>Fuel Tools</h1>
+<a href="../index.html" class="secondary-button">
+Home
+</a>
 
-            <p>Jet A-1 Fuel Converter</p>
+</header>
 
-        </div>
+<nav class="tabs">
 
-        <a href="../index.html" class="secondary-button">
-            Home
-        </a>
+<button class="tab active" data-tab="converter">
+Converter
+</button>
 
-    </header>
+<button class="tab" data-tab="uplift">
+Fuel Uplift
+</button>
 
-    <main class="page-fuel">
+</nav>
 
-        <section class="fuel-card">
+<main>
 
-            <div class="input-group">
+<!-- ===========================
+CONVERTER
+============================ -->
 
-                <label for="density">
-                    Density
-                </label>
+<section id="converter" class="tab-page active">
 
-                <input
-                        id="density"
-                        type="number"
-                        step="0.001"
-                        inputmode="decimal">
+<div class="converter-card">
 
-            </div>
+<div class="input-group">
+<label>Value</label>
+<input id="value" type="number">
+</div>
 
-            <div class="input-group">
+<div class="input-group">
+<label>Unit</label>
+<select id="unit">
+<option value="kg">kg</option>
+<option value="litre">L</option>
+<option value="usg">US gal</option>
+<option value="imp">Imp gal</option>
+</select>
+</div>
 
-                <label for="kg">
-                    Kilograms
-                </label>
+<div class="input-group">
+<label>Density</label>
+<input id="density" type="number" step="0.001">
+</div>
 
-                <input
-                        id="kg"
-                        type="number"
-                        step="0.001"
-                        inputmode="decimal">
+<div class="result-grid">
 
-            </div>
+<div>
+<label>kg</label>
+<input id="kg" readonly>
+</div>
 
-            <div class="input-group">
+<div>
+<label>Litres</label>
+<input id="litres" readonly>
+</div>
 
-                <label for="litres">
-                    Litres
-                </label>
+<div>
+<label>US gal</label>
+<input id="usg" readonly>
+</div>
 
-                <input
-                        id="litres"
-                        type="number"
-                        step="0.001"
-                        inputmode="decimal">
-
-            </div>
-
-            <div class="input-group">
-
-                <label for="usGallons">
-                    US Gallons
-                </label>
-
-                <input
-                        id="usGallons"
-                        type="number"
-                        step="0.001"
-                        inputmode="decimal">
-
-            </div>
-
-            <div class="input-group">
-
-                <label for="impGallons">
-                    Imperial Gallons
-                </label>
-
-                <input
-                        id="impGallons"
-                        type="number"
-                        step="0.001"
-                        inputmode="decimal">
-
-            </div>
-
-            <div class="button-row">
-
-                <button
-                        id="copyButton"
-                        class="primary-button">
-
-                    Copy
-
-                </button>
-
-                <button
-                        id="resetButton"
-                        class="secondary-button">
-
-                    Reset
-
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
+<div>
+<label>Imp gal</label>
+<input id="imp" readonly>
+</div>
 
 </div>
 
+<div class="button-row">
+
+<button
+id="copyConverter"
+class="primary-button">
+
+Copy
+
+</button>
+
+<button
+id="resetConverter"
+class="secondary-button">
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+UPLIFT
+============================ -->
+
+<section id="uplift" class="tab-page">
+
+<div class="converter-card">
+
+<div class="input-group">
+<label>Fuel On Board (kg)</label>
+<input id="fob" type="number">
+</div>
+
+<div class="input-group">
+<label>Required Fuel (kg)</label>
+<input id="requiredFuel" type="number">
+</div>
+
+<div class="input-group">
+<label>Density</label>
+<input id="upliftDensity"
+type="number"
+step="0.001">
+</div>
+
+<div class="input-group">
+<label>Fuel To Add (kg)</label>
+<input id="fuelToAdd" readonly>
+</div>
+
+<div class="input-group">
+<label>Fuel To Add (L)</label>
+<input id="fuelToAddL" readonly>
+</div>
+
+<div class="button-row">
+
+<button
+id="copyUplift"
+class="primary-button">
+
+Copy
+
+</button>
+
+<button
+id="resetUplift"
+class="secondary-button">
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="../js/ui.js"></script>
 <script src="../js/fuel.js"></script>
 
 </body>
-
 </html>
