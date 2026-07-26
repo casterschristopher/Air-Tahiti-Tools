@@ -202,4 +202,29 @@ body{
 
     }
 
+
+}
+.app-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:32px;
+}
+
+.app-logo{
+    width:72px;
+    height:72px;
+    flex-shrink:0;
+}
+
+.app-title h1{
+    margin:0;
+    font-size:2rem;
+    font-weight:700;
+}
+
+.app-title p{
+    margin-top:4px;
+    opacity:.7;
+    font-size:.95rem;
 }
