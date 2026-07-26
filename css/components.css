@@ -1,0 +1,205 @@
+/* ==========================================================
+   Air Tahiti Tools
+   Components
+   Version 1.0.0
+========================================================== */
+
+/* ===== RESET ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:var(--font-family);
+    min-height:100vh;
+}
+
+/* ===== BACKGROUND ===== */
+
+.background-pattern{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+
+    opacity:.12;
+
+    background-image:url("../assets/patterns/marquisian.svg");
+    background-repeat:repeat;
+    background-size:180px;
+}
+
+/* ===== APP ===== */
+
+.app{
+
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+
+    padding:
+
+        30px
+        20px
+        40px;
+
+}
+
+/* ===== HEADER ===== */
+
+.app-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.logo{
+
+    width:90px;
+
+    height:90px;
+
+    margin-bottom:18px;
+
+}
+
+.app-header h1{
+
+    font-size:var(--font-title);
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.subtitle{
+
+    color:var(--text-secondary);
+
+    font-size:var(--font-subtitle);
+
+}
+
+/* ===== DASHBOARD ===== */
+
+.dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+/* ===== CARDS ===== */
+
+.card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    text-decoration:none;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-large);
+
+    padding:22px;
+
+    box-shadow:var(--shadow-small);
+
+    transition:var(--transition-normal);
+
+}
+
+.card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-medium);
+
+}
+
+.card:active{
+
+    transform:scale(.98);
+
+}
+
+.card-icon{
+
+    font-size:34px;
+
+    width:42px;
+
+    text-align:center;
+
+}
+
+.card-content{
+
+    flex:1;
+
+}
+
+.card-content h2{
+
+    font-size:var(--font-card-title);
+
+    margin-bottom:6px;
+
+}
+
+.card-content p{
+
+    font-size:var(--font-card-text);
+
+    color:var(--text-secondary);
+
+    line-height:1.5;
+
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+
+    text-align:center;
+
+    margin-top:40px;
+
+    color:var(--text-secondary);
+
+    font-size:var(--font-small);
+
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (min-width:768px){
+
+    .app{
+
+        padding:50px;
+
+    }
+
+}
