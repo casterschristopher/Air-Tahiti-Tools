@@ -1,112 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Air Tahiti Tools</title>
 
-    <meta name="theme-color" content="#C8102E">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Air Tahiti Tools">
-
-    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C62828">
 
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/ui.css">
+
 </head>
 
-<body class="theme-light">
-
-<div class="background-pattern"></div>
+<body>
 
 <div class="app">
 
-    <header class="app-header">
+    <header class="card" style="margin:0;border-radius:0;border-left:none;border-right:none;border-top:none;box-shadow:none;">
 
-        <img
-            src="assets/images/logo.svg"
-            alt="Air Tahiti Tools"
-            class="logo">
+        <h1>✈️ Air Tahiti Tools</h1>
 
-        <div class="title-group">
-            <h1>Air Tahiti Tools</h1>
-
-            <p class="subtitle">
-                Aircraft Maintenance Toolbox
-            </p>
-        </div>
+        <p>
+            Aircraft Maintenance Toolbox
+        </p>
 
     </header>
 
-    <main class="dashboard">
+    <main>
 
-        <a href="pages/fuel.html" class="card">
+        <div class="card">
 
-            <div class="card-icon">
-                <img src="assets/icons/fuel.svg" alt="Fuel Tools">
-            </div>
+            <h2 class="card-title">
+                Bienvenue
+            </h2>
 
-            <div class="card-content">
+            <p>
+                Sélectionnez un module.
+            </p>
 
-                <h2>Fuel Tools</h2>
+        </div>
 
-                <p>Converter • Uplift</p>
+        <div class="button-group">
 
-            </div>
+            <button
+                class="button button-primary"
+                onclick="location.href='pages/fuel.html'">
 
-            <span class="card-arrow">›</span>
+                ⛽ Fuel Tools
 
-        </a>
+            </button>
 
-        <a href="pages/torque.html" class="card">
+            <button
+                class="button button-secondary"
+                onclick="location.href='pages/torque.html'">
 
-            <div class="card-icon">
-                <img src="assets/icons/torque.svg" alt="Torque & Units">
-            </div>
+                🔧 Torque & Units
 
-            <div class="card-content">
+            </button>
 
-                <h2>Torque & Units</h2>
+        </div>
 
-                <p>Torque • Length • Pressure • Mass • Temperature</p>
+        <div style="height:12px;"></div>
 
-            </div>
+        <button
+            class="button button-secondary"
+            style="width:100%;"
+            onclick="location.href='pages/settings.html'">
 
-            <span class="card-arrow">›</span>
+            ⚙️ Settings
 
-        </a>
-
-        <a href="pages/settings.html" class="card">
-
-            <div class="card-icon">
-                <img src="assets/icons/settings.svg" alt="Settings">
-            </div>
-
-            <div class="card-content">
-
-                <h2>Settings</h2>
-
-                <p>Theme • Language • Fuel Density</p>
-
-            </div>
-
-            <span class="card-arrow">›</span>
-
-        </a>
+        </button>
 
     </main>
 
-    <footer class="footer">
-        Version 1.0
+    <footer>
+
+        Version 0.1.0
+
     </footer>
 
 </div>
 
-<script src="js/app.js"></script>
+<div id="toast" class="toast"></div>
+
+<script src="js/ui.js"></script>
 
 </body>
+
 </html>
