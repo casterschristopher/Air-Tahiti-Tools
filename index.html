@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Air Tahiti Tools</title>
 
-    <meta name="theme-color" content="#c8102e">
+    <meta name="theme-color" content="#C8102E">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Air Tahiti Tools">
 
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
-<body>
+<body class="theme-light">
 
 <div class="background-pattern"></div>
 
-<main class="container">
+<div class="app">
 
-    <header class="header">
+    <header class="app-header">
 
-        <div class="logo">
-
-            <!-- Logo provisoire -->
-            ✈️
-
-        </div>
+        <img
+            src="assets/images/logo.svg"
+            alt="Air Tahiti Tools"
+            class="logo">
 
         <h1>Air Tahiti Tools</h1>
 
@@ -42,17 +39,21 @@
 
     </header>
 
-    <section class="dashboard">
+    <main class="dashboard">
 
         <a href="pages/fuel.html" class="card">
 
-            <div class="icon">⛽</div>
+            <div class="card-icon">
+                ⛽
+            </div>
 
-            <div>
+            <div class="card-content">
 
                 <h2>Fuel Tools</h2>
 
-                <p>Converter • Uplift</p>
+                <p>
+                    Converter • Uplift
+                </p>
 
             </div>
 
@@ -60,13 +61,17 @@
 
         <a href="pages/torque.html" class="card">
 
-            <div class="icon">📐</div>
+            <div class="card-icon">
+                📐
+            </div>
 
-            <div>
+            <div class="card-content">
 
                 <h2>Torque & Units</h2>
 
-                <p>Torque • Length • Pressure • Mass • Temperature</p>
+                <p>
+                    Torque • Length • Pressure • Mass • Temperature
+                </p>
 
             </div>
 
@@ -74,30 +79,33 @@
 
         <a href="pages/settings.html" class="card">
 
-            <div class="icon">⚙️</div>
+            <div class="card-icon">
+                ⚙️
+            </div>
 
-            <div>
+            <div class="card-content">
 
                 <h2>Settings</h2>
 
-                <p>Theme • Language • Fuel Density</p>
+                <p>
+                    Theme • Language • Fuel Density
+                </p>
 
             </div>
 
         </a>
 
-    </section>
+    </main>
 
-</main>
+    <footer class="footer">
 
-<footer>
+        Version 1.0
 
-    Version 1.0
+    </footer>
 
-</footer>
+</div>
 
 <script src="js/app.js"></script>
 
 </body>
-
 </html>
