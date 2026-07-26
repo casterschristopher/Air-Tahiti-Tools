@@ -1,87 +1,38 @@
-/* ==========================================================
+/* =========================================================
    Air Tahiti Tools
-   CSS Variables
-   Version 1.0.0
-========================================================== */
+   variables.css
+   Version : 0.1.0
+   Description : Variables globales
+========================================================= */
 
 :root{
 
-    /* ===== Colors ===== */
+    /* Couleurs principales */
+    --primary:#C62828;
+    --primary-dark:#A61F1F;
 
-    --color-primary:#C8102E;
-    --color-primary-dark:#A10E26;
+    /* Arrière-plans */
+    --background:#F4F5F7;
+    --surface:#FFFFFF;
+    --card-bg:#FFFFFF;
+    --header-bg:rgba(255,255,255,.85);
 
-    --color-white:#FFFFFF;
-    --color-black:#000000;
+    /* Textes */
+    --text-primary:#1C1C1E;
+    --text-secondary:#6E6E73;
 
-    --color-background:#F5F5F7;
-    --color-surface:#FFFFFF;
+    /* Bordures */
+    --border:#D8D8DC;
 
-    --color-text:#1C1C1E;
-    --color-text-secondary:#6E6E73;
+    /* États */
+    --success:#2E7D32;
+    --warning:#F9A825;
+    --danger:#D32F2F;
 
-    --color-border:#E5E5EA;
+    /* Ombres */
+    --shadow:0 8px 24px rgba(0,0,0,.08);
 
-    --color-success:#34C759;
-    --color-warning:#FF9500;
-    --color-danger:#FF3B30;
-
-    /* ===== Radius ===== */
-
-    --radius-small:10px;
-    --radius-medium:16px;
-    --radius-large:22px;
-
-    /* ===== Shadow ===== */
-
-    --shadow-small:
-        0 2px 8px rgba(0,0,0,.08);
-
-    --shadow-medium:
-        0 8px 20px rgba(0,0,0,.10);
-
-    /* ===== Transition ===== */
-
-    --transition-fast:.20s ease;
-
-    --transition-normal:.30s ease;
-
-    /* ===== Layout ===== */
-
-    --max-width:700px;
-
-    --header-height:90px;
-
-    /* ===== Typography ===== */
-
-    --font-family:
-
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "Segoe UI",
-        sans-serif;
-
-    --font-title:32px;
-
-    --font-subtitle:16px;
-
-    --font-card-title:22px;
-
-    --font-card-text:15px;
-
-    --font-small:13px;
-
-    /* ===== Spacing ===== */
-
-    --space-xs:6px;
-
-    --space-sm:12px;
-
-    --space-md:20px;
-
-    --space-lg:30px;
-
-    --space-xl:40px;
+    /* Rayon */
+    --radius:20px;
 
 }
