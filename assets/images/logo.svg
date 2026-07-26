@@ -1,8 +1,10 @@
-<header class="app-header">
-    <img src="assets/images/logo.svg" alt="Air Tahiti Tools" class="app-logo">
-
-    <div class="app-title">
-        <h1>Air Tahiti Tools</h1>
-        <p>Aircraft Maintenance Utilities</p>
-    </div>
-</header>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="45" fill="#C62828"/>
+  <text x="50" y="60"
+        font-size="36"
+        text-anchor="middle"
+        fill="white"
+        font-family="Arial">
+    AT
+  </text>
+</svg>
