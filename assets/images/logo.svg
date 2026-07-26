@@ -1,1 +1,8 @@
+<header class="app-header">
+    <img src="assets/images/logo.svg" alt="Air Tahiti Tools" class="app-logo">
 
+    <div class="app-title">
+        <h1>Air Tahiti Tools</h1>
+        <p>Aircraft Maintenance Utilities</p>
+    </div>
+</header>
