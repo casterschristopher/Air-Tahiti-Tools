@@ -89,9 +89,10 @@ body{
 
     align-items:center;
 
- padding-top:45px;
+    padding-top:20px;
 
- padding-bottom:35px;
+    padding-bottom:20px;
+
 
 }
 
@@ -121,18 +122,22 @@ body{
 
 .home-logo{
 
-    width:280px;
+    width:360px;
 
-    max-width:80%;
+    max-width:92%;
 
     height:auto;
+
+    display:block;
+
+    margin:0 auto;
 
     user-select:none;
 
     -webkit-user-drag:none;
 
     filter:
-        drop-shadow(0 12px 24px rgba(0,0,0,.35));
+        drop-shadow(0 16px 34px rgba(0,0,0,.45));
 
     transition:
         transform .35s ease,
