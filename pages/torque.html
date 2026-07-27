@@ -1,1 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Torque & Units</title>
+
+    <link
+        rel="manifest"
+        href="../manifest.json">
+
+    <link
+        rel="stylesheet"
+        href="../css/variables.css">
+
+    <link
+        rel="stylesheet"
+        href="../css/themes.css">
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css">
+
+    <link
+        rel="stylesheet"
+        href="../css/torque.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!--==================================================
+        HEADER
+    ==================================================-->
+
+    <header class="page-header">
+
+        <button
+            class="back-button"
+            onclick="history.back()">
+
+            ←
+
+        </button>
+
+        <div>
+
+            <h1 class="page-title">
+
+                Torque & Units
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                Torque conversion & wrench correction
+
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!--==================================================
+        MAIN
+    ==================================================-->
+
+    <main class="torque-content">
+    <!--==================================================
+        TORQUE WRENCH SELECTION
+    ==================================================-->
+
+    <section class="card torque-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/torque.png"
+                    alt="Torque Wrench"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Torque Wrench Correction
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Select the assembly used on the torque wrench
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="diagram-grid">
+
+            <!--==================================================
+                1
+            ==================================================-->
+
+            <button
+                class="diagram-card active"
+                data-setup="1">
+
+                <div class="diagram-number">
+
+                    1
+
+                </div>
+
+                <div
+                    class="diagram-svg"
+                    id="diagram1">
+
+                </div>
+
+                <h3>
+
+                    Standard
+
+                </h3>
+
+                <p>
+
+                    No correction
+
+                </p>
+
+            </button>
+
+
+
+            <!--==================================================
+                2
+            ==================================================-->
+
+            <button
+                class="diagram-card"
+                data-setup="2">
+
+                <div class="diagram-number">
+
+                    2
+
+                </div>
+
+                <div
+                    class="diagram-svg"
+                    id="diagram2">
+
+                </div>
+
+                <h3>
+
+                    Inline Adapter
+
+                </h3>
+
+                <p>
+
+                    Crowfoot
+
+                </p>
+
+            </button>
+
+
+
+            <!--==================================================
+                3
+            ==================================================-->
+
+            <button
+                class="diagram-card"
+                data-setup="3">
+
+                <div class="diagram-number">
+
+                    3
+
+                </div>
+
+                <div
+                    class="diagram-svg"
+                    id="diagram3">
+
+                </div>
+
+                <h3>
+
+                    Adapter + Extension
+
+                </h3>
+
+                <p>
+
+                    Same formula
+
+                </p>
+
+            </button>
+
+
+
+            <!--==================================================
+                4
+            ==================================================-->
+
+            <button
+                class="diagram-card"
+                data-setup="4">
+
+                <div class="diagram-number">
+
+                    4
+
+                </div>
+
+                <div
+                    class="diagram-svg"
+                    id="diagram4">
+
+                </div>
+
+                <h3>
+
+                    Rear Extension
+
+                </h3>
+
+                <p>
+
+                    Extension L2
+
+                </p>
+
+            </button>
+
+
+
+            <!--==================================================
+                5
+            ==================================================-->
+
+            <button
+                class="diagram-card"
+                data-setup="5">
+
+                <div class="diagram-number">
+
+                    5
+
+                </div>
+
+                <div
+                    class="diagram-svg"
+                    id="diagram5">
+
+                </div>
+
+                <h3>
+
+                    Crowfoot 90°
+
+                </h3>
+
+                <p>
+
+                    No correction
+
+                </p>
+
+            </button>
+
+
+
+            <!--==================================================
+                6
+            ==================================================-->
+
+            <button
+                class="diagram-card"
+                data-setup="6">
+
+                <div class="diagram-number">
+
+                    6
+
+                </div>
+
+                <div
+                    class="diagram-svg"
+                    id="diagram6">
+
+                </div>
+
+                <h3>
+
+                    Offset Adapter
+
+                </h3>
+
+                <p>
+
+                    Curved adapter
+
+                </p>
+
+            </button>
+
+
+
+            <!--==================================================
+                7
+            ==================================================-->
+
+            <button
+                class="diagram-card"
+                data-setup="7">
+
+                <div class="diagram-number">
+
+                    7
+
+                </div>
+
+                <div
+                    class="diagram-svg"
+                    id="diagram7">
+
+                </div>
+
+                <h3>
+
+                    Angled Adapter
+
+                </h3>
+
+                <p>
+
+                    Variable angle
+
+                </p>
+
+            </button>
+
+        </div>
+
+    </section>
+        <!--==================================================
+        TORQUE CALCULATOR
+    ==================================================-->
+
+    <section class="card torque-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/torque.png"
+                    alt="Calculator"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Torque Calculator
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Automatic calculation according to the selected setup
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!--==============================================
+            SELECTED SETUP
+        ===============================================-->
+
+        <div class="selected-setup">
+
+            <span>
+
+                Selected Setup
+
+            </span>
+
+            <strong id="selectedSetupName">
+
+                Standard (No correction)
+
+            </strong>
+
+        </div>
+
+
+
+        <!--==============================================
+            INFORMATION
+        ===============================================-->
+
+        <div
+            id="setupInformation"
+            class="setup-information">
+
+            <span class="info-icon">
+
+                ✔
+
+            </span>
+
+            <div>
+
+                <h3>
+
+                    No correction required
+
+                </h3>
+
+                <p id="setupDescription">
+
+                    The torque wrench setting is equal to the required torque.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!--==============================================
+            INPUTS
+        ===============================================-->
+
+        <div class="card-body">
+
+            <div class="input-group">
+
+                <label for="realTorque">
+
+                    Required Torque
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="realTorque"
+                        class="input"
+                        placeholder="0.0"
+                        min="0"
+                        step="0.01">
+
+                    <select
+                        id="torqueUnit"
+                        class="input-unit">
+
+                        <option>Nm</option>
+
+                        <option>daN·m</option>
+
+                        <option>kgf·m</option>
+
+                        <option>ft·lb</option>
+
+                        <option>in·lb</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!--==========================================
+                LENGTH L
+            ==========================================-->
+
+            <div
+                id="groupL"
+                class="input-group">
+
+                <label for="lengthL">
+
+                    Torque Wrench Length (L)
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="lengthL"
+                        class="input"
+                        placeholder="0"
+                        min="0"
+                        step="0.1">
+
+                    <span class="input-unit">
+
+                        mm
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!--==========================================
+                LENGTH L1
+            ==========================================-->
+
+            <div
+                id="groupL1"
+                class="input-group">
+
+                <label for="lengthL1">
+
+                    Adapter Length (L1)
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="lengthL1"
+                        class="input"
+                        placeholder="0"
+                        min="0"
+                        step="0.1">
+
+                    <span class="input-unit">
+
+                        mm
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!--==========================================
+                LENGTH L2
+            ==========================================-->
+
+            <div
+                id="groupL2"
+                class="input-group">
+
+                <label for="lengthL2">
+
+                    Extension Length (L2)
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="lengthL2"
+                        class="input"
+                        placeholder="0"
+                        min="0"
+                        step="0.1">
+
+                    <span class="input-unit">
+
+                        mm
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!--==========================================
+                LENGTH L3
+            ==========================================-->
+
+            <div
+                id="groupL3"
+                class="input-group">
+
+                <label for="lengthL3">
+
+                    Adapter Length (L3)
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="lengthL3"
+                        class="input"
+                        placeholder="0"
+                        min="0"
+                        step="0.1">
+
+                    <span class="input-unit">
+
+                        mm
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!--==========================================
+                ANGLE
+            ==========================================-->
+
+            <div
+                id="groupAngle"
+                class="input-group">
+
+                <label for="adapterAngle">
+
+                    Angle (°)
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="adapterAngle"
+                        class="input"
+                        placeholder="180"
+                        min="90"
+                        max="180"
+                        step="1">
+
+                    <span class="input-unit">
+
+                        °
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!--==================================================
+        CALCULATION RESULT
+    ==================================================-->
+
+    <section class="card torque-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/torque.png"
+                    alt="Result"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Torque Setting
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Value to set on the torque wrench
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!--==============================================
+            FORMULA
+        ===============================================-->
+
+        <div
+            id="formulaCard"
+            class="formula-card">
+
+            <span class="formula-title">
+
+                Formula Used
+
+            </span>
+
+            <code
+                id="formulaText">
+
+                Tsetting = Trequired
+
+            </code>
+
+        </div>
+
+
+
+        <!--==============================================
+            RESULT
+        ===============================================-->
+
+        <div class="result-card result-highlight">
+
+            <span class="result-label">
+
+                Torque Wrench Setting
+
+            </span>
+
+            <span
+                id="torqueResult"
+                class="result-value">
+
+                0.00
+
+            </span>
+
+            <span
+                id="torqueResultUnit"
+                class="result-unit">
+
+                Nm
+
+            </span>
+
+        </div>
+
+
+
+        <!--==============================================
+            DIFFERENCE
+        ===============================================-->
+
+        <div class="result-card">
+
+            <span class="result-label">
+
+                Difference
+
+            </span>
+
+            <span
+                id="differenceResult"
+                class="result-value">
+
+                0.00
+
+            </span>
+
+            <span
+                id="differenceUnit"
+                class="result-unit">
+
+                Nm
+
+            </span>
+
+        </div>
+
+
+
+        <!--==============================================
+            WARNING
+        ===============================================-->
+
+        <div
+            id="warningBox"
+            class="warning-box">
+
+            <span class="warning-icon">
+
+                ⚠
+
+            </span>
+
+            <div>
+
+                <strong>
+
+                    Reminder
+
+                </strong>
+
+                <p id="warningText">
+
+                    Verify all dimensions before tightening.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!--==================================================
+        QUICK REFERENCE
+    ==================================================-->
+
+    <section class="card torque-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/torque.png"
+                    alt="Quick Reference"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Quick Reference
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Torque correction formulas
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="reference-grid">
+
+            <div class="reference-item">
+
+                <h3>
+
+                    Setup 1
+
+                </h3>
+
+                <p>
+
+                    Standard
+
+                </p>
+
+                <code>
+
+                    Tsetting = Trequired
+
+                </code>
+
+            </div>
+
+
+
+            <div class="reference-item">
+
+                <h3>
+
+                    Setup 2
+
+                </h3>
+
+                <p>
+
+                    Inline Adapter
+
+                </p>
+
+                <code>
+
+                    T = T × L / (L + L1)
+
+                </code>
+
+            </div>
+
+
+
+            <div class="reference-item">
+
+                <h3>
+
+                    Setup 3
+
+                </h3>
+
+                <p>
+
+                    Adapter + Extension
+
+                </p>
+
+                <code>
+
+                    T = T × L / (L + L1)
+
+                </code>
+
+            </div>
+
+
+
+            <div class="reference-item">
+
+                <h3>
+
+                    Setup 4
+
+                </h3>
+
+                <p>
+
+                    Rear Extension
+
+                </p>
+
+                <code>
+
+                    T = T × (L + L2) / (L + L + L2)
+
+                </code>
+
+            </div>
+
+
+
+            <div class="reference-item">
+
+                <h3>
+
+                    Setup 5
+
+                </h3>
+
+                <p>
+
+                    Crowfoot 90°
+
+                </p>
+
+                <code>
+
+                    Tsetting = Trequired
+
+                </code>
+
+            </div>
+
+
+
+            <div class="reference-item">
+
+                <h3>
+
+                    Setup 6
+
+                </h3>
+
+                <p>
+
+                    Offset Adapter
+
+                </p>
+
+                <code>
+
+                    T = T × L / (L + L1)
+
+                </code>
+
+            </div>
+
+
+
+            <div class="reference-item">
+
+                <h3>
+
+                    Setup 7
+
+                </h3>
+
+                <p>
+
+                    Angled Adapter
+
+                </p>
+
+                <code>
+
+                    T = T × L / (L + L3 × cos(180° − α))
+
+                </code>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--==================================================
+        LEGEND
+    ==================================================-->
+
+    <section class="card torque-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/torque.png"
+                    alt="Legend"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Legend
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Variables used in the formulas
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="legend-grid">
+
+            <div>
+
+                <strong>Trequired</strong>
+
+                <p>
+
+                    Required tightening torque
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <strong>Tsetting</strong>
+
+                <p>
+
+                    Torque wrench setting
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <strong>L</strong>
+
+                <p>
+
+                    Torque wrench length
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <strong>L1</strong>
+
+                <p>
+
+                    Inline or offset adapter length
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <strong>L2</strong>
+
+                <p>
+
+                    Rear extension length
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <strong>L3</strong>
+
+                <p>
+
+                    Angled adapter length
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <strong>α</strong>
+
+                <p>
+
+                    Adapter angle (degrees)
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!--==================================================
+        ACTIONS
+    ==================================================-->
+
+    <section class="torque-actions">
+
+        <button
+            id="calculateTorque"
+            class="btn btn-primary">
+
+            Calculate
+
+        </button>
+
+        <button
+            id="copyTorque"
+            class="btn btn-secondary">
+
+            Copy Result
+
+        </button>
+
+        <button
+            id="resetTorque"
+            class="btn btn-secondary">
+
+            Reset
+
+        </button>
+
+    </section>
+
+
+
+    <!--==================================================
+        NOTES
+    ==================================================-->
+
+    <section class="card torque-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/torque.png"
+                    alt="Notes"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Notes
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Important reminders
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="notes-list">
+
+            <div class="note-item">
+
+                ✔ Use the center of the square drive when measuring the wrench length (L).
+
+            </div>
+
+            <div class="note-item">
+
+                ✔ Measure all adapter lengths on the tool centerline.
+
+            </div>
+
+            <div class="note-item">
+
+                ✔ Use the same unit for every length (mm or in).
+
+            </div>
+
+            <div class="note-item">
+
+                ✔ The calculated value is the torque wrench setting.
+
+            </div>
+
+            <div class="note-item">
+
+                ✔ Always follow the Aircraft Maintenance Manual (AMM).
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--==================================================
+        FOOTER
+    ==================================================-->
+
+    <footer class="page-footer">
+
+        <span>
+
+            Air Tahiti Tools
+
+        </span>
+
+        <span>
+
+            Version 1.0.0
+
+        </span>
+
+    </footer>
+
+</main>
+
+</div>
+
+
+
+<!--==================================================
+    JAVASCRIPT
+==================================================-->
+
+<script src="../js/app.js"></script>
+
+<script src="../js/torque.js"></script>
+
+</body>
+
+</html>
