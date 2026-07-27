@@ -2,50 +2,50 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Air Tahiti Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-    
 <body>
-    <header class="header">
-    <!-- Cette ligne lie le fichier logo.svg à votre page index -->
-    <img src="logo.svg" alt="Air Tahiti Tools Logo">
-</header>
+    <div class="app-container">
+        <header class="header">
+            <img src="logo.svg" alt="Air Tahiti Logo">
+            <p class="toolbox-label">AIRCRAFT MAINTENANCE TOOLBOX</p>
+        </header>
 
-        <main>
-            <div class="menu-card" onclick="alert('Module Fuel')">
-                <div class="icon-box"><i class="fas fa-gas-pump"></i></div>
-                <div class="card-content">
+        <nav class="menu-list">
+            <button class="card" onclick="alert('Module Fuel en cours de développement')">
+                <div class="icon-circle"><i class="fas fa-gas-pump"></i></div>
+                <div class="card-info">
                     <h3>FUEL TOOLS</h3>
                     <p>Converter • Uplift</p>
                 </div>
-                <div class="chevron">❯</div>
-            </div>
+                <span class="chevron">❯</span>
+            </button>
 
-            <div class="menu-card" onclick="alert('Module Torque')">
-                <div class="icon-box"><i class="fas fa-wrench"></i></div>
-                <div class="card-content">
+            <button class="card" onclick="alert('Module Torque en cours de développement')">
+                <div class="icon-circle"><i class="fas fa-wrench"></i></div>
+                <div class="card-info">
                     <h3>TORQUE & UNITS</h3>
-                    <p>Torque • Length • Pressure</p>
+                    <p>Torque • Length<br>Pressure • Mass • Temp</p>
                 </div>
-                <div class="chevron">❯</div>
-            </div>
+                <span class="chevron">❯</span>
+            </button>
 
-            <div class="menu-card" onclick="toggleTheme()">
-                <div class="icon-box"><i class="fas fa-cog"></i></div>
-                <div class="card-content">
+            <button class="card" onclick="toggleTheme()">
+                <div class="icon-circle"><i class="fas fa-cog"></i></div>
+                <div class="card-info">
                     <h3>SETTINGS</h3>
-                    <p>Theme • Language</p>
+                    <p>Theme • Language<br>Fuel Density</p>
                 </div>
-                <div class="chevron">❯</div>
-            </div>
-        </main>
+                <span class="chevron">❯</span>
+            </button>
+        </nav>
 
-        <footer>
-            <p style="color:var(--accent); font-weight:bold; margin-top:30px;">VERSION 1.0</p>
-        </footer>
+        <div class="version">VERSION 1.0</div>
     </div>
 
     <script src="script.js"></script>
