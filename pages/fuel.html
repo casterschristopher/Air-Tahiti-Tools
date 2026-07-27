@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-
-<html lang="fr">
+<html lang="en">
 
 <head>
-
-    <!--==================================================
-        META
-    ==================================================-->
 
     <meta charset="UTF-8">
 
@@ -14,15 +9,11 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="theme-color"
-        content="#081220">
-
     <title>Fuel Tools</title>
 
-    <!--==================================================
-        CSS
-    ==================================================-->
+    <link
+        rel="manifest"
+        href="../manifest.json">
 
     <link
         rel="stylesheet"
@@ -52,21 +43,37 @@
 
     <header class="page-header">
 
-        <a
-            href="../index.html"
-            class="back-button">
+        <button
+            class="back-button"
+            onclick="history.back()">
 
             ←
 
-        </a>
+        </button>
 
-        <h1 class="page-title">
+        <div>
 
-            Fuel Tools
+            <h1 class="page-title">
 
-        </h1>
+                Fuel Tools
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                Fuel calculations & conversions
+
+            </p>
+
+        </div>
 
     </header>
+
+
+
+    <!--==================================================
+        MAIN
+    ==================================================-->
 
     <main class="fuel-content">
     <!--==================================================
@@ -88,13 +95,13 @@
 
                     <h2 class="card-title">
 
-                        Fuel Density @15°C
+                        Fuel Density
 
                     </h2>
 
                     <p class="card-subtitle">
 
-                        Enter the density provided by the refueller
+                        Used automatically by all fuel calculations
 
                     </p>
 
@@ -102,16 +109,30 @@
 
             </div>
 
+            <div
+                id="densityStatus"
+                class="density-status status-waiting">
+
+                <span class="status-dot"></span>
+
+                <span id="densityStatusText">
+
+                    Waiting
+
+                </span>
+
+            </div>
+
         </div>
+
 
         <div class="card-body">
 
             <div class="input-group">
 
-                <label
-                    for="fuelDensity">
+                <label for="fuelDensity">
 
-                    Density
+                    Fuel Density @15°C (kg/L)
 
                 </label>
 
@@ -123,9 +144,7 @@
                         class="input"
                         placeholder="0.7980"
                         step="0.0001"
-                        min="0.7000"
-                        max="0.9000"
-                        value="0.7980">
+                        min="0">
 
                     <span class="input-unit">
 
@@ -140,7 +159,7 @@
         </div>
 
     </section>
-    <!--==================================================
+        <!--==================================================
         FUEL CONVERTER
     ==================================================-->
 
@@ -165,7 +184,7 @@
 
                     <p class="card-subtitle">
 
-                        Automatic fuel conversion
+                        Convert fuel using the current density
 
                     </p>
 
@@ -175,13 +194,16 @@
 
         </div>
 
+
         <div class="card-body">
 
             <div class="input-group">
 
-                <label for="fuelQuantity">
+                <label
+                    id="fuelQuantityLabel"
+                    for="fuelQuantity">
 
-                    Quantity
+                    Quantity (L)
 
                 </label>
 
@@ -200,7 +222,7 @@
 
                 <label for="fuelUnit">
 
-                    Unit
+                    From Unit
 
                 </label>
 
@@ -208,15 +230,45 @@
                     id="fuelUnit"
                     class="input">
 
-                    <option value="liters">Liters (L)</option>
+                    <option value="liters">
+                        Liters (L)
+                    </option>
 
-                    <option value="kilograms">Kilograms (kg)</option>
+                    <option value="milliliters">
+                        Milliliters (mL)
+                    </option>
 
-                    <option value="pounds">Pounds (lb)</option>
+                    <option value="kilograms">
+                        Kilograms (kg)
+                    </option>
 
-                    <option value="usgallons">US Gallons (US gal)</option>
+                    <option value="grams">
+                        Grams (g)
+                    </option>
 
-                    <option value="impgallons">Imperial Gallons (Imp gal)</option>
+                    <option value="pounds">
+                        Pounds (lb)
+                    </option>
+
+                    <option value="ounces">
+                        Ounces (oz)
+                    </option>
+
+                    <option value="usgallons">
+                        US Gallons (US gal)
+                    </option>
+
+                    <option value="impgallons">
+                        Imperial Gallons (Imp gal)
+                    </option>
+
+                    <option value="usfloz">
+                        US Fluid Ounces (US fl oz)
+                    </option>
+
+                    <option value="impfloz">
+                        Imperial Fluid Ounces (Imp fl oz)
+                    </option>
 
                 </select>
 
@@ -277,7 +329,7 @@
 
                     <p class="card-subtitle">
 
-                        Calculate fuel to upload
+                        Calculate the fuel required for departure
 
                     </p>
 
@@ -287,13 +339,14 @@
 
         </div>
 
+
         <div class="card-body">
 
             <div class="input-group">
 
                 <label for="fuelOnboard">
 
-                    Fuel Onboard
+                    Fuel Onboard (kg)
 
                 </label>
 
@@ -322,7 +375,7 @@
 
                 <label for="fuelRequired">
 
-                    Fuel Required
+                    Fuel Required (kg)
 
                 </label>
 
@@ -354,7 +407,7 @@
 
                 <span class="result-label">
 
-                    Fuel To Upload
+                    Fuel To Upload (kg)
 
                 </span>
 
@@ -377,7 +430,7 @@
         </div>
 
     </section>
-    <!--==================================================
+        <!--==================================================
         UNIT CONVERTER
     ==================================================-->
 
@@ -402,7 +455,7 @@
 
                     <p class="card-subtitle">
 
-                        Quick unit conversions
+                        Quick conversion between aviation units
 
                     </p>
 
@@ -412,13 +465,16 @@
 
         </div>
 
+
         <div class="card-body">
 
             <div class="input-group">
 
-                <label for="unitValue">
+                <label
+                    id="unitValueLabel"
+                    for="unitValue">
 
-                    Value
+                    Value (kg)
 
                 </label>
 
@@ -445,29 +501,86 @@
                     id="conversionType"
                     class="input">
 
-                    <option value="kg-lb">
-                        Kilograms → Pounds
-                    </option>
+                    <optgroup label="Mass">
 
-                    <option value="lb-kg">
-                        Pounds → Kilograms
-                    </option>
+                        <option value="kg-lb">
+                            Kilograms (kg) → Pounds (lb)
+                        </option>
 
-                    <option value="l-usg">
-                        Liters → US Gallons
-                    </option>
+                        <option value="lb-kg">
+                            Pounds (lb) → Kilograms (kg)
+                        </option>
 
-                    <option value="usg-l">
-                        US Gallons → Liters
-                    </option>
+                        <option value="kg-g">
+                            Kilograms (kg) → Grams (g)
+                        </option>
 
-                    <option value="l-impg">
-                        Liters → Imperial Gallons
-                    </option>
+                        <option value="g-kg">
+                            Grams (g) → Kilograms (kg)
+                        </option>
 
-                    <option value="impg-l">
-                        Imperial Gallons → Liters
-                    </option>
+                        <option value="kg-oz">
+                            Kilograms (kg) → Ounces (oz)
+                        </option>
+
+                        <option value="oz-kg">
+                            Ounces (oz) → Kilograms (kg)
+                        </option>
+
+                        <option value="lb-oz">
+                            Pounds (lb) → Ounces (oz)
+                        </option>
+
+                        <option value="oz-lb">
+                            Ounces (oz) → Pounds (lb)
+                        </option>
+
+                    </optgroup>
+
+
+                    <optgroup label="Volume">
+
+                        <option value="l-ml">
+                            Liters (L) → Milliliters (mL)
+                        </option>
+
+                        <option value="ml-l">
+                            Milliliters (mL) → Liters (L)
+                        </option>
+
+                        <option value="l-usg">
+                            Liters (L) → US Gallons (US gal)
+                        </option>
+
+                        <option value="usg-l">
+                            US Gallons (US gal) → Liters (L)
+                        </option>
+
+                        <option value="l-impg">
+                            Liters (L) → Imperial Gallons (Imp gal)
+                        </option>
+
+                        <option value="impg-l">
+                            Imperial Gallons (Imp gal) → Liters (L)
+                        </option>
+
+                        <option value="l-usfloz">
+                            Liters (L) → US Fluid Ounces (US fl oz)
+                        </option>
+
+                        <option value="usfloz-l">
+                            US Fluid Ounces (US fl oz) → Liters (L)
+                        </option>
+
+                        <option value="l-impfloz">
+                            Liters (L) → Imperial Fluid Ounces (Imp fl oz)
+                        </option>
+
+                        <option value="impfloz-l">
+                            Imperial Fluid Ounces (Imp fl oz) → Liters (L)
+                        </option>
+
+                    </optgroup>
 
                 </select>
 
@@ -497,7 +610,7 @@
                     id="unitResultUnit"
                     class="result-unit">
 
-                    —
+                    kg
 
                 </span>
 
@@ -516,7 +629,7 @@
             id="resetFuel"
             class="btn btn-secondary">
 
-            Reset
+            Reset All
 
         </button>
 
@@ -530,7 +643,7 @@
 
 <!--==================================================
     JAVASCRIPT
-===================================================-->
+==================================================-->
 
 <script src="../js/app.js"></script>
 
