@@ -1,84 +1,80 @@
 /* ==========================================================
-   Air Tahiti Tools
-   File      : variables.css
-   Version   : 0.2.0
-   Updated   : 26/07/2026
-   Description : Variables globales et thèmes
+   AIR TAHITI TOOLS
+   Design System
+   Version 1.0
 ========================================================== */
 
 :root{
 
-    /* ======================================================
-       IDENTITÉ
-    ====================================================== */
+/* ===== Colors ===== */
 
-    --primary:#C62828;
-    --primary-dark:#A61F1F;
-    --primary-light:#E14C4C;
+--color-primary:#C8102E;
+--color-primary-light:#E53E5A;
 
-    /* ======================================================
-       LIGHT THEME : RED ISLAND
-    ====================================================== */
+--color-background:#0D1117;
+--color-surface:#161B22;
+--color-surface-2:#1E2632;
 
-    --background:#F5F6F8;
-    --surface:#FFFFFF;
-    --card:#FFFFFF;
+--color-text:#F8FAFC;
+--color-text-secondary:#A8B3C2;
 
-    --header:rgba(255,255,255,.82);
+--color-success:#16A34A;
+--color-warning:#F59E0B;
+--color-danger:#DC2626;
 
-    --text:#1C1C1E;
-    --text-secondary:#6E6E73;
 
-    --border:#D8D8DC;
+/* ===== Radius ===== */
 
-    /* ======================================================
-       STATUS
-    ====================================================== */
+--radius-xs:8px;
+--radius-sm:12px;
+--radius-md:18px;
+--radius-lg:24px;
+--radius-xl:30px;
 
-    --success:#2E7D32;
-    --warning:#F9A825;
-    --danger:#D32F2F;
 
-    /* ======================================================
-       UI
-    ====================================================== */
+/* ===== Shadows ===== */
 
-    --radius-xs:8px;
-    --radius-s:12px;
-    --radius-m:16px;
-    --radius-l:22px;
+--shadow-small:
+0 4px 12px rgba(0,0,0,.15);
 
-    --shadow-small:
-        0 2px 6px rgba(0,0,0,.05);
+--shadow-medium:
+0 8px 24px rgba(0,0,0,.25);
 
-    --shadow-medium:
-        0 10px 28px rgba(0,0,0,.08);
+--shadow-large:
+0 18px 40px rgba(0,0,0,.40);
 
-    --shadow-large:
-        0 20px 40px rgba(0,0,0,.12);
 
-    --animation:.20s ease;
+/* ===== Spacing ===== */
 
-}
+--space-xs:6px;
+--space-sm:12px;
+--space-md:20px;
+--space-lg:32px;
+--space-xl:48px;
 
-/* ==========================================================
-   BLACK PEARL THEME
-========================================================== */
 
-body.theme-dark{
+/* ===== Transition ===== */
 
-    --background:#111214;
+--transition-fast:.15s ease;
+--transition:.25s ease;
+--transition-slow:.4s ease;
 
-    --surface:#1B1C20;
 
-    --card:#232428;
+/* ===== Typography ===== */
 
-    --header:rgba(28,29,33,.82);
+--font-family:
+-apple-system,
+BlinkMacSystemFont,
+"SF Pro Display",
+"Segoe UI",
+Roboto,
+sans-serif;
 
-    --text:#F2F2F7;
-
-    --text-secondary:#B0B0B7;
-
-    --border:#3A3B40;
+--font-xs:.80rem;
+--font-sm:.90rem;
+--font-md:1rem;
+--font-lg:1.20rem;
+--font-xl:1.60rem;
+--font-xxl:2.20rem;
 
 }
