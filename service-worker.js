@@ -1,180 +1,64 @@
-/*==========================================================
- AIR TAHITI TOOLS
- Service Worker
- Version 2.0
-==========================================================*/
+const CACHE_NAME = "air-tahiti-tools-v1.0.0";
 
-"use strict";
+const FILES_TO_CACHE = [
+    "/",
+    "/index.html",
+    "/manifest.json",
 
-const CACHE_NAME = "att-v2.0.0";
+    "/css/variables.css",
+    "/css/layout.css",
+    "/css/style.css",
+    "/css/components.css",
+    "/css/ui.css",
 
-/*==========================================================
-STATIC FILES
-==========================================================*/
+    "/js/ui.js",
+    "/js/fuel.js",
+    "/js/torque.js",
+    "/js/settings.js",
 
-const STATIC_FILES = [
+    "/pages/fuel.html",
+    "/pages/torque.html",
+    "/pages/settings.html",
 
-    "./",
-    "./index.html",
-    "./manifest.json",
+    "/assets/icons/icon-192.png",
+    "/assets/icons/icon-512.png",
 
-    "./css/variables.css",
-    "./css/layout.css",
-    "./css/ui.css",
-    "./css/fuel.css",
-    "./css/torque.css",
-    "./css/settings.css",
+    "/assets/icons/fuel.svg",
+    "/assets/icons/torque.svg",
+    "/assets/icons/settings.svg",
 
-    "./js/ui.js",
-    "./js/fuel.js",
-    "./js/torque.js",
-    "./js/settings.js",
-
-    "./pages/fuel.html",
-    "./pages/torque.html",
-    "./pages/settings.html",
-
-    "./assets/icons/icon-192.png",
-    "./assets/icons/icon-512.png"
-
+    "/assets/images/C418D666-5680-4A2E-A41E-5C0A447B786A.png"
 ];
 
-/*==========================================================
-INSTALL
-==========================================================*/
-
 self.addEventListener("install", event => {
-
     event.waitUntil(
-
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(STATIC_FILES))
-
+            .then(cache => cache.addAll(FILES_TO_CACHE))
     );
-
     self.skipWaiting();
-
 });
 
-/*==========================================================
-ACTIVATE
-==========================================================*/
-
 self.addEventListener("activate", event => {
-
     event.waitUntil(
-
-        caches.keys()
-
-            .then(keys => Promise.all(
-
-                keys.map(key => {
-
-                    if (key !== CACHE_NAME) {
-
-                        return caches.delete(key);
-
-                    }
-
-                })
-
-            ))
-
+        caches.keys().then(keys =>
+            Promise.all(
+                keys
+                    .filter(key => key !== CACHE_NAME)
+                    .map(key => caches.delete(key))
+            )
+        )
     );
 
     self.clients.claim();
-
 });
 
-/*==========================================================
-FETCH
-==========================================================*/
-
 self.addEventListener("fetch", event => {
-
-    if (event.request.method !== "GET")
+    if (event.request.method !== "GET") {
         return;
-
-    const request = event.request;
-
-    /*------------------------------
-      HTML → Network First
-    ------------------------------*/
-
-    if (request.destination === "document") {
-
-        event.respondWith(
-
-            fetch(request)
-
-                .then(response => {
-
-                    const clone = response.clone();
-
-                    caches.open(CACHE_NAME)
-
-                        .then(cache => {
-
-                            cache.put(request, clone);
-
-                        });
-
-                    return response;
-
-                })
-
-                .catch(() => caches.match(request))
-
-        );
-
-        return;
-
     }
 
-    /*------------------------------
-      CSS / JS / Images → Cache First
-    ------------------------------*/
-
     event.respondWith(
-
-        caches.match(request)
-
-            .then(cacheResponse => {
-
-                if (cacheResponse)
-                    return cacheResponse;
-
-                return fetch(request)
-
-                    .then(networkResponse => {
-
-                        if (
-                            networkResponse &&
-                            networkResponse.status === 200
-                        ) {
-
-                            const clone =
-                                networkResponse.clone();
-
-                            caches.open(CACHE_NAME)
-
-                                .then(cache => {
-
-                                    cache.put(
-                                        request,
-                                        clone
-                                    );
-
-                                });
-
-                        }
-
-                        return networkResponse;
-
-                    });
-
-            })
-
+        caches.match(event.request)
+            .then(response => response || fetch(event.request))
     );
-
 });
