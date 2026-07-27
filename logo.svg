@@ -1,54 +1,90 @@
-<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Fond (Optionnel) -->
-  <rect width="800" height="400" fill="transparent"/>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Dégradé pour le fond rouge -->
+    <radialGradient id="redGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#b02018" />
+      <stop offset="100%" stop-color="#7a120e" />
+    </radialGradient>
+    
+    <!-- Motif Polynésien (répété) -->
+    <pattern id="polyPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M0 50 L25 25 L50 50 L25 75 Z M50 50 L75 25 L100 50 L75 75 Z M25 0 L50 25 L25 50 L0 25 Z M75 0 L100 25 L75 50 L50 25 Z" 
+            fill="none" stroke="#5a0a07" stroke-width="1" opacity="0.6"/>
+      <circle cx="50" cy="50" r="10" fill="none" stroke="#5a0a07" stroke-width="1" opacity="0.4"/>
+      <path d="M10 10 Q 25 0 40 10 M60 10 Q 75 0 90 10" fill="none" stroke="#5a0a07" stroke-width="1" opacity="0.5"/>
+    </pattern>
 
-  <!-- Groupe Emblème Circulaire -->
-  <g transform="translate(50, 50)">
-    <!-- Cercle extérieur noir avec coupure pour la fleur -->
-    <path d="M 280 150 A 130 130 0 1 0 50 250" fill="none" stroke="black" stroke-width="8" stroke-linecap="round"/>
-    <path d="M 50 250 A 130 130 0 0 0 280 150" fill="none" stroke="#C41E3A" stroke-width="8" stroke-linecap="round"/>
+    <style>
+      .logo-text { font-family: Arial, sans-serif; font-weight: bold; fill: white; }
+      .atr-text { font-style: italic; font-size: 85px; letter-spacing: -2px; }
+      .sub-text { font-size: 26px; letter-spacing: 2px; text-transform: uppercase; }
+      .outline { stroke: white; stroke-width: 8; fill: none; transition: stroke 0.3s; }
+      
+      /* Mode Sombre : Ajustement du contour extérieur */
+      @media (prefers-color-scheme: dark) {
+        .outline { stroke: #cccccc; }
+      }
+    </style>
+  </defs>
 
-    <!-- Disque de fond avec motif tribal simplifié -->
-    <circle cx="165" cy="165" r="120" fill="#1A1A1A"/>
-    <g opacity="0.4">
-      <path d="M 100 100 L 230 230 M 100 230 L 230 100" stroke="white" stroke-width="2"/>
-      <circle cx="165" cy="165" r="80" fill="none" stroke="white" stroke-width="2" stroke-dasharray="10 5"/>
-      <circle cx="165" cy="165" r="50" fill="none" stroke="white" stroke-width="1"/>
-      <path d="M 165 45 V 285 M 45 165 H 285" stroke="white" stroke-width="1"/>
+  <!-- Cercle de fond principal -->
+  <circle cx="250" cy="250" r="230" fill="url(#redGrad)" />
+  
+  <!-- Application du motif polynésien (masqué par un cercle) -->
+  <circle cx="250" cy="250" r="230" fill="url(#polyPattern)" />
+  
+  <!-- Bordure extérieure -->
+  <circle cx="250" cy="250" r="235" class="outline" />
+  <circle cx="250" cy="250" r="215" stroke="white" stroke-width="2" fill="none" opacity="0.5" />
+
+  <!-- L'AVION ATR (Silhouette détaillée) -->
+  <g transform="translate(250, 200)" fill="white">
+    <!-- Fuselage -->
+    <path d="M-40,0 Q0,-45 40,0 L35,25 Q0,35 -35,25 Z" />
+    <path d="M-5,25 L-5,45 Q0,55 5,45 L5,25 Z" /> <!-- Nez/Dessous -->
+    
+    <!-- Ailes -->
+    <rect x="-190" y="-5" width="380" height="12" rx="2" />
+    
+    <!-- Moteurs et Hélices Gauche -->
+    <g transform="translate(-110, 0)">
+      <ellipse cx="0" cy="5" rx="15" ry="18" fill="white" />
+      <circle cx="0" cy="5" r="8" fill="#7a120e" />
+      <!-- Pales -->
+      <g id="blades">
+        <path d="M0,5 L0,-35 Q5,-35 0,-5 Z" />
+        <path d="M0,5 L30,20 Q33,15 0,5 Z" />
+        <path d="M0,5 L-30,20 Q-33,15 0,5 Z" />
+        <path d="M0,5 L0,45 Q-5,45 0,5 Z" />
+        <path d="M0,5 L-30,-10 Q-33,-15 0,5 Z" />
+        <path d="M0,5 L30,-10 Q33,-15 0,5 Z" />
+      </g>
     </g>
-
-    <!-- Silhouette de l'avion (Style ATR) -->
-    <path d="M 50 160 L 150 185 L 340 100 L 350 115 L 180 220 L 200 270 L 180 275 L 155 215 L 50 185 Z" 
-          fill="white" stroke="black" stroke-width="2"/>
-    <circle cx="210" cy="180" r="4" fill="black"/> <!-- Hublot avant -->
-
-    <!-- Fleur d'Hibiscus Rouge -->
-    <g transform="translate(40, 240) scale(1.2)">
-      <!-- Pétales -->
-      <path d="M 0 0 C -20 -30 -50 -20 -45 10 C -40 40 -10 35 0 0" fill="#E31E24"/>
-      <path d="M 0 0 C 20 -30 50 -20 45 10 C 40 40 10 35 0 0" fill="#E31E24"/>
-      <path d="M 0 0 C -30 10 -35 40 -10 50 C 15 60 25 30 0 0" fill="#C41E3A"/>
-      <path d="M 0 0 C 30 10 35 40 10 50 C -15 60 -25 30 0 0" fill="#C41E3A"/>
-      <path d="M 0 0 C -10 -40 10 -40 0 0" fill="#E31E24"/>
-      <!-- Pistil -->
-      <path d="M 0 0 L 10 -40" stroke="white" stroke-width="2" fill="none"/>
-      <circle cx="12" cy="-45" r="3" fill="white"/>
-      <circle cx="5" cy="-42" r="2" fill="white"/>
-      <circle cx="18" cy="-38" r="2" fill="white"/>
+    
+    <!-- Moteurs et Hélices Droite -->
+    <g transform="translate(110, 0)">
+      <ellipse cx="0" cy="5" rx="15" ry="18" fill="white" />
+      <circle cx="0" cy="5" r="8" fill="#7a120e" />
+      <use href="#blades" />
     </g>
+    
+    <!-- Queue (T-Tail) -->
+    <rect x="-2" y="-90" width="4" height="60" />
+    <path d="M-45,-95 L45,-95 L40,-85 L-40,-85 Z" />
+    
+    <!-- Train d'atterrissage -->
+    <path d="M-30,25 L-35,45 M30,25 L35,45" stroke="white" stroke-width="4" />
+    <circle cx="-38" cy="50" r="5" />
+    <circle cx="38" cy="50" r="5" />
+    <circle cx="0" cy="65" r="4" />
+    
+    <!-- Fenêtres cockpit -->
+    <path d="M-25,-5 Q-15,-15 0,-15 Q15,-15 25,-5 L20,5 Q0,0 -20,5 Z" fill="#7a120e" opacity="0.8" />
   </g>
 
-  <!-- Texte AIR TAHITI -->
-  <text x="320" y="200" font-family="Arial, sans-serif" font-weight="900" font-style="italic" font-size="75" fill="black" letter-spacing="-2">
-    AIR TAHITI
-  </text>
+  <!-- TEXTE -->
+  <text x="250" y="360" text-anchor="middle" class="logo-text atr-text">ATR</text>
+  <text x="250" y="405" text-anchor="middle" class="logo-text sub-text">AIR TAHITI</text>
+  <text x="250" y="435" text-anchor="middle" class="logo-text sub-text">TOOLS</text>
 
-  <!-- Texte TOOLS avec lignes -->
-  <g transform="translate(320, 260)">
-    <line x1="0" y1="-15" x2="100" y2="-15" stroke="#C41E3A" stroke-width="3"/>
-    <text x="110" y="0" font-family="Arial, sans-serif" font-weight="900" font-style="italic" font-size="70" fill="#C41E3A">
-      TOOLS
-    </text>
-    <line x1="360" y1="-15" x2="460" y2="-15" stroke="#C41E3A" stroke-width="3"/>
-  </g>
 </svg>
