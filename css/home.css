@@ -1,268 +1,568 @@
-/* ==========================================================
-   AIR TAHITI TOOLS
-   HOME.CSS
-========================================================== */
+/*==================================================
+    HOME.CSS
+    Air Tahiti Tools
+==================================================*/
 
-/* ==========================================================
-   APP
-========================================================== */
+
+/*==================================================
+    BODY
+==================================================*/
+
+body{
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        180deg,
+        #081220 0%,
+        #102235 100%
+    );
+
+}
+
+
+
+/*==================================================
+    APP
+==================================================*/
 
 .app{
 
-    position:relative;
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:100vh;
 
     width:100%;
-    max-width:var(--content-width);
-    min-height:100vh;
+
+    max-width:650px;
 
     margin:0 auto;
 
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-
-    padding-top:max(32px, env(safe-area-inset-top));
-    padding-right:24px;
-    padding-bottom:max(24px, env(safe-area-inset-bottom));
-    padding-left:24px;
+    padding:32px 22px;
 
 }
 
-/* ==========================================================
-   BACKGROUND PATTERN
-========================================================== */
 
-.background-pattern{
 
-    position:fixed;
+/*==================================================
+    MAIN
+==================================================*/
 
-    inset:0;
-
-    z-index:-2;
-
-    opacity:.08;
-
-    pointer-events:none;
-
-    background-repeat:no-repeat;
-
-    background-position:center;
-
-    background-size:cover;
-
-}
-
-body.theme-dark .background-pattern{
-
-    background-image:url("../assets/patterns/marquisian-dark.png");
-
-}
-
-body.theme-light .background-pattern{
-
-    background-image:url("../assets/patterns/marquisian-light.png");
-
-}
-
-/* ==========================================================
-   HERO
-========================================================== */
-
-.hero{
-
-    width:100%;
+.home-content{
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:center;
-
-    justify-content:center;
-
-    margin-top:20px;
-
-    margin-bottom:48px;
-
-    position:relative;
+    flex:1;
 
 }
 
-.hero::before{
 
-    content:"";
 
-    position:absolute;
-
-    width:280px;
-
-    height:280px;
-
-    border-radius:50%;
-
-    background:var(--color-primary);
-
-    filter:blur(90px);
-
-    opacity:.12;
-
-    z-index:-1;
-
-}
-
-/* ==========================================================
-   LOGO
-========================================================== */
-
-.hero-logo{
-
-    width:var(--header-logo-size);
-
-    height:var(--header-logo-size);
-
-    object-fit:contain;
-
-    margin-bottom:24px;
-
-    filter:drop-shadow(0 16px 30px rgba(200,16,46,.20));
-
-}
-
-/* ==========================================================
-   TITLE
-========================================================== */
-
-.hero-title{
-
-    font-size:2rem;
-
-    font-weight:800;
-
-    letter-spacing:2px;
-
-    text-align:center;
-
-    text-transform:uppercase;
-
-    margin-bottom:8px;
-
-}
-
-/* ==========================================================
-   SUBTITLE
-========================================================== */
-
-.hero-subtitle{
-
-    max-width:300px;
-
-    text-align:center;
-
-    line-height:1.5;
-
-}
-
-body.theme-dark .hero-subtitle{
-
-    color:var(--dark-text-secondary);
-
-}
-
-body.theme-light .hero-subtitle{
-
-    color:var(--light-text-secondary);
-
-}
-
-/* ==========================================================
-   MENU
-========================================================== */
+/*==================================================
+    MENU
+==================================================*/
 
 .menu{
 
-    width:100%;
-
     display:flex;
 
     flex-direction:column;
 
-    gap:18px;
-
-}
-/* ==========================================================
-   MENU CARD
-========================================================== */
-
-.menu-card{
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
+    gap:20px;
 
     width:100%;
 
-    min-height:96px;
+}
+/*==================================================
+    HEADER
+==================================================*/
 
-    padding:20px;
+.home-header{
 
-    border-radius:var(--radius-xl);
+    display:flex;
 
-    overflow:hidden;
+    justify-content:center;
 
-    transition:all var(--transition-normal);
+    align-items:center;
+
+    padding-top:30px;
+
+    padding-bottom:50px;
 
 }
 
-body.theme-dark .menu-card{
 
-    background:var(--dark-card);
 
-    border:1px solid rgba(255,255,255,.06);
+/*==================================================
+    LOGO CONTAINER
+==================================================*/
 
-    backdrop-filter:blur(18px);
+.logo-container{
 
-    -webkit-backdrop-filter:blur(18px);
+    display:flex;
 
-    box-shadow:var(--shadow-lg);
+    justify-content:center;
 
-}
+    align-items:center;
 
-body.theme-light .menu-card{
-
-    background:var(--light-card);
-
-    border:1px solid rgba(0,0,0,.06);
-
-    box-shadow:var(--shadow-md);
+    width:100%;
 
 }
 
-.menu-card::before{
+
+
+/*==================================================
+    MAIN LOGO
+==================================================*/
+
+.home-logo{
+
+    width:230px;
+
+    height:auto;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    filter:
+        drop-shadow(0 12px 24px rgba(0,0,0,.35));
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+
+}
+
+
+
+/*==================================================
+    LOGO INTERACTION
+==================================================*/
+
+.home-logo:hover{
+
+    transform:scale(1.03);
+
+    filter:
+        drop-shadow(0 16px 30px rgba(0,0,0,.45));
+
+}
+
+.home-logo:active{
+
+    transform:scale(.98);
+
+}
+/*==================================================
+    MENU CARDS
+==================================================*/
+
+.menu{
+
+    margin-top:10px;
+
+}
+
+.menu-card{
+
+    animation:slideUp .5s ease both;
+
+}
+
+.menu-card:nth-child(1){
+
+    animation-delay:.05s;
+
+}
+
+.menu-card:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+.menu-card:nth-child(3){
+
+    animation-delay:.25s;
+
+}
+
+
+
+/*==================================================
+    CARD HIGHLIGHT
+==================================================*/
+
+.menu-card::after{
 
     content:"";
 
     position:absolute;
 
-    top:0;
+    inset:0;
 
-    left:0;
+    border-radius:inherit;
 
-    width:5px;
+    pointer-events:none;
 
-    height:100%;
+    opacity:0;
 
-    background:var(--color-primary);
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.08) 0%,
+        rgba(255,255,255,0) 45%
+    );
 
-    transform:scaleY(.20);
+    transition:opacity .25s ease;
 
-    transform-origin:center;
+}
 
-    transition:transform var(--transition-normal);
+.menu-card:hover::after{
+
+    opacity:1;
+
+}
+
+
+
+/*==================================================
+    MENU ICON
+==================================================*/
+
+.menu-icon{
+
+    transition:
+        transform .30s ease,
+        box-shadow .30s ease;
+
+}
+
+.menu-card:hover .menu-icon{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 10px 22px rgba(216,31,38,.35);
+
+}
+
+.menu-card:active .menu-icon{
+
+    transform:scale(.95);
+
+}
+
+
+
+/*==================================================
+    MENU TEXT
+==================================================*/
+
+.menu-info h2{
+
+    letter-spacing:.3px;
+
+}
+
+.menu-info p{
+
+    max-width:260px;
+
+}
+
+
+
+/*==================================================
+    ACCESSIBILITY
+==================================================*/
+
+.menu-card:focus-visible{
+
+    outline:3px solid rgba(216,31,38,.65);
+
+    outline-offset:4px;
+
+}/*==================================================
+    FOOTER
+==================================================*/
+
+.home-footer{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-top:auto;
+
+    padding:32px 0 12px;
+
+}
+
+
+
+/*==================================================
+    VERSION
+==================================================*/
+
+.app-version{
+
+    color:rgba(255,255,255,.55);
+
+    font-size:.85rem;
+
+    font-weight:500;
+
+    letter-spacing:.8px;
+
+    user-select:none;
+
+    transition:
+        color .25s ease,
+        opacity .25s ease;
+
+}
+
+.app-version:hover{
+
+    color:rgba(255,255,255,.80);
+
+}
+/*==================================================
+    RESPONSIVE
+==================================================*/
+
+
+/*----------------------------------------------
+    Small phones
+----------------------------------------------*/
+
+@media (max-width:390px){
+
+    .app{
+
+        padding:24px 16px;
+
+    }
+
+    .home-header{
+
+        padding-top:20px;
+
+        padding-bottom:38px;
+
+    }
+
+    .home-logo{
+
+        width:185px;
+
+    }
+
+    .menu-card{
+
+        min-height:96px;
+
+        padding:16px;
+
+    }
+
+    .menu-icon{
+
+        width:66px;
+
+        height:66px;
+
+    }
+
+    .menu-icon img{
+
+        width:50px;
+
+        height:50px;
+
+    }
+
+    .menu-info h2{
+
+        font-size:1.05rem;
+
+    }
+
+    .menu-info p{
+
+        font-size:.82rem;
+
+    }
+
+}
+
+
+
+/*----------------------------------------------
+    Large phones
+----------------------------------------------*/
+
+@media (min-width:768px){
+
+    .app{
+
+        max-width:720px;
+
+        padding:42px 30px;
+
+    }
+
+    .home-logo{
+
+        width:250px;
+
+    }
+
+    .menu{
+
+        gap:24px;
+
+    }
+
+    .menu-card{
+
+        min-height:120px;
+
+        padding:22px 26px;
+
+    }
+
+    .menu-icon{
+
+        width:84px;
+
+        height:84px;
+
+    }
+
+    .menu-icon img{
+
+        width:64px;
+
+        height:64px;
+
+    }
+
+}
+
+
+
+/*----------------------------------------------
+    Tablets
+----------------------------------------------*/
+
+@media (min-width:1024px){
+
+    .app{
+
+        max-width:760px;
+
+    }
+
+    .home-logo{
+
+        width:270px;
+
+    }
+
+}
+
+
+
+/*----------------------------------------------
+    Desktop
+----------------------------------------------*/
+
+@media (min-width:1400px){
+
+    .app{
+
+        max-width:800px;
+
+    }
+
+}
+/*==================================================
+    PREMIUM ANIMATIONS
+==================================================*/
+
+/*----------------------------------------------
+    Page loading
+----------------------------------------------*/
+
+.home-header{
+
+    animation:fadeIn .7s ease;
+
+}
+
+.menu{
+
+    animation:fadeIn .8s ease;
+
+}
+
+.home-footer{
+
+    animation:fadeIn 1s ease;
+
+}
+
+
+
+/*----------------------------------------------
+    Floating Logo
+----------------------------------------------*/
+
+.home-logo{
+
+    animation:logoFloat 5s ease-in-out infinite;
+
+}
+
+@keyframes logoFloat{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+
+
+/*----------------------------------------------
+    Card Hover
+----------------------------------------------*/
+
+.menu-card{
+
+    will-change:transform;
 
 }
 
@@ -272,728 +572,45 @@ body.theme-light .menu-card{
 
 }
 
-.menu-card:hover::before{
 
-    transform:scaleY(1);
 
-}
-
-.menu-card:active{
-
-    transform:scale(.98);
-
-}
-
-/* ==========================================================
-   ICON
-========================================================== */
-
-.menu-icon{
-
-    width:64px;
-
-    height:64px;
-
-    border-radius:20px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:linear-gradient(
-        180deg,
-        var(--color-primary-light),
-        var(--color-primary)
-    );
-
-    transition:transform var(--transition-normal);
-
-}
-
-.menu-card:hover .menu-icon{
-
-    transform:rotate(-5deg) scale(1.05);
-
-}
-
-.menu-icon img{
-
-    width:34px;
-
-    height:34px;
-
-    object-fit:contain;
-
-}
-
-/* ==========================================================
-   CONTENT
-========================================================== */
-
-.menu-content{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-}
-
-.menu-content h2{
-
-    font-size:1.12rem;
-
-    font-weight:700;
-
-    margin-bottom:6px;
-
-}
-
-body.theme-dark .menu-content h2{
-
-    color:var(--dark-text);
-
-}
-
-body.theme-light .menu-content h2{
-
-    color:var(--light-text);
-
-}
-
-.menu-content p{
-
-    font-size:.90rem;
-
-    line-height:1.45;
-
-}
-
-body.theme-dark .menu-content p{
-
-    color:var(--dark-text-secondary);
-
-}
-
-body.theme-light .menu-content p{
-
-    color:var(--light-text-secondary);
-
-}
-
-/* ==========================================================
-   ARROW
-========================================================== */
+/*----------------------------------------------
+    Arrow Animation
+----------------------------------------------*/
 
 .menu-arrow{
 
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:1.25rem;
-
-    font-weight:700;
-
-    transition:all var(--transition-normal);
-
-}
-
-body.theme-dark .menu-arrow{
-
-    background:rgba(255,255,255,.05);
-
-    color:var(--dark-text);
-
-}
-
-body.theme-light .menu-arrow{
-
-    background:#F1F5F9;
-
-    color:var(--light-text);
+    transition:
+        transform .25s ease,
+        background-color .25s ease,
+        box-shadow .25s ease;
 
 }
 
 .menu-card:hover .menu-arrow{
 
-    background:var(--color-primary);
-
-    color:#FFFFFF;
-
-    transform:translateX(6px);
-
-}
-/* ==========================================================
-   FOOTER
-========================================================== */
-
-.footer{
-
-    width:100%;
-
-    margin-top:auto;
-
-    padding-top:42px;
-
-    padding-bottom:16px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    box-shadow:
+        0 8px 18px rgba(216,31,38,.30);
 
 }
 
-.footer span{
 
-    font-size:.85rem;
 
-    font-weight:600;
+/*----------------------------------------------
+    Logo Selection
+----------------------------------------------*/
 
-    letter-spacing:.5px;
-
-}
-
-body.theme-dark .footer span{
-
-    color:rgba(255,255,255,.45);
-
-}
-
-body.theme-light .footer span{
-
-    color:rgba(15,23,42,.45);
-
-}
-
-/* ==========================================================
-   CARD SHINE EFFECT
-========================================================== */
-
-.menu-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-150%;
-
-    width:60%;
-
-    height:100%;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.14),
-        transparent
-    );
-
-    transform:skewX(-20deg);
-
-    transition:left .8s ease;
-
-}
-
-.menu-card:hover::after{
-
-    left:160%;
-
-}
-
-/* ==========================================================
-   ANIMATIONS
-========================================================== */
-
-@keyframes heroFade{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(-20px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-@keyframes cardAppear{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(24px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-.hero{
-
-    animation:heroFade .8s ease;
-
-}
-
-.menu-card:nth-child(1){
-
-    animation:cardAppear .55s ease .10s both;
-
-}
-
-.menu-card:nth-child(2){
-
-    animation:cardAppear .55s ease .20s both;
-
-}
-
-.menu-card:nth-child(3){
-
-    animation:cardAppear .55s ease .30s both;
-
-}
-
-/* ==========================================================
-   SCROLLBAR
-========================================================== */
-
-::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:transparent;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:rgba(200,16,46,.35);
-
-    border-radius:999px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:var(--color-primary);
-
-}
-
-/* ==========================================================
-   ACCESSIBILITY
-========================================================== */
-
-.menu-card:focus-visible{
-
-    outline:3px solid var(--color-primary);
-
-    outline-offset:4px;
-
-}
-
-.hero-logo,
-.menu-icon img{
-
-    user-select:none;
-
-    -webkit-user-drag:none;
+.home-logo{
 
     pointer-events:none;
 
 }
-/* ==========================================================
-   FOOTER
-========================================================== */
 
-.footer{
 
-    width:100%;
 
-    margin-top:auto;
-
-    padding-top:42px;
-
-    padding-bottom:16px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-.footer span{
-
-    font-size:.85rem;
-
-    font-weight:600;
-
-    letter-spacing:.5px;
-
-}
-
-body.theme-dark .footer span{
-
-    color:rgba(255,255,255,.45);
-
-}
-
-body.theme-light .footer span{
-
-    color:rgba(15,23,42,.45);
-
-}
-
-/* ==========================================================
-   CARD SHINE EFFECT
-========================================================== */
-
-.menu-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-150%;
-
-    width:60%;
-
-    height:100%;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.14),
-        transparent
-    );
-
-    transform:skewX(-20deg);
-
-    transition:left .8s ease;
-
-}
-
-.menu-card:hover::after{
-
-    left:160%;
-
-}
-
-/* ==========================================================
-   ANIMATIONS
-========================================================== */
-
-@keyframes heroFade{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(-20px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-@keyframes cardAppear{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(24px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-.hero{
-
-    animation:heroFade .8s ease;
-
-}
-
-.menu-card:nth-child(1){
-
-    animation:cardAppear .55s ease .10s both;
-
-}
-
-.menu-card:nth-child(2){
-
-    animation:cardAppear .55s ease .20s both;
-
-}
-
-.menu-card:nth-child(3){
-
-    animation:cardAppear .55s ease .30s both;
-
-}
-
-/* ==========================================================
-   SCROLLBAR
-========================================================== */
-
-::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:transparent;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:rgba(200,16,46,.35);
-
-    border-radius:999px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:var(--color-primary);
-
-}
-
-/* ==========================================================
-   ACCESSIBILITY
-========================================================== */
-
-.menu-card:focus-visible{
-
-    outline:3px solid var(--color-primary);
-
-    outline-offset:4px;
-
-}
-
-.hero-logo,
-.menu-icon img{
-
-    user-select:none;
-
-    -webkit-user-drag:none;
-
-    pointer-events:none;
-
-}
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-
-@media (max-width:768px){
-
-    .app{
-
-        padding-left:20px;
-        padding-right:20px;
-
-    }
-
-    .hero{
-
-        margin-top:16px;
-        margin-bottom:36px;
-
-    }
-
-    .hero-logo{
-
-        width:140px;
-        height:140px;
-
-    }
-
-    .hero-title{
-
-        font-size:1.75rem;
-
-    }
-
-    .menu-card{
-
-        min-height:90px;
-
-        padding:18px;
-
-    }
-
-}
-
-@media (max-width:430px){
-
-    .hero-logo{
-
-        width:120px;
-        height:120px;
-
-    }
-
-    .hero-title{
-
-        font-size:1.50rem;
-
-        letter-spacing:1px;
-
-    }
-
-    .hero-subtitle{
-
-        font-size:.90rem;
-
-    }
-
-    .menu{
-
-        gap:16px;
-
-    }
-
-    .menu-card{
-
-        min-height:84px;
-
-        padding:16px;
-
-        border-radius:var(--radius-lg);
-
-    }
-
-    .menu-icon{
-
-        width:56px;
-
-        height:56px;
-
-        border-radius:18px;
-
-    }
-
-    .menu-icon img{
-
-        width:30px;
-
-        height:30px;
-
-    }
-
-    .menu-content h2{
-
-        font-size:1rem;
-
-    }
-
-    .menu-content p{
-
-        font-size:.84rem;
-
-    }
-
-    .menu-arrow{
-
-        width:36px;
-
-        height:36px;
-
-        font-size:1rem;
-
-    }
-
-}
-
-/* ==========================================================
-   LANDSCAPE
-========================================================== */
-
-@media (orientation:landscape) and (max-height:520px){
-
-    .hero{
-
-        margin-top:8px;
-
-        margin-bottom:20px;
-
-    }
-
-    .hero-logo{
-
-        width:96px;
-
-        height:96px;
-
-        margin-bottom:12px;
-
-    }
-
-}
-
-/* ==========================================================
-   REDUCED MOTION
-========================================================== */
+/*----------------------------------------------
+    Reduce Motion
+----------------------------------------------*/
 
 @media (prefers-reduced-motion:reduce){
 
@@ -1008,21 +625,3 @@ body.theme-light .footer span{
     }
 
 }
-
-/* ==========================================================
-   LARGE SCREENS
-========================================================== */
-
-@media (min-width:1024px){
-
-    .menu{
-
-        max-width:680px;
-
-    }
-
-}
-
-/* ==========================================================
-   END
-========================================================== */
