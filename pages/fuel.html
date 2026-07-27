@@ -1,1 +1,541 @@
+<!DOCTYPE html>
 
+<html lang="fr">
+
+<head>
+
+    <!--==================================================
+        META
+    ==================================================-->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="theme-color"
+        content="#081220">
+
+    <title>Fuel Tools</title>
+
+    <!--==================================================
+        CSS
+    ==================================================-->
+
+    <link
+        rel="stylesheet"
+        href="../css/variables.css">
+
+    <link
+        rel="stylesheet"
+        href="../css/themes.css">
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css">
+
+    <link
+        rel="stylesheet"
+        href="../css/fuel.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!--==================================================
+        HEADER
+    ==================================================-->
+
+    <header class="page-header">
+
+        <a
+            href="../index.html"
+            class="back-button">
+
+            ←
+
+        </a>
+
+        <h1 class="page-title">
+
+            Fuel Tools
+
+        </h1>
+
+    </header>
+
+    <main class="fuel-content">
+    <!--==================================================
+        FUEL DENSITY
+    ==================================================-->
+
+    <section class="card fuel-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/fuel.png"
+                    alt="Fuel Density"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Fuel Density @15°C
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Enter the density provided by the refueller
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="input-group">
+
+                <label
+                    for="fuelDensity">
+
+                    Density
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="fuelDensity"
+                        class="input"
+                        placeholder="0.7980"
+                        step="0.0001"
+                        min="0.7000"
+                        max="0.9000"
+                        value="0.7980">
+
+                    <span class="input-unit">
+
+                        kg/L
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!--==================================================
+        FUEL CONVERTER
+    ==================================================-->
+
+    <section class="card fuel-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/fuel.png"
+                    alt="Fuel Converter"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Fuel Converter
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Automatic fuel conversion
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="input-group">
+
+                <label for="fuelQuantity">
+
+                    Quantity
+
+                </label>
+
+                <input
+                    type="number"
+                    id="fuelQuantity"
+                    class="input"
+                    placeholder="0"
+                    min="0"
+                    step="0.01">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="fuelUnit">
+
+                    Unit
+
+                </label>
+
+                <select
+                    id="fuelUnit"
+                    class="input">
+
+                    <option value="liters">Liters (L)</option>
+
+                    <option value="kilograms">Kilograms (kg)</option>
+
+                    <option value="pounds">Pounds (lb)</option>
+
+                    <option value="usgallons">US Gallons (US gal)</option>
+
+                    <option value="impgallons">Imperial Gallons (Imp gal)</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span class="result-label">
+
+                    Result
+
+                </span>
+
+                <span
+                    id="fuelResult"
+                    class="result-value">
+
+                    0.00
+
+                </span>
+
+                <span
+                    id="fuelResultUnit"
+                    class="result-unit">
+
+                    kg
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!--==================================================
+        FUEL UPLIFT
+    ==================================================-->
+
+    <section class="card fuel-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/fuel.png"
+                    alt="Fuel Uplift"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Fuel Uplift
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Calculate fuel to upload
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="input-group">
+
+                <label for="fuelOnboard">
+
+                    Fuel Onboard
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="fuelOnboard"
+                        class="input"
+                        placeholder="0"
+                        min="0"
+                        step="0.1">
+
+                    <span class="input-unit">
+
+                        kg
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="fuelRequired">
+
+                    Fuel Required
+
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="fuelRequired"
+                        class="input"
+                        placeholder="0"
+                        min="0"
+                        step="0.1">
+
+                    <span class="input-unit">
+
+                        kg
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="result-card result-highlight">
+
+                <span class="result-label">
+
+                    Fuel To Upload
+
+                </span>
+
+                <span
+                    id="fuelUploadResult"
+                    class="result-value">
+
+                    0.0
+
+                </span>
+
+                <span class="result-unit">
+
+                    kg
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!--==================================================
+        UNIT CONVERTER
+    ==================================================-->
+
+    <section class="card fuel-card">
+
+        <div class="card-header">
+
+            <div class="card-title-group">
+
+                <img
+                    src="../assets/icons/fuel.png"
+                    alt="Unit Converter"
+                    class="card-icon">
+
+                <div>
+
+                    <h2 class="card-title">
+
+                        Unit Converter
+
+                    </h2>
+
+                    <p class="card-subtitle">
+
+                        Quick unit conversions
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="input-group">
+
+                <label for="unitValue">
+
+                    Value
+
+                </label>
+
+                <input
+                    type="number"
+                    id="unitValue"
+                    class="input"
+                    placeholder="0"
+                    min="0"
+                    step="0.01">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="conversionType">
+
+                    Conversion
+
+                </label>
+
+                <select
+                    id="conversionType"
+                    class="input">
+
+                    <option value="kg-lb">
+                        Kilograms → Pounds
+                    </option>
+
+                    <option value="lb-kg">
+                        Pounds → Kilograms
+                    </option>
+
+                    <option value="l-usg">
+                        Liters → US Gallons
+                    </option>
+
+                    <option value="usg-l">
+                        US Gallons → Liters
+                    </option>
+
+                    <option value="l-impg">
+                        Liters → Imperial Gallons
+                    </option>
+
+                    <option value="impg-l">
+                        Imperial Gallons → Liters
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="result-card">
+
+                <span class="result-label">
+
+                    Result
+
+                </span>
+
+                <span
+                    id="unitResult"
+                    class="result-value">
+
+                    0.00
+
+                </span>
+
+                <span
+                    id="unitResultUnit"
+                    class="result-unit">
+
+                    —
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!--==================================================
+        ACTIONS
+    ==================================================-->
+
+    <section class="fuel-actions">
+
+        <button
+            id="resetFuel"
+            class="btn btn-secondary">
+
+            Reset
+
+        </button>
+
+    </section>
+
+    </main>
+
+</div>
+
+
+
+<!--==================================================
+    JAVASCRIPT
+===================================================-->
+
+<script src="../js/app.js"></script>
+
+<script src="../js/fuel.js"></script>
+
+</body>
+
+</html>
