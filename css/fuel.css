@@ -1,1 +1,842 @@
+/*==================================================
+    FUEL.CSS
+    Air Tahiti Tools
+==================================================*/
 
+
+/*==================================================
+    PAGE
+==================================================*/
+
+body{
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        180deg,
+        #081220 0%,
+        #102235 100%
+    );
+
+}
+
+
+
+/*==================================================
+    APP
+==================================================*/
+
+.app{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:100vh;
+
+    max-width:650px;
+
+    margin:0 auto;
+
+    padding:24px 22px 40px;
+
+}
+
+
+
+/*==================================================
+    MAIN
+==================================================*/
+
+.fuel-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    width:100%;
+
+    margin-top:25px;
+
+}
+
+
+
+/*==================================================
+    SECTION
+==================================================*/
+
+.fuel-card{
+
+    width:100%;
+
+}
+/*==================================================
+    HEADER
+==================================================*/
+
+.page-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.back-button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#d62828;
+
+    color:#ffffff;
+
+    font-size:1.3rem;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+
+.back-button:hover{
+
+    background:#ef4444;
+
+    box-shadow:0 8px 18px rgba(214,40,40,.30);
+
+}
+
+
+
+.back-button:active{
+
+    transform:scale(.95);
+
+}
+
+
+
+.page-title{
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    letter-spacing:.3px;
+
+    margin:0;
+
+}
+
+
+
+.page-subtitle{
+
+    margin-top:4px;
+
+    font-size:.92rem;
+
+    color:rgba(255,255,255,.65);
+
+}
+/*==================================================
+    CARD
+==================================================*/
+
+.fuel-card{
+
+    background:#16283d;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.22);
+
+}
+
+
+
+/*==================================================
+    CARD HEADER
+==================================================*/
+
+.card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:22px;
+
+}
+
+
+
+.card-title-group{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+
+
+.card-icon{
+
+    width:52px;
+
+    height:52px;
+
+    object-fit:contain;
+
+    flex-shrink:0;
+
+}
+
+
+
+.card-title{
+
+    margin:0;
+
+    color:#ffffff;
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+
+
+.card-subtitle{
+
+    margin-top:4px;
+
+    color:rgba(255,255,255,.65);
+
+    font-size:.9rem;
+
+    line-height:1.4;
+
+}
+
+
+
+/*==================================================
+    CARD BODY
+==================================================*/
+
+.card-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+
+/*==================================================
+    DENSITY STATUS
+==================================================*/
+
+.density-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    align-self:flex-start;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.06);
+
+    color:#ffffff;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+}
+
+
+
+.status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#9ca3af;
+
+}
+
+
+
+.status-waiting .status-dot{
+
+    background:#9ca3af;
+
+}
+
+
+
+.status-valid .status-dot{
+
+    background:#22c55e;
+
+}
+
+
+
+.status-check .status-dot{
+
+    background:#f59e0b;
+
+}
+/*==================================================
+    INPUTS
+==================================================*/
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+
+.input-group label{
+
+    color:#ffffff;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+}
+
+
+
+/*==================================================
+    INPUT WITH UNIT
+==================================================*/
+
+.input-with-unit{
+
+    display:flex;
+
+    align-items:center;
+
+    background:#0f1d2c;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+
+.input-with-unit:focus-within{
+
+    border-color:#d62828;
+
+    box-shadow:0 0 0 3px rgba(214,40,40,.20);
+
+}
+
+
+
+/*==================================================
+    INPUT
+==================================================*/
+
+.input{
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 16px;
+
+    border:none;
+
+    outline:none;
+
+    background:#0f1d2c;
+
+    color:#ffffff;
+
+    font-size:1rem;
+
+    font-weight:500;
+
+    appearance:none;
+
+}
+
+
+
+.input::placeholder{
+
+    color:rgba(255,255,255,.35);
+
+}
+
+
+
+.input:focus{
+
+    outline:none;
+
+}
+
+
+
+/*==================================================
+    SELECT
+==================================================*/
+
+select.input{
+
+    cursor:pointer;
+
+}
+
+
+
+/*==================================================
+    INPUT UNIT
+==================================================*/
+
+.input-unit{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:70px;
+
+    height:52px;
+
+    padding:0 14px;
+
+    border-left:1px solid rgba(255,255,255,.10);
+
+    background:#132437;
+
+    color:#ffffff;
+
+    font-size:.9rem;
+
+    font-weight:700;
+
+}
+
+
+
+/*==================================================
+    DENSITY INPUT
+==================================================*/
+
+#fuelDensity{
+
+    text-align:center;
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+}
+/*==================================================
+    RESULTS
+==================================================*/
+
+.result-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:22px;
+
+    border-radius:16px;
+
+    background:#0f1d2c;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+}
+
+
+
+/*==================================================
+    HIGHLIGHT RESULT
+==================================================*/
+
+.result-highlight{
+
+    background:linear-gradient(
+        135deg,
+        #d62828 0%,
+        #b71c1c 100%
+    );
+
+    border:none;
+
+    box-shadow:0 12px 28px rgba(214,40,40,.30);
+
+}
+
+
+
+/*==================================================
+    RESULT LABEL
+==================================================*/
+
+.result-label{
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:rgba(255,255,255,.75);
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+
+
+/*==================================================
+    RESULT VALUE
+==================================================*/
+
+.result-value{
+
+    font-size:2.3rem;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    line-height:1;
+
+    word-break:break-word;
+
+}
+
+
+
+/*==================================================
+    RESULT UNIT
+==================================================*/
+
+.result-unit{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    color:rgba(255,255,255,.85);
+
+}
+
+
+
+/*==================================================
+    DIVIDER
+==================================================*/
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:6px 0;
+
+}
+/*==================================================
+    ACTIONS
+==================================================*/
+
+.fuel-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:8px;
+
+}
+
+
+
+.fuel-actions .btn{
+
+    width:100%;
+
+    max-width:260px;
+
+}
+
+
+
+/*==================================================
+    BUTTONS
+==================================================*/
+
+.btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:54px;
+
+    padding:0 24px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
+}
+
+
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+
+.btn:active{
+
+    transform:scale(.97);
+
+}
+
+
+
+.btn-secondary{
+
+    background:#d62828;
+
+    color:#ffffff;
+
+    box-shadow:0 10px 24px rgba(214,40,40,.30);
+
+}
+
+
+
+.btn-secondary:hover{
+
+    background:#ef4444;
+
+}
+
+
+
+.btn-secondary:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+
+
+/*==================================================
+    RESPONSIVE
+==================================================*/
+
+@media (max-width:600px){
+
+    .app{
+
+        padding:18px 16px 32px;
+
+    }
+
+    .page-title{
+
+        font-size:1.5rem;
+
+    }
+
+    .fuel-card{
+
+        padding:18px;
+
+    }
+
+    .card-title{
+
+        font-size:1.05rem;
+
+    }
+
+    .card-icon{
+
+        width:46px;
+
+        height:46px;
+
+    }
+
+    .result-value{
+
+        font-size:2rem;
+
+    }
+
+}
+
+
+
+/*==================================================
+    ANIMATIONS
+==================================================*/
+
+.fuel-card{
+
+    animation:fadeUp .35s ease both;
+
+}
+
+
+
+.result-value{
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+
+.result-value.updated{
+
+    transform:scale(1.05);
+
+}
+
+
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
