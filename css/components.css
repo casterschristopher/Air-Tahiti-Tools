@@ -252,25 +252,29 @@ body{
 
     justify-content:center;
 
-    width:78px;
+    width:84px;
 
-    height:78px;
+    height:84px;
 
     border-radius:22px;
 
-    background:#d81f26;
+    background:#e1252a;
 
     flex-shrink:0;
+
+    overflow:hidden;
 
 }
 
 .menu-icon img{
 
-    width:60px;
+    width:78px;
 
-    height:60px;
+    height:78px;
 
     object-fit:contain;
+
+    transition:transform .30s ease;
 
 }
 
@@ -347,7 +351,11 @@ body{
     background:#d81f26;
 
     transform:translateX(4px);
+.menu-card:hover .menu-icon img{
 
+    transform:scale(1.08);
+
+}
 }
 /*==================================================
     BUTTONS
