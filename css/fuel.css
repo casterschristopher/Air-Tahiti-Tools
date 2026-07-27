@@ -1,15 +1,14 @@
 /* ==========================================================
    AIR TAHITI TOOLS
    Fuel Tools
-   Version 1.0
+   Version 2.0
 ========================================================== */
 
-.page-fuel{
+.page-fuel,
+.app{
 
-    display:flex;
-    flex-direction:column;
-    gap:24px;
-
+    max-width:950px;
+    margin:auto;
     padding:24px;
 
 }
@@ -21,30 +20,76 @@
 .fuel-header{
 
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 
-}
-
-.fuel-title{
-
-    display:flex;
-    flex-direction:column;
-    gap:4px;
+    margin-bottom:28px;
 
 }
 
 .fuel-title h1{
 
-    font-size:30px;
+    font-size:2.2rem;
     font-weight:700;
+    color:var(--color-text);
 
 }
 
 .fuel-title p{
 
-    opacity:.65;
-    font-size:15px;
+    margin-top:6px;
+
+    color:var(--color-text-secondary);
+
+}
+
+/* ==========================================================
+   TABS
+========================================================== */
+
+.tabs{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-bottom:26px;
+
+}
+
+.tab{
+
+    flex:1;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    background:var(--color-surface);
+
+    color:var(--color-text);
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.tab:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.tab.active{
+
+    background:var(--color-primary);
+
+    color:white;
 
 }
 
@@ -52,28 +97,23 @@
    CARD
 ========================================================== */
 
-.fuel-card{
+.converter-card{
 
-    background:var(--card);
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.03),
+        rgba(255,255,255,.01)
+    );
 
-    border-radius:28px;
+    backdrop-filter:blur(12px);
 
-    padding:24px;
+    border-radius:26px;
 
-    display:flex;
-    flex-direction:column;
+    padding:28px;
 
-    gap:18px;
+    border:1px solid rgba(255,255,255,.05);
 
-    box-shadow:0 12px 35px rgba(0,0,0,.12);
-
-    transition:.25s;
-
-}
-
-.fuel-card:hover{
-
-    transform:translateY(-2px);
+    box-shadow:0 18px 45px rgba(0,0,0,.35);
 
 }
 
@@ -83,49 +123,52 @@
 
 .input-group{
 
-    display:flex;
-    flex-direction:column;
-
-    gap:8px;
+    margin-bottom:18px;
 
 }
 
 .input-group label{
 
-    font-size:14px;
-    font-weight:600;
+    display:block;
 
-    opacity:.70;
+    margin-bottom:8px;
+
+    color:var(--color-text-secondary);
+
+    font-size:.9rem;
 
 }
 
-.input-group input{
+.input-group input,
+.input-group select{
 
     width:100%;
 
-    border:none;
+    padding:16px;
 
-    border-radius:18px;
+    border-radius:16px;
 
-    background:var(--surface);
+    border:1px solid rgba(255,255,255,.08);
 
-    padding:18px;
+    background:#10151D;
 
-    font-size:22px;
+    color:white;
 
-    font-weight:600;
+    font-size:1rem;
 
-    color:var(--text);
-
-    outline:none;
-
-    transition:.2s;
+    transition:.25s;
 
 }
 
-.input-group input:focus{
+.input-group input:focus,
+.input-group select:focus{
 
-    box-shadow:0 0 0 3px var(--primary);
+    outline:none;
+
+    border-color:var(--color-primary);
+
+    box-shadow:
+        0 0 0 4px rgba(200,16,46,.18);
 
 }
 
@@ -137,37 +180,48 @@
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
 
-    gap:14px;
+    gap:18px;
+
+    margin-top:26px;
+    margin-bottom:24px;
 
 }
 
-.result-box{
+.result-grid div{
 
-    background:var(--surface);
+    background:#10151D;
 
-    border-radius:20px;
+    border-radius:18px;
 
     padding:18px;
 
 }
 
-.result-label{
+.result-grid label{
 
-    font-size:13px;
+    display:block;
 
-    opacity:.60;
+    margin-bottom:8px;
+
+    color:var(--color-text-secondary);
+
+    font-size:.85rem;
 
 }
 
-.result-value{
+.result-grid input{
 
-    margin-top:8px;
+    background:transparent;
 
-    font-size:22px;
+    border:none;
+
+    font-size:1.3rem;
 
     font-weight:700;
+
+    color:white;
 
 }
 
@@ -179,25 +233,28 @@
 
     display:flex;
 
-    gap:14px;
+    gap:16px;
+
+    margin-top:12px;
 
 }
 
-.button-row button{
+.primary-button,
+.secondary-button{
 
     flex:1;
 
-    border:none;
+    display:flex;
 
-    border-radius:18px;
+    justify-content:center;
 
-    padding:18px;
+    align-items:center;
 
-    font-size:17px;
+    min-height:52px;
+
+    border-radius:16px;
 
     font-weight:700;
-
-    cursor:pointer;
 
     transition:.25s;
 
@@ -205,21 +262,28 @@
 
 .primary-button{
 
-    background:var(--primary);
+    background:var(--color-primary);
 
     color:white;
 
 }
 
-.secondary-button{
+.primary-button:hover{
 
-    background:var(--surface);
-
-    color:var(--text);
+    background:#df1e3f;
 
 }
 
-.button-row button:active{
+.secondary-button{
+
+    background:#222A36;
+
+    color:white;
+
+}
+
+.primary-button:active,
+.secondary-button:active{
 
     transform:scale(.97);
 
@@ -229,11 +293,23 @@
    RESPONSIVE
 ========================================================== */
 
-@media(max-width:640px){
+@media (max-width:700px){
 
 .result-grid{
 
 grid-template-columns:1fr;
+
+}
+
+.button-row{
+
+flex-direction:column;
+
+}
+
+.tabs{
+
+flex-direction:column;
 
 }
 
