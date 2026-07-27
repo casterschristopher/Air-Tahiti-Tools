@@ -5,8 +5,10 @@
 
 
 /*==================================================
-    DOM
+    DOM ELEMENTS
 ==================================================*/
+
+/*---------- Fuel Density ----------*/
 
 const densityInput = document.getElementById("fuelDensity");
 
@@ -15,8 +17,11 @@ const densityStatus = document.getElementById("densityStatus");
 const densityStatusText = document.getElementById("densityStatusText");
 
 
+/*---------- Fuel Converter ----------*/
 
 const fuelQuantity = document.getElementById("fuelQuantity");
+
+const fuelQuantityLabel = document.getElementById("fuelQuantityLabel");
 
 const fuelUnit = document.getElementById("fuelUnit");
 
@@ -25,6 +30,7 @@ const fuelResult = document.getElementById("fuelResult");
 const fuelResultUnit = document.getElementById("fuelResultUnit");
 
 
+/*---------- Fuel Uplift ----------*/
 
 const fuelOnboard = document.getElementById("fuelOnboard");
 
@@ -33,8 +39,11 @@ const fuelRequired = document.getElementById("fuelRequired");
 const fuelUploadResult = document.getElementById("fuelUploadResult");
 
 
+/*---------- Unit Converter ----------*/
 
 const unitValue = document.getElementById("unitValue");
+
+const unitValueLabel = document.getElementById("unitValueLabel");
 
 const conversionType = document.getElementById("conversionType");
 
@@ -43,6 +52,7 @@ const unitResult = document.getElementById("unitResult");
 const unitResultUnit = document.getElementById("unitResultUnit");
 
 
+/*---------- Actions ----------*/
 
 const resetFuel = document.getElementById("resetFuel");
 /*==================================================
@@ -51,6 +61,12 @@ const resetFuel = document.getElementById("resetFuel");
 
 let fuelDensity = 0;
 
+
+
+/*==================================================
+    DENSITY LIMITS
+==================================================*/
+
 const MIN_DENSITY = 0.7300;
 
 const MAX_DENSITY = 0.8500;
@@ -58,24 +74,64 @@ const MAX_DENSITY = 0.8500;
 
 
 /*==================================================
-    CONVERSION CONSTANTS
+    MASS CONVERSIONS
 ==================================================*/
+
+const KG_TO_G = 1000;
+
+const G_TO_KG = 0.001;
+
+
 
 const KG_TO_LB = 2.20462262185;
 
-const LB_TO_KG = 1 / KG_TO_LB;
+const LB_TO_KG = 0.45359237;
 
 
 
-const LITER_TO_US_GAL = 0.26417205236;
+const KG_TO_OZ = 35.27396195;
 
-const US_GAL_TO_LITER = 1 / LITER_TO_US_GAL;
+const OZ_TO_KG = 0.028349523125;
 
 
 
-const LITER_TO_IMP_GAL = 0.21996924830;
+const LB_TO_OZ = 16;
 
-const IMP_GAL_TO_LITER = 1 / LITER_TO_IMP_GAL;
+const OZ_TO_LB = 0.0625;
+
+
+
+/*==================================================
+    VOLUME CONVERSIONS
+==================================================*/
+
+const L_TO_ML = 1000;
+
+const ML_TO_L = 0.001;
+
+
+
+const L_TO_US_GAL = 0.26417205236;
+
+const US_GAL_TO_L = 3.785411784;
+
+
+
+const L_TO_IMP_GAL = 0.21996924830;
+
+const IMP_GAL_TO_L = 4.54609;
+
+
+
+const L_TO_US_FL_OZ = 33.81402270;
+
+const US_FL_OZ_TO_L = 0.0295735295625;
+
+
+
+const L_TO_IMP_FL_OZ = 35.19507973;
+
+const IMP_FL_OZ_TO_L = 0.0284130625;
 
 
 
@@ -85,11 +141,11 @@ const IMP_GAL_TO_LITER = 1 / LITER_TO_IMP_GAL;
 
 const STATUS = {
 
-    WAITING: "waiting",
+    WAITING : "waiting",
 
-    VALID: "valid",
+    VALID : "valid",
 
-    CHECK: "check"
+    CHECK : "check"
 
 };
 /*==================================================
@@ -98,15 +154,7 @@ const STATUS = {
 
 function isValidNumber(value){
 
-    return !isNaN(value) && value !== "";
-
-}
-
-
-
-function formatDensity(value){
-
-    return Number(value).toFixed(4);
+    return value !== "" && !isNaN(value);
 
 }
 
@@ -115,6 +163,14 @@ function formatDensity(value){
 function round(value, decimals = 2){
 
     return Number(value).toFixed(decimals);
+
+}
+
+
+
+function formatDensity(value){
+
+    return Number(value).toFixed(4);
 
 }
 
@@ -136,21 +192,23 @@ function animateResult(element){
 
 
 
+function updateResult(element, value, decimals = 2){
+
+    element.textContent = round(value, decimals);
+
+    animateResult(element);
+
+}
+
+
+
 /*==================================================
-    STATUS
+    DENSITY STATUS
 ==================================================*/
 
 function setDensityStatus(status){
 
-    densityStatus.classList.remove(
-
-        "status-waiting",
-
-        "status-valid",
-
-        "status-check"
-
-    );
+    densityStatus.className = "density-status";
 
     switch(status){
 
@@ -185,21 +243,82 @@ function setDensityStatus(status){
 
 
 /*==================================================
-    RESULTS
+    LABELS
 ==================================================*/
 
-function updateResult(element, value, decimals = 2){
+function updateFuelQuantityLabel(){
 
-    element.textContent = round(value, decimals);
+    const labels = {
 
-    animateResult(element);
+        liters: "Quantity (L)",
+
+        milliliters: "Quantity (mL)",
+
+        kilograms: "Quantity (kg)",
+
+        grams: "Quantity (g)",
+
+        pounds: "Quantity (lb)",
+
+        ounces: "Quantity (oz)",
+
+        usgallons: "Quantity (US gal)",
+
+        impgallons: "Quantity (Imp gal)",
+
+        usfloz: "Quantity (US fl oz)",
+
+        impfloz: "Quantity (Imp fl oz)"
+
+    };
+
+    fuelQuantityLabel.textContent = labels[fuelUnit.value];
+
+}
+
+
+
+function updateUnitValueLabel(){
+
+    const labels = {
+
+        "kg-lb":"Value (kg)",
+        "lb-kg":"Value (lb)",
+
+        "kg-g":"Value (kg)",
+        "g-kg":"Value (g)",
+
+        "kg-oz":"Value (kg)",
+        "oz-kg":"Value (oz)",
+
+        "lb-oz":"Value (lb)",
+        "oz-lb":"Value (oz)",
+
+        "l-ml":"Value (L)",
+        "ml-l":"Value (mL)",
+
+        "l-usg":"Value (L)",
+        "usg-l":"Value (US gal)",
+
+        "l-impg":"Value (L)",
+        "impg-l":"Value (Imp gal)",
+
+        "l-usfloz":"Value (L)",
+        "usfloz-l":"Value (US fl oz)",
+
+        "l-impfloz":"Value (L)",
+        "impfloz-l":"Value (Imp fl oz)"
+
+    };
+
+    unitValueLabel.textContent = labels[conversionType.value];
 
 }
 /*==================================================
     FUEL DENSITY
 ==================================================*/
 
-function updateDensity(){
+function updateFuelDensity(){
 
     const value = parseFloat(densityInput.value);
 
@@ -207,13 +326,11 @@ function updateDensity(){
 
         fuelDensity = 0;
 
-        setDensityStatus(STATUS.WAITING);
-
         densityInput.value = "";
 
-        calculateFuelConverter();
+        setDensityStatus(STATUS.WAITING);
 
-        calculateFuelUplift();
+        calculateFuelConverter();
 
         return;
 
@@ -223,7 +340,10 @@ function updateDensity(){
 
     densityInput.value = formatDensity(fuelDensity);
 
-    if(fuelDensity >= MIN_DENSITY && fuelDensity <= MAX_DENSITY){
+    if(
+        fuelDensity >= MIN_DENSITY &&
+        fuelDensity <= MAX_DENSITY
+    ){
 
         setDensityStatus(STATUS.VALID);
 
@@ -235,8 +355,6 @@ function updateDensity(){
 
     calculateFuelConverter();
 
-    calculateFuelUplift();
-
 }
 
 
@@ -247,11 +365,34 @@ function updateDensity(){
 
 densityInput.addEventListener(
 
-    "blur",
+    "input",
 
-    updateDensity
+    function(){
+
+        if(densityInput.value === ""){
+
+            fuelDensity = 0;
+
+            setDensityStatus(STATUS.WAITING);
+
+            calculateFuelConverter();
+
+        }
+
+    }
 
 );
+
+
+
+densityInput.addEventListener(
+
+    "blur",
+
+    updateFuelDensity
+
+);
+
 
 
 densityInput.addEventListener(
@@ -275,65 +416,163 @@ densityInput.addEventListener(
 
 function calculateFuelConverter(){
 
+    updateFuelQuantityLabel();
+
     const quantity = parseFloat(fuelQuantity.value);
 
-    if(!isValidNumber(fuelQuantity.value) || fuelDensity <= 0){
+    if(
+        !isValidNumber(fuelQuantity.value) ||
+        fuelDensity <= 0
+    ){
 
         fuelResult.textContent = "0.00";
-
         fuelResultUnit.textContent = "—";
 
         return;
 
     }
 
+    let kilograms = 0;
+    let liters = 0;
     let result = 0;
+
+
 
     switch(fuelUnit.value){
 
+        /*========== VOLUME =========*/
+
         case "liters":
 
-            result = quantity * fuelDensity;
+            liters = quantity;
+            kilograms = liters * fuelDensity;
 
+            result = kilograms;
             fuelResultUnit.textContent = "kg";
 
             break;
 
-        case "kilograms":
 
-            result = quantity / fuelDensity;
 
-            fuelResultUnit.textContent = "L";
+        case "milliliters":
 
-            break;
+            liters = quantity * ML_TO_L;
+            kilograms = liters * fuelDensity;
 
-        case "pounds":
-
-            result = (quantity * LB_TO_KG) / fuelDensity;
-
-            fuelResultUnit.textContent = "L";
+            result = kilograms;
+            fuelResultUnit.textContent = "kg";
 
             break;
+
+
 
         case "usgallons":
 
-            result = (quantity * US_GAL_TO_LITER) * fuelDensity;
+            liters = quantity * US_GAL_TO_L;
+            kilograms = liters * fuelDensity;
 
+            result = kilograms;
             fuelResultUnit.textContent = "kg";
 
             break;
 
+
+
         case "impgallons":
 
-            result = (quantity * IMP_GAL_TO_LITER) * fuelDensity;
+            liters = quantity * IMP_GAL_TO_L;
+            kilograms = liters * fuelDensity;
 
+            result = kilograms;
             fuelResultUnit.textContent = "kg";
+
+            break;
+
+
+
+        case "usfloz":
+
+            liters = quantity * US_FL_OZ_TO_L;
+            kilograms = liters * fuelDensity;
+
+            result = kilograms;
+            fuelResultUnit.textContent = "kg";
+
+            break;
+
+
+
+        case "impfloz":
+
+            liters = quantity * IMP_FL_OZ_TO_L;
+            kilograms = liters * fuelDensity;
+
+            result = kilograms;
+            fuelResultUnit.textContent = "kg";
+
+            break;
+
+
+
+        /*========== MASS =========*/
+
+        case "kilograms":
+
+            kilograms = quantity;
+            liters = kilograms / fuelDensity;
+
+            result = liters;
+            fuelResultUnit.textContent = "L";
+
+            break;
+
+
+
+        case "grams":
+
+            kilograms = quantity * G_TO_KG;
+            liters = kilograms / fuelDensity;
+
+            result = liters;
+            fuelResultUnit.textContent = "L";
+
+            break;
+
+
+
+        case "pounds":
+
+            kilograms = quantity * LB_TO_KG;
+            liters = kilograms / fuelDensity;
+
+            result = liters;
+            fuelResultUnit.textContent = "L";
+
+            break;
+
+
+
+        case "ounces":
+
+            kilograms = quantity * OZ_TO_KG;
+            liters = kilograms / fuelDensity;
+
+            result = liters;
+            fuelResultUnit.textContent = "L";
 
             break;
 
     }
 
-    updateResult(fuelResult, result);
+
+
+    updateResult(
+
+        fuelResult,
+
+        result
+
+    );
 
 }
 
@@ -352,11 +591,18 @@ fuelQuantity.addEventListener(
 );
 
 
+
 fuelUnit.addEventListener(
 
     "change",
 
-    calculateFuelConverter
+    function(){
+
+        updateFuelQuantityLabel();
+
+        calculateFuelConverter();
+
+    }
 
 );
 /*==================================================
@@ -380,7 +626,13 @@ function calculateFuelUplift(){
 
     }
 
-    const upload = Math.max(0, required - onboard);
+    const upload = Math.max(
+
+        0,
+
+        required - onboard
+
+    );
 
     updateResult(
 
@@ -409,6 +661,7 @@ fuelOnboard.addEventListener(
 );
 
 
+
 fuelRequired.addEventListener(
 
     "input",
@@ -421,6 +674,8 @@ fuelRequired.addEventListener(
 ==================================================*/
 
 function calculateUnitConverter(){
+
+    updateUnitValueLabel();
 
     const value = parseFloat(unitValue.value);
 
@@ -435,58 +690,181 @@ function calculateUnitConverter(){
     }
 
     let result = 0;
+    let unit = "";
+
+
 
     switch(conversionType.value){
+
+        /*========== MASS ==========*/
 
         case "kg-lb":
 
             result = value * KG_TO_LB;
-
-            unitResultUnit.textContent = "lb";
+            unit = "lb";
 
             break;
+
+
 
         case "lb-kg":
 
             result = value * LB_TO_KG;
-
-            unitResultUnit.textContent = "kg";
+            unit = "kg";
 
             break;
+
+
+
+        case "kg-g":
+
+            result = value * KG_TO_G;
+            unit = "g";
+
+            break;
+
+
+
+        case "g-kg":
+
+            result = value * G_TO_KG;
+            unit = "kg";
+
+            break;
+
+
+
+        case "kg-oz":
+
+            result = value * KG_TO_OZ;
+            unit = "oz";
+
+            break;
+
+
+
+        case "oz-kg":
+
+            result = value * OZ_TO_KG;
+            unit = "kg";
+
+            break;
+
+
+
+        case "lb-oz":
+
+            result = value * LB_TO_OZ;
+            unit = "oz";
+
+            break;
+
+
+
+        case "oz-lb":
+
+            result = value * OZ_TO_LB;
+            unit = "lb";
+
+            break;
+
+
+
+        /*========== VOLUME ==========*/
+
+        case "l-ml":
+
+            result = value * L_TO_ML;
+            unit = "mL";
+
+            break;
+
+
+
+        case "ml-l":
+
+            result = value * ML_TO_L;
+            unit = "L";
+
+            break;
+
+
 
         case "l-usg":
 
-            result = value * LITER_TO_US_GAL;
-
-            unitResultUnit.textContent = "US gal";
+            result = value * L_TO_US_GAL;
+            unit = "US gal";
 
             break;
+
+
 
         case "usg-l":
 
-            result = value * US_GAL_TO_LITER;
-
-            unitResultUnit.textContent = "L";
+            result = value * US_GAL_TO_L;
+            unit = "L";
 
             break;
+
+
 
         case "l-impg":
 
-            result = value * LITER_TO_IMP_GAL;
-
-            unitResultUnit.textContent = "Imp gal";
+            result = value * L_TO_IMP_GAL;
+            unit = "Imp gal";
 
             break;
 
+
+
         case "impg-l":
 
-            result = value * IMP_GAL_TO_LITER;
+            result = value * IMP_GAL_TO_L;
+            unit = "L";
 
-            unitResultUnit.textContent = "L";
+            break;
+
+
+
+        case "l-usfloz":
+
+            result = value * L_TO_US_FL_OZ;
+            unit = "US fl oz";
+
+            break;
+
+
+
+        case "usfloz-l":
+
+            result = value * US_FL_OZ_TO_L;
+            unit = "L";
+
+            break;
+
+
+
+        case "l-impfloz":
+
+            result = value * L_TO_IMP_FL_OZ;
+            unit = "Imp fl oz";
+
+            break;
+
+
+
+        case "impfloz-l":
+
+            result = value * IMP_FL_OZ_TO_L;
+            unit = "L";
 
             break;
 
     }
+
+
+
+    unitResultUnit.textContent = unit;
 
     updateResult(
 
@@ -513,11 +891,18 @@ unitValue.addEventListener(
 );
 
 
+
 conversionType.addEventListener(
 
     "change",
 
-    calculateUnitConverter
+    function(){
+
+        updateUnitValueLabel();
+
+        calculateUnitConverter();
+
+    }
 
 );
 /*==================================================
@@ -526,15 +911,21 @@ conversionType.addEventListener(
 
 function resetFuelTools(){
 
+    /*---------- Fuel Converter ----------*/
+
     fuelQuantity.value = "";
 
     fuelUnit.selectedIndex = 0;
 
     fuelResult.textContent = "0.00";
 
-    fuelResultUnit.textContent = "—";
+    fuelResultUnit.textContent = "kg";
+
+    updateFuelQuantityLabel();
 
 
+
+    /*---------- Fuel Uplift ----------*/
 
     fuelOnboard.value = "";
 
@@ -544,17 +935,25 @@ function resetFuelTools(){
 
 
 
+    /*---------- Unit Converter ----------*/
+
     unitValue.value = "";
 
     conversionType.selectedIndex = 0;
 
     unitResult.textContent = "0.00";
 
-    unitResultUnit.textContent = "—";
+    unitResultUnit.textContent = "lb";
+
+    updateUnitValueLabel();
 
 }
 
 
+
+/*==================================================
+    RESET EVENT
+==================================================*/
 
 resetFuel.addEventListener(
 
@@ -576,6 +975,10 @@ setDensityStatus(
 
 );
 
+updateFuelQuantityLabel();
+
+updateUnitValueLabel();
+
 resetFuelTools();
 
 calculateFuelConverter();
@@ -583,3 +986,9 @@ calculateFuelConverter();
 calculateFuelUplift();
 
 calculateUnitConverter();
+
+
+
+/*==================================================
+    END OF FILE
+==================================================*/
