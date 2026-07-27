@@ -1,0 +1,81 @@
+:root {
+    --bg-color: #F2F2F7;
+    --card-bg: #FFFFFF;
+    --text-main: #000000;
+    --text-sub: #8E8E93;
+    --accent: #C41E3A;
+}
+
+[data-theme="dark"] {
+    --bg-color: #000000;
+    --card-bg: #1C1C1E;
+    --text-main: #FFFFFF;
+    --text-sub: #8E8E93;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    transition: 0.3s;
+}
+
+.container {
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.header img {
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+.menu-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: inherit;
+}
+
+.icon-box {
+    background: var(--accent);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    color: white;
+    font-size: 24px;
+}
+
+.card-content {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-content p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+.chevron {
+    color: var(--accent);
+    font-weight: bold;
+}
