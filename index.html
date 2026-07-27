@@ -1,94 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+          content="width=device-width, initial-scale=1.0">
 
     <title>Air Tahiti Tools</title>
-
-    <meta name="theme-color" content="#C8102E">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Air Tahiti Tools">
-
-    <link rel="manifest" href="manifest.json">
-
-    <link rel="icon" href="assets/icons/app-192.png">
-
-    <link rel="apple-touch-icon" href="assets/icons/app-192.png">
 
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/home.css">
-
 </head>
 
-<body class="theme-dark">
+<body>
 
-<div class="background-pattern"></div>
+<main class="home">
 
-<div class="app">
+    <!-- =========================
+         LOGO
+    ========================== -->
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
-
-    <header class="hero">
+    <header class="home-header">
 
         <img
-            src="assets/images/logo.png"
-            alt="Air Tahiti Tools Logo"
-            class="hero-logo">
-
-        <h1 class="hero-title">
-
-            AIR TAHITI TOOLS
-
-        </h1>
-
-        <p class="hero-subtitle">
-
-            Aircraft Maintenance Toolbox
-
-        </p>
+            src="assets/icons/logo.png"
+            alt="Air Tahiti Tools"
+            class="home-logo">
 
     </header>
 
-    <!-- =====================================================
-         MAIN MENU
-    ====================================================== -->
+    <!-- =========================
+         MENU
+    ========================== -->
 
-    <main class="menu">
+    <section class="menu">
 
         <!-- Fuel -->
 
         <a href="pages/fuel.html" class="menu-card">
 
-            <div class="menu-icon">
+            <div class="menu-card-left">
 
-                <img
-                    src="assets/icons/fuel.png"
-                    alt="Fuel">
+                <div class="menu-icon">
 
-            </div>
+                    <img
+                        src="assets/icons/fuel.png"
+                        alt="Fuel Tools">
 
-            <div class="menu-content">
+                </div>
 
-                <h2>
+                <div class="menu-text">
 
-                    Fuel Tools
+                    <h2>Fuel Tools</h2>
 
-                </h2>
+                    <p>
+                        Fuel conversions and uplift calculations
+                    </p>
 
-                <p>
-
-                    Fuel conversions and uplift calculations
-
-                </p>
+                </div>
 
             </div>
 
@@ -104,27 +75,25 @@
 
         <a href="pages/torque.html" class="menu-card">
 
-            <div class="menu-icon">
+            <div class="menu-card-left">
 
-                <img
-                    src="assets/icons/torque.png"
-                    alt="Torque">
+                <div class="menu-icon">
 
-            </div>
+                    <img
+                        src="assets/icons/torque.png"
+                        alt="Torque">
 
-            <div class="menu-content">
+                </div>
 
-                <h2>
+                <div class="menu-text">
 
-                    Torque & Units
+                    <h2>Torque & Units</h2>
 
-                </h2>
+                    <p>
+                        Torque and engineering conversions
+                    </p>
 
-                <p>
-
-                    Torque and engineering conversions
-
-                </p>
+                </div>
 
             </div>
 
@@ -140,27 +109,25 @@
 
         <a href="pages/settings.html" class="menu-card">
 
-            <div class="menu-icon">
+            <div class="menu-card-left">
 
-                <img
-                    src="assets/icons/settings.png"
-                    alt="Settings">
+                <div class="menu-icon">
 
-            </div>
+                    <img
+                        src="assets/icons/settings.png"
+                        alt="Settings">
 
-            <div class="menu-content">
+                </div>
 
-                <h2>
+                <div class="menu-text">
 
-                    Settings
+                    <h2>Settings</h2>
 
-                </h2>
+                    <p>
+                        Theme, language and preferences
+                    </p>
 
-                <p>
-
-                    Theme, language and preferences
-
-                </p>
+                </div>
 
             </div>
 
@@ -172,25 +139,21 @@
 
         </a>
 
-    </main>
+    </section>
 
-    <!-- =====================================================
+    <!-- =========================
          FOOTER
-    ====================================================== -->
+    ========================== -->
 
-    <footer class="footer">
+    <footer class="home-footer">
 
-        <span>
-
-            Version 1.0.0
-
-        </span>
+        <span>Version 1.0.0</span>
 
     </footer>
 
-</div>
+</main>
 
-<script src="js/app.js"></script>
+<script src="js/home.js"></script>
 
 </body>
 
