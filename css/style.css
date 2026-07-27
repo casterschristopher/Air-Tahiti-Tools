@@ -1,68 +1,84 @@
-/* ==========================================================
-   Air Tahiti Tools
-   Global Styles
-   Version 1.0.0
-========================================================== */
+:root {
+    --primary: #C8102E;
+    --background: #0f1115;
+    --surface: #1b1f27;
+    --surface-hover: #262c37;
+    --text: #ffffff;
+    --text-secondary: #b9c0cb;
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
 
-/* ===== GENERAL ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
+    background:var(--background);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    min-height:100vh;
 }
 
-/* ===== IMAGES ===== */
-
-img{
-    display:block;
-    max-width:100%;
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:32px 20px 50px;
 }
 
-/* ===== BUTTONS ===== */
-
-button{
-    font:inherit;
-    border:none;
-    background:none;
-    cursor:pointer;
-}
-
-/* ===== INPUTS ===== */
-
-input,
-select{
-    font:inherit;
-}
-
-/* ===== LINKS ===== */
-
-a{
-    -webkit-tap-highlight-color:transparent;
-}
-
-/* ===== UTILITIES ===== */
-
-.hidden{
-    display:none !important;
-}
-
-.center{
+.hero{
     text-align:center;
+    margin-bottom:40px;
 }
 
-.text-primary{
-    color:var(--primary);
+.logo{
+    width:170px;
+    max-width:80%;
+    display:block;
+    margin:0 auto 22px;
 }
 
-.text-secondary{
+.hero h1{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.hero p{
     color:var(--text-secondary);
+    font-size:1rem;
 }
 
-.mt-20{
-    margin-top:20px;
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
 
-.mt-40{
-    margin-top:40px;
+.card{
+    background:var(--surface);
+    border-radius:var(--radius);
+    padding:28px;
+    text-align:center;
+    text-decoration:none;
+    color:var(--text);
+    transition:.25s;
+    box-shadow:var(--shadow);
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    background:var(--surface-hover);
+}
+
+.card img{
+    width:64px;
+    height:64px;
+    margin-bottom:18px;
+}
+
+.card h2{
+    font-size:1.15rem;
+    font-weight:600;
 }
