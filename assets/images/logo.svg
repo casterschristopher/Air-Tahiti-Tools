@@ -1,1 +1,9 @@
-https://chatgpt.com/s/m_6a66a3cddb908191801dbc861e921376
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="95" fill="#C31E24" />
+  <circle cx="100" cy="100" r="85" fill="none" stroke="white" stroke-width="2" stroke-dasharray="4 2" opacity="0.5"/>
+  <!-- Silhouette Avion ATR -->
+  <path d="M50 100 L150 100 M100 70 L100 130 M70 85 L130 85" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="100" cy="100" r="20" fill="#C31E24" stroke="white" stroke-width="4"/>
+  <text x="50%" y="155" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="24">ATR</text>
+  <text x="50%" y="175" text-anchor="middle" fill="white" font-family="Arial" font-size="10">AIR TAHITI TOOLS</text>
+</svg>
