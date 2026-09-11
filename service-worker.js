@@ -1,5 +1,5 @@
-/* Air Tahiti Tools — SERVICE WORKER V17 */
-const CACHE_NAME = "air-tahiti-tools-v17";
+/* Air Tahiti Tools — SERVICE WORKER V18 */
+const CACHE_NAME = "air-tahiti-tools-v18";
 const APP_SHELL=["./","./index.html","./manifest.json","./css/variables.css?v=12","./css/themes.css?v=12","./css/components.css?v=12","./css/home.css?v=12","./css/home-reference.css?v=12","./css/alpha-callup.css","./css/outillage-magasin.css","./css/fuel.css","./css/torque.css","./css/settings.css","./js/app.js?v=12","./js/home.js?v=12","./js/fuel.js","./js/torque.js","./js/settings.js","./pages/fuel.html","./pages/torque.html","./pages/settings.html","./pages/alpha-callup.html","./pages/outillage-magasin.html","./assets/icons/logo.png","./assets/icons/fuel.png","./assets/icons/torque.png","./assets/icons/settings.png","./assets/menu/fuel.jpg","./assets/menu/torque.jpg","./assets/menu/alpha.jpg","./assets/menu/store.jpg","./assets/menu/docs.jpg","./assets/menu/calc.jpg","./assets/menu/systems.jpg","./assets/menu/settings.jpg"];
 self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
