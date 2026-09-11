@@ -1,1 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 305" preserveAspectRatio="xMidYMid slice"><image href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a...
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="ATR aircraft in Tahiti">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#5fb9e8"/><stop offset=".55" stop-color="#b9e5f7"/><stop offset="1" stop-color="#f7d8b2"/></linearGradient>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#187ea0"/><stop offset="1" stop-color="#063b55"/></linearGradient>
+<linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".72" stop-color="#e1e8eb"/><stop offset="1" stop-color="#aebdc6"/></linearGradient>
+<linearGradient id="red" x1="0" y1="0" x2="1"><stop stop-color="#ef1d28"/><stop offset="1" stop-color="#a90d17"/></linearGradient>
+<filter id="sun"><feGaussianBlur stdDeviation="16"/></filter>
+<filter id="shadow"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+<rect width="1200" height="560" fill="url(#sky)"/>
+<circle cx="930" cy="150" r="62" fill="#ffd58a" opacity=".72" filter="url(#sun)"/>
+<circle cx="930" cy="150" r="32" fill="#ffe1a3" opacity=".9"/>
+<path d="M0 345 Q120 250 240 320 Q330 210 430 315 Q535 215 640 315 Q760 205 870 305 Q1010 205 1200 285 V560H0Z" fill="#356d78" opacity=".95"/>
+<path d="M0 380 Q150 315 310 370 T620 365 T930 350 T1200 335 V560H0Z" fill="#164e63"/>
+<path d="M0 430 Q180 395 370 425 T760 415 T1200 400 V560H0Z" fill="url(#sea)"/>
+<g opacity=".35" fill="#e8f6f7"><path d="M60 350l100-78 45 20-115 95z"/><path d="M315 333l90-94 55 23-98 91z"/><path d="M620 330l115-105 48 22-110 98z"/></g>
+<ellipse cx="600" cy="478" rx="475" ry="30" fill="#041522" opacity=".5" filter="url(#shadow)"/>
+<g transform="translate(90 160)">
+<path d="M30 238 C70 162 130 115 210 105 L820 105 C885 105 938 128 992 165 L1035 194 L986 214 L230 239 C145 242 78 245 30 238Z" fill="url(#body)" stroke="#8b9ba5" stroke-width="3"/>
+<path d="M130 143 L88 87 L160 91 L270 139Z" fill="#e8eef1" stroke="#8a9aa5" stroke-width="3"/>
+<path d="M410 113 L545 16 L598 20 L553 117Z" fill="#e9eff2" stroke="#83939e" stroke-width="3"/>
+<path d="M705 112 L845 20 L898 27 L838 120Z" fill="#e9eff2" stroke="#83939e" stroke-width="3"/>
+<path d="M826 112 L892 -5 L972 2 L910 128Z" fill="#d4dfe4" stroke="#83939e" stroke-width="3"/>
+<path d="M32 237 L6 207 L0 171 L25 166 L67 218Z" fill="#e1e9ed" stroke="#83939e" stroke-width="3"/>
+<path d="M82 194 H940" stroke="#aab8c0" stroke-width="3"/>
+<path d="M205 213 H915" stroke="url(#red)" stroke-width="17"/>
+<g fill="#263847"><circle cx="292" cy="151" r="8"/><circle cx="334" cy="151" r="8"/><circle cx="376" cy="151" r="8"/><circle cx="418" cy="151" r="8"/><circle cx="460" cy="151" r="8"/><circle cx="502" cy="151" r="8"/><circle cx="544" cy="151" r="8"/><circle cx="586" cy="151" r="8"/><circle cx="628" cy="151" r="8"/><circle cx="670" cy="151" r="8"/></g>
+<text x="515" y="205" text-anchor="middle" font-family="Arial,sans-serif" font-size="48" font-weight="900" font-style="italic" fill="url(#red)">AIR TAHITI</text>
+<g fill="#172432" stroke="#07111b" stroke-width="3"><circle cx="500" cy="92" r="56"/><circle cx="790" cy="92" r="56"/></g>
+<g stroke="#d5a74f" stroke-width="5" stroke-linecap="round"><path d="M500 38V146M446 92H554M790 38V146M736 92H844"/></g>
+<g fill="#152331"><ellipse cx="245" cy="238" rx="26" ry="12"/><ellipse cx="840" cy="215" rx="26" ry="12"/></g>
+</g>
+<g fill="#f6fbff" opacity=".65"><circle cx="135" cy="448" r="3"/><circle cx="185" cy="460" r="2"/><circle cx="1050" cy="430" r="3"/><circle cx="1105" cy="447" r="2"/></g>
+</svg>
