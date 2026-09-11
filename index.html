@@ -3,44 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name="theme-color" content="#061526">
+    <meta name="theme-color" content="#071a2e">
     <meta name="description" content="Air Tahiti Tools — outils de support maintenance ATR 42 / ATR 72">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Air Tahiti Tools</title>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="assets/icons/logo.png">
-    <link rel="stylesheet" href="css/variables.css?v=5">
-    <link rel="stylesheet" href="css/themes.css?v=5">
-    <link rel="stylesheet" href="css/components.css?v=5">
-    <link rel="stylesheet" href="css/home.css?v=5">
+    <link rel="stylesheet" href="css/variables.css?v=6">
+    <link rel="stylesheet" href="css/themes.css?v=6">
+    <link rel="stylesheet" href="css/components.css?v=6">
+    <link rel="stylesheet" href="css/home.css?v=6">
 </head>
 <body>
 <div class="app home-app">
     <header class="home-header">
         <div class="brand-block">
-            <div class="brand-mark" aria-hidden="true">AT</div>
-            <div class="brand-copy"><div class="brand-name">AIR TAHITI</div><div class="brand-tools">TOOLS</div><div class="brand-subtitle">MAINTENANCE SUPPORT<br><span>ATR 42 / ATR 72</span></div></div>
+            <div class="brand-logo" aria-label="Air Tahiti">at</div>
+            <div class="brand-copy">
+                <div class="brand-name">AIR TAHITI</div>
+                <div class="brand-tools">TOOLS</div>
+                <div class="brand-subtitle">MAINTENANCE SUPPORT<br><span>ATR 42 / ATR 72</span></div>
+            </div>
         </div>
-        <a class="settings-link" href="pages/settings.html" aria-label="Ouvrir les réglages"><span class="settings-gear" aria-hidden="true">⚙</span><span>Settings</span></a>
+        <div class="header-actions">
+            <button class="header-button" type="button" aria-label="Rechercher" title="Rechercher"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+            <a class="header-button" href="pages/settings.html" aria-label="Ouvrir les réglages" title="Réglages"><svg viewBox="0 0 24 24"><path d="M9.7 3.2h4.6l.7 2.4 2.1 1.2 2.4-.6 2.3 4-1.8 1.7v2.4l1.8 1.7-2.3 4-2.4-.6-2.1 1.2-.7 2.4H9.7L9 19.6l-2.1-1.2-2.4.6-2.3-4L4 13.3v-2.4L2.2 9.2l2.3-4 2.4.6L9 5.6l.7-2.4Z"/><circle cx="12" cy="12" r="3.1"/></svg></a>
+        </div>
     </header>
+
     <main class="home-content">
-        <section class="hero" aria-label="Air Tahiti Tools"><img class="hero-aircraft" src="assets/hero-aircraft.svg" alt="Illustration ATR Air Tahiti"><div class="hero-caption">Our Islands<br><span>Our People</span></div></section>
-        <section class="menu" aria-label="Outils">
-            <a href="pages/fuel.html" class="menu-card menu-card-fuel"><div class="card-icon" aria-hidden="true">⛽</div><div class="menu-info"><h2>Fuel Tools</h2><p>Conversions, uplift<br>and calculations</p></div><div class="menu-arrow" aria-hidden="true">›</div></a>
-            <a href="pages/torque.html" class="menu-card menu-card-torque"><div class="card-icon" aria-hidden="true">🔧</div><div class="menu-info"><h2>Torque &amp; Units</h2><p>Torque values<br>and engineering conversions</p></div><div class="menu-arrow" aria-hidden="true">›</div></a>
-            <a href="pages/alpha-callup.html" class="menu-card menu-card-alpha"><div class="card-icon" aria-hidden="true">α</div><div class="menu-info"><h2>Alpha Call-Up</h2><p>Maintenance communication<br>support</p></div><div class="menu-arrow" aria-hidden="true">›</div></a>
-            <a href="pages/outillage-magasin.html" class="menu-card menu-card-store"><div class="card-icon" aria-hidden="true">🧰</div><div class="menu-info"><h2>Outillage Magasin</h2><p>Outillage, consommables<br>and store references</p></div><div class="menu-arrow" aria-hidden="true">›</div></a>
-            <a href="#" class="menu-card menu-card-docs is-coming" aria-label="Documentation — bientôt disponible"><div class="card-icon" aria-hidden="true">▣</div><div class="menu-info"><h2>Documentation</h2><p>Quick access<br>to manuals and references</p></div><div class="menu-arrow" aria-hidden="true">›</div><span class="coming-badge">SOON</span></a>
-            <a href="#" class="menu-card menu-card-calc is-coming" aria-label="Calculators — bientôt disponible"><div class="card-icon" aria-hidden="true">▦</div><div class="menu-info"><h2>Calculators</h2><p>Useful tools<br>for maintenance</p></div><div class="menu-arrow" aria-hidden="true">›</div><span class="coming-badge">SOON</span></a>
-            <a href="#" class="menu-card menu-card-systems is-coming" aria-label="Aircraft Systems — bientôt disponible"><div class="card-icon" aria-hidden="true">✈</div><div class="menu-info"><h2>Aircraft Systems</h2><p>Quick information<br>by ATA chapter</p></div><div class="menu-arrow" aria-hidden="true">›</div><span class="coming-badge">SOON</span></a>
-            <a href="pages/settings.html" class="menu-card menu-card-settings"><div class="card-icon" aria-hidden="true">⚙</div><div class="menu-info"><h2>Settings</h2><p>Theme, language<br>and preferences</p></div><div class="menu-arrow" aria-hidden="true">›</div></a>
+        <section class="hero" aria-label="Air Tahiti">
+            <div class="hero-pattern" aria-hidden="true"></div>
+            <img class="hero-aircraft" src="assets/hero-aircraft.svg" alt="Illustration ATR Air Tahiti">
+            <div class="hibiscus hibiscus-left" aria-hidden="true">✿</div>
+            <div class="hero-caption">Our Islands<br><span>Our People</span></div>
         </section>
-        <section class="safety-strip"><span class="safety-icon" aria-hidden="true">✈</span><p>“Safety is not an option, it’s our culture.”</p><span class="safety-divider" aria-hidden="true"></span><strong>AT <span>AIR TAHITI</span></strong></section>
+
+        <section class="menu" aria-label="Outils">
+            <a href="pages/fuel.html" class="menu-card menu-card-fuel"><span class="card-pattern" aria-hidden="true"></span><span class="card-icon"><svg viewBox="0 0 48 48"><path d="M14 42V9c0-2 1.5-3.5 3.5-3.5h11c2 0 3.5 1.5 3.5 3.5v33M12 42h22M17 13h11v8H17zM32 13l5 5v12c0 2 1.5 3 3 3h1"/></svg></span><span class="menu-info"><h2>Fuel Tools</h2><p>Conversions, uplift<br>and calculations</p></span><span class="menu-arrow">›</span></a>
+            <a href="pages/torque.html" class="menu-card menu-card-torque"><span class="card-pattern"></span><span class="card-icon"><svg viewBox="0 0 48 48"><path d="m29 8 5 5-8 8 4 4 8-8 5 5-4 4 4 4-5 5-4-4-4 4-5-5 8-8-4-4-8 8-5-5 12-12z"/></svg></span><span class="menu-info"><h2>Torque &amp; Units</h2><p>Torque values<br>and engineering conversions</p></span><span class="menu-arrow">›</span></a>
+            <a href="pages/alpha-callup.html" class="menu-card menu-card-alpha"><span class="card-pattern"></span><span class="card-icon"><svg viewBox="0 0 48 48"><path d="M13 5h22v38H13zM18 11h12M18 20l2 2 4-5M18 29l2 2 4-5M18 38l2 2 4-5M29 21h2M29 30h2M29 39h2"/></svg></span><span class="menu-info"><h2>Alpha Call-Up</h2><p>Procedures and<br>call-up references</p></span><span class="menu-arrow">›</span></a>
+            <a href="pages/outillage-magasin.html" class="menu-card menu-card-store"><span class="card-pattern"></span><span class="card-icon"><svg viewBox="0 0 48 48"><path d="M7 19h34v24H7zM11 19V13h26v6M15 13V8h18v5M7 25h34M19 25v7h10v-7"/></svg></span><span class="menu-info"><h2>Outillage Magasin</h2><p>Outillage, consommables<br>et recherche par référence</p></span><span class="menu-arrow">›</span></a>
+            <a href="#" class="menu-card menu-card-docs is-coming" aria-label="Documentation — bientôt disponible"><span class="card-pattern"></span><span class="card-icon"><svg viewBox="0 0 48 48"><path d="M9 7h23a7 7 0 0 1 7 7v27H16a7 7 0 0 1-7-7zM16 41V14a7 7 0 0 1 7-7M19 19h14M19 26h14M19 33h9"/></svg></span><span class="menu-info"><h2>Documentation</h2><p>Quick access<br>to manuals and references</p></span><span class="menu-arrow">›</span><span class="coming-badge">SOON</span></a>
+            <a href="#" class="menu-card menu-card-calc is-coming" aria-label="Calculators — bientôt disponible"><span class="card-pattern"></span><span class="card-icon"><svg viewBox="0 0 48 48"><rect x="10" y="5" width="28" height="38" rx="3"/><path d="M15 11h18v7H15zM16 24h4M24 24h4M32 24h1M16 31h4M24 31h4M32 31h1M16 38h4M24 38h4M32 38h1"/></svg></span><span class="menu-info"><h2>Calculators</h2><p>Useful tools<br>for maintenance</p></span><span class="menu-arrow">›</span><span class="coming-badge">SOON</span></a>
+            <a href="#" class="menu-card menu-card-systems is-coming" aria-label="Aircraft Systems — bientôt disponible"><span class="card-pattern"></span><span class="card-icon"><svg viewBox="0 0 48 48"><path d="M24 4v40M24 13 9 25l5 2 7-4M24 13l15 12-5 2-7-4M20 28l-7 12 11-6 11 6-7-12"/></svg></span><span class="menu-info"><h2>Aircraft Systems</h2><p>Quick information<br>by ATA chapter</p></span><span class="menu-arrow">›</span><span class="coming-badge">SOON</span></a>
+            <a href="pages/settings.html" class="menu-card menu-card-settings"><span class="card-pattern"></span><span class="card-icon"><svg viewBox="0 0 48 48"><path d="M20 5h8l1.3 5.1 4.1 2.4 4.9-1.5 4 6.9-3.8 3.6v4.8l3.8 3.6-4 6.9-4.9-1.5-4.1 2.4L28 43h-8l-1.3-5.1-4.1-2.4-4.9 1.5-4-6.9 3.8-3.6v-4.8L5.7 18.4l4-6.9 4.9 1.5 4.1-2.4z"/><circle cx="24" cy="24" r="6"/></svg></span><span class="menu-info"><h2>Settings</h2><p>Theme, language<br>and preferences</p></span><span class="menu-arrow">›</span></a>
+        </section>
+
+        <section class="safety-strip"><div class="safety-polynesian" aria-hidden="true">◈</div><p>“Safety is not an option,<br>it’s our culture.”</p><span class="safety-divider"></span><strong><span class="at-mark">at</span> AIR TAHITI</strong></section>
     </main>
-    <footer class="home-footer"><span>Version 1.1.0</span><span>Built for our mechanics 🔧</span><span>Fa’ara’a i te mau tahiao</span></footer>
+    <footer class="home-footer"><span>Version 1.2.0</span><span>Built for our mechanics 🔧</span><span>Fa’ara’a i te mau tahiao</span></footer>
 </div>
-<script src="js/app.js?v=5"></script><script src="js/home.js?v=5"></script>
-<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("service-worker.js?v=5").catch(console.error));}</script>
+<script src="js/app.js?v=6"></script><script src="js/home.js?v=6"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("service-worker.js?v=6").catch(console.error));}</script>
 </body>
 </html>
