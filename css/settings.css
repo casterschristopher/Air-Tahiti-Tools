@@ -1,1 +1,168 @@
+/* ==========================================================
+   AIR TAHITI TOOLS
+   SETTINGS.CSS
+========================================================== */
 
+.settings-page {
+    width: min(100%, var(--content-width));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0 30px;
+}
+
+.back-button {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--surface-color);
+    color: var(--text-color);
+    font-size: 34px;
+    line-height: 1;
+    transition: transform var(--transition-fast), background var(--transition-normal);
+}
+
+.back-button:active {
+    transform: scale(.96);
+}
+
+.eyebrow {
+    margin-bottom: 3px;
+    color: var(--color-primary);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+}
+
+.settings-header h1 {
+    color: var(--text-color);
+    font-size: clamp(1.7rem, 6vw, 2.2rem);
+}
+
+.settings-content {
+    display: grid;
+    gap: 18px;
+}
+
+.settings-section {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--card-color);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+}
+
+.section-heading {
+    margin-bottom: 16px;
+}
+
+.section-heading h2 {
+    color: var(--text-color);
+    font-size: 1.15rem;
+}
+
+.section-heading p {
+    margin-top: 5px;
+    color: var(--muted-text);
+    font-size: .88rem;
+    line-height: 1.45;
+}
+
+.theme-options {
+    display: grid;
+    gap: 10px;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: var(--surface-color);
+    color: var(--text-color);
+    text-align: left;
+    transition: border-color var(--transition-normal), transform var(--transition-fast), background var(--transition-normal);
+}
+
+.theme-option:active {
+    transform: scale(.99);
+}
+
+.theme-option.is-selected {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.theme-option-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    border-radius: 11px;
+    background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    color: var(--color-primary);
+    font-size: 1.15rem;
+}
+
+.theme-option strong,
+.theme-option small {
+    display: block;
+}
+
+.theme-option strong {
+    font-size: .96rem;
+}
+
+.theme-option small {
+    margin-top: 2px;
+    color: var(--muted-text);
+    font-size: .76rem;
+}
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 48px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: .92rem;
+}
+
+.setting-value {
+    color: var(--muted-text);
+}
+
+.status-badge {
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-success) 14%, transparent);
+    color: var(--color-success);
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+@media (max-width: 420px) {
+    .settings-page {
+        padding-inline: 14px;
+    }
+
+    .settings-section {
+        padding: 16px;
+    }
+}
