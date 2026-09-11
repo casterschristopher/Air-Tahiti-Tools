@@ -1,12 +1,12 @@
 /* ==========================================================
-   AIR TAHITI TOOLS — SERVICE WORKER V9
+   AIR TAHITI TOOLS — SERVICE WORKER V10
 ========================================================== */
-const CACHE_NAME = "air-tahiti-tools-v9";
+const CACHE_NAME = "air-tahiti-tools-v10";
 const APP_SHELL = [
     "./","./index.html","./manifest.json",
-    "./css/variables.css?v=9","./css/themes.css?v=9","./css/components.css?v=9","./css/home.css?v=9","./css/alpha-callup.css","./css/outillage-magasin.css",
+    "./css/variables.css?v=10","./css/themes.css?v=10","./css/components.css?v=10","./css/home.css?v=10","./css/alpha-callup.css","./css/outillage-magasin.css",
     "./css/fuel.css","./css/torque.css","./css/settings.css",
-    "./js/app.js?v=9","./js/home.js?v=9","./js/fuel.js","./js/torque.js","./js/settings.js",
+    "./js/app.js?v=10","./js/home.js?v=10","./js/fuel.js","./js/torque.js","./js/settings.js",
     "./pages/fuel.html","./pages/torque.html","./pages/settings.html","./pages/alpha-callup.html","./pages/outillage-magasin.html",
     "./assets/icons/logo.png","./assets/icons/fuel.png","./assets/icons/torque.png","./assets/icons/settings.png",
     "./assets/hero-aircraft.svg"
