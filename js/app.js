@@ -7,10 +7,13 @@
     "use strict";
 
     const STORAGE_KEY = "att-theme";
+    const DEFAULT_THEME = "dark";
 
     function getStoredTheme() {
         const value = localStorage.getItem(STORAGE_KEY);
-        return value === "light" || value === "dark" ? value : "system";
+        return value === "light" || value === "dark" || value === "system"
+            ? value
+            : DEFAULT_THEME;
     }
 
     function getEffectiveTheme(theme) {
@@ -32,7 +35,7 @@
     window.ATTools.setThemePreference = function (theme) {
         const normalized = ["system", "light", "dark"].includes(theme)
             ? theme
-            : "system";
+            : DEFAULT_THEME;
         localStorage.setItem(STORAGE_KEY, normalized);
         applyTheme(normalized);
         window.dispatchEvent(new CustomEvent("att:themechange", {
