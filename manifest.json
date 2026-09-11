@@ -1,1 +1,22 @@
-
+{
+  "name": "Air Tahiti Tools",
+  "short_name": "AT Tools",
+  "description": "Aviation maintenance tools for Air Tahiti mechanics.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#081220",
+  "theme_color": "#C1121F",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "assets/icons/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
