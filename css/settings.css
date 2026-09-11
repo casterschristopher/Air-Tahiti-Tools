@@ -3,6 +3,22 @@
    SETTINGS.CSS
 ========================================================== */
 
+body.theme-dark {
+    --page-surface: var(--dark-surface);
+    --page-card: var(--dark-card);
+    --text-color: var(--dark-text);
+    --muted-text: var(--dark-text-secondary);
+    --border-color: rgba(203, 213, 225, .14);
+}
+
+body.theme-light {
+    --page-surface: var(--light-surface);
+    --page-card: var(--light-card);
+    --text-color: var(--light-text);
+    --muted-text: var(--light-text-secondary);
+    --border-color: rgba(15, 23, 42, .10);
+}
+
 .settings-page {
     width: min(100%, var(--content-width));
     min-height: 100vh;
@@ -23,8 +39,8 @@
     width: 48px;
     height: 48px;
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    background: var(--surface-color);
+    border-radius: var(--radius-md);
+    background: var(--page-surface);
     color: var(--text-color);
     font-size: 34px;
     line-height: 1;
@@ -57,7 +73,7 @@
     padding: 20px;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    background: var(--card-color);
+    background: var(--page-card);
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(12px);
 }
@@ -90,8 +106,8 @@
     width: 100%;
     padding: 13px 14px;
     border: 1px solid var(--border-color);
-    border-radius: 14px;
-    background: var(--surface-color);
+    border-radius: var(--radius-sm);
+    background: var(--page-surface);
     color: var(--text-color);
     text-align: left;
     transition: border-color var(--transition-normal), transform var(--transition-fast), background var(--transition-normal);
@@ -113,7 +129,7 @@
     height: 38px;
     flex: 0 0 38px;
     border-radius: 11px;
-    background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    background: rgba(200, 16, 46, .12);
     color: var(--color-primary);
     font-size: 1.15rem;
 }
@@ -151,7 +167,7 @@
 .status-badge {
     padding: 5px 9px;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--color-success) 14%, transparent);
+    background: rgba(22, 163, 74, .14);
     color: var(--color-success);
     font-size: .75rem;
     font-weight: 700;
