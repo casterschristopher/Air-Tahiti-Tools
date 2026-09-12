@@ -1,4 +1,4 @@
-/* Air Tahiti Tools — SERVICE WORKER V21 */
-const CACHE_NAME = "air-tahiti-tools-v21";
-const APP_SHELL=["./","./index.html","./manifest.json","./assets/menu/fuel.jpg","./assets/menu/torque.jpg","./assets/menu/alpha.jpg","./assets/menu/store.jpg","./assets/menu/docs.jpg","./assets/menu/calc.jpg","./assets/menu/systems.jpg","./assets/menu/settings.jpg"];
+/* Air Tahiti Tools — SERVICE WORKER V22 */
+const CACHE_NAME = "air-tahiti-tools-v22";
+const APP_SHELL=["./","./index.html","./manifest.json","./assets/menu/fuel-tools.jpg","./assets/menu/torque.jpg","./assets/menu/alpha.jpg","./assets/menu/store.jpg","./assets/menu/docs.jpg","./assets/menu/calc.jpg","./assets/menu/systems.jpg","./assets/menu/settings.jpg"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)).then(()=>self.skipWaiting())));self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE_NAME).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request)))})
