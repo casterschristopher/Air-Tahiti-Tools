@@ -1,4 +1,4 @@
-/* Air Tahiti Tools — SERVICE WORKER V36 */
-const CACHE_NAME = "air-tahiti-tools-v36";
+/* Air Tahiti Tools — SERVICE WORKER V37 */
+const CACHE_NAME = "air-tahiti-tools-v37";
 const APP_SHELL=["./","./index.html","./manifest.json","./assets/menu/Fuel_Tools.jpeg","./assets/menu/torque.jpg","./assets/menu/alpha.jpg","./assets/menu/store.jpg","./assets/menu/docs.jpg","./assets/menu/calc.jpg","./assets/menu/systems.jpg","./assets/menu/settings.jpg","./assets/menu/air-tahiti-home.jpg"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)).then(()=>self.skipWaiting())));self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE_NAME).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request)))})
