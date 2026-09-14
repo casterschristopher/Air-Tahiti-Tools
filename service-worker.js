@@ -1,4 +1,6 @@
-/* Air Tahiti Tools — SERVICE WORKER V41 */
-const CACHE_NAME = "air-tahiti-tools-v41";
+/* Air Tahiti Tools — SERVICE WORKER V42 */
+const CACHE_NAME="air-tahiti-tools-v42";
 const APP_SHELL=["./","./index.html","./manifest.json","./assets/menu/Fuel_Tools.jpeg","./assets/menu/torque.jpg","./assets/menu/alpha.jpg","./assets/menu/store.jpg","./assets/menu/docs.jpg","./assets/menu/calc.jpg","./assets/menu/systems.jpg","./assets/menu/settings.jpg","./assets/menu/air-tahiti-home.jpg","./assets/menu/air-tahiti-night-background.jpg"];
-self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)).then(()=>self.skipWaiting())));self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE_NAME).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request)))})
+self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)).then(()=>self.skipWaiting())));
+self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE_NAME).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
+self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;const u=new URL(e.request.url);if(u.pathname.endsWith("/index.html")||u.pathname.endsWith("/Air-Tahiti-Tools/")){e.respondWith(fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE_NAME).then(c=>c.put(e.request,copy));return r}).catch(()=>caches.match(e.request).then(r=>r||caches.match("./index.html"))));return}e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request)))})
