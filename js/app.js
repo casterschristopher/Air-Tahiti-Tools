@@ -10,12 +10,46 @@ function applyTheme(theme){const effective=getEffectiveTheme(theme);document.bod
 window.ATTools=window.ATTools||{};
 window.ATTools.getThemePreference=getStoredTheme;
 window.ATTools.setThemePreference=function(theme){const normalized=["system","light","dark"].includes(theme)?theme:DEFAULT_THEME;localStorage.setItem(STORAGE_KEY,normalized);applyTheme(normalized);window.dispatchEvent(new CustomEvent("att:themechange",{detail:{preference:normalized,theme:getEffectiveTheme(normalized)}}))};
-function initialize(){applyTheme(getStoredTheme());const media=window.matchMedia("(prefers-color-scheme: dark)");const handle=()=>{if(getStoredTheme()==="system")applyTheme("system")};if(media.addEventListener)media.addEventListener("change",handle);else if(media.addListener)media.addListener(handle);
+function installGlobalPageStyles(){
+const style=document.createElement("style");
+style.id="att-global-page-fixes";
+style.textContent=`
+body.theme-light{background:#eaf5f8!important}
+body.theme-dark{background:#07111f!important}
+body::before{z-index:-2!important;pointer-events:none!important}
+body.theme-light::before{background:#eaf5f8 url("../assets/menu/air-tahiti-home.jpg?v=9") center top/cover no-repeat!important}
+body.theme-dark::before{background:#07111f url("../assets/menu/air-tahiti-night-background.jpg?v=6") center top/cover no-repeat!important}
+body.page-enter,body.page-exit{transform:none!important}
+body.page-enter>*,body.page-exit>*{will-change:transform,opacity}
+body.page-enter> *{opacity:0;transform:translateX(46px)}
+body.page-enter.page-enter-active> *{opacity:1;transform:translateX(0);transition:transform .42s cubic-bezier(.22,.61,.36,1),opacity .30s ease}
+body.page-exit> *{opacity:0;transform:translateX(-46px);transition:transform .30s cubic-bezier(.55,.06,.68,.19),opacity .24s ease}
+.store-app{background:transparent!important}
+.alpha-app{background:transparent!important}
+`;
+document.head.appendChild(style);
+}
+function initialize(){
+installGlobalPageStyles();
+applyTheme(getStoredTheme());
+const media=window.matchMedia("(prefers-color-scheme: dark)");
+const handle=()=>{if(getStoredTheme()==="system")applyTheme("system")};
+if(media.addEventListener)media.addEventListener("change",handle);else if(media.addListener)media.addListener(handle);
 /* Shared slide transition for every internal page */
-document.body.classList.add("page-enter");requestAnimationFrame(()=>document.body.classList.add("page-enter-active"));
+document.body.classList.add("page-enter");
+requestAnimationFrame(()=>document.body.classList.add("page-enter-active"));
 window.addEventListener("pageshow",()=>document.body.classList.add("page-enter-active"));
-document.addEventListener("click",function(e){const link=e.target.closest("a[href]");if(!link)return;const href=link.getAttribute("href");if(!href||href==="#"||link.target==="_blank"||href.startsWith("http")||href.startsWith("mailto:")||href.startsWith("tel:"))return;e.preventDefault();document.body.classList.remove("page-enter-active");document.body.classList.add("page-exit");setTimeout(()=>{window.location.href=href},280)});
-const back=document.querySelector(".back-button");if(back){back.onclick=function(e){e.preventDefault();document.body.classList.remove("page-enter-active");document.body.classList.add("page-exit");setTimeout(()=>history.back(),280)}}
+document.addEventListener("click",function(e){
+const link=e.target.closest("a[href]");if(!link)return;
+const href=link.getAttribute("href");
+if(!href||href==="#"||link.target==="_blank"||href.startsWith("http")||href.startsWith("mailto:")||href.startsWith("tel:"))return;
+e.preventDefault();
+document.body.classList.remove("page-enter-active");
+document.body.classList.add("page-exit");
+setTimeout(()=>{window.location.href=href},280);
+});
+const back=document.querySelector(".back-button");
+if(back){back.onclick=function(e){e.preventDefault();document.body.classList.remove("page-enter-active");document.body.classList.add("page-exit");setTimeout(()=>history.back(),280)}}
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initialize,{once:true});else initialize();
 })();
