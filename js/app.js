@@ -13,19 +13,14 @@ window.ATTools.setThemePreference=function(theme){const normalized=["system","li
 function installGlobalPageStyles(){
 const style=document.createElement("style");
 style.id="att-global-page-fixes";
+const isHome=!location.pathname.includes("/pages/");
 style.textContent=`
-body.theme-light{background:#eaf5f8!important}
-body.theme-dark{background:#07111f!important}
-body::before{z-index:-2!important;pointer-events:none!important}
-body.theme-light::before{background:#eaf5f8 url("../assets/menu/air-tahiti-home.jpg?v=9") center top/cover no-repeat!important}
-body.theme-dark::before{background:#07111f url("../assets/menu/air-tahiti-night-background.jpg?v=6") center top/cover no-repeat!important}
+${isHome?"":"body.theme-light{background:#eaf5f8!important}\nbody.theme-dark{background:#07111f!important}\nbody::before{z-index:-2!important;pointer-events:none!important}\nbody.theme-light::before{background:#eaf5f8 url(\"../assets/menu/air-tahiti-home.jpg?v=9\") center top/cover no-repeat!important}\nbody.theme-dark::before{background:#07111f url(\"../assets/menu/air-tahiti-night-background.jpg?v=6\") center top/cover no-repeat!important}\n.store-app{background:transparent!important}\n.alpha-app{background:transparent!important}\n`}
 body.page-enter,body.page-exit{transform:none!important}
 body.page-enter>*,body.page-exit>*{will-change:transform,opacity}
 body.page-enter> *{opacity:0;transform:translateX(46px)}
 body.page-enter.page-enter-active> *{opacity:1;transform:translateX(0);transition:transform .42s cubic-bezier(.22,.61,.36,1),opacity .30s ease}
 body.page-exit> *{opacity:0;transform:translateX(-46px);transition:transform .30s cubic-bezier(.55,.06,.68,.19),opacity .24s ease}
-.store-app{background:transparent!important}
-.alpha-app{background:transparent!important}
 `;
 document.head.appendChild(style);
 }
