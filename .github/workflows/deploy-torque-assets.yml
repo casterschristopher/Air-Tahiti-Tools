@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'assets/torque_upload/torque_assets.b64'
+      - '.github/workflows/deploy-torque-assets.yml'
 permissions:
   contents: write
 jobs:
