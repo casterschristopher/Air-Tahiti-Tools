@@ -24,3 +24,8 @@ body.page-exit{opacity:1;transform:none}
 body.page-exit> *{opacity:0;transform:translateX(-46px);transition:transform .30s cubic-bezier(.55,.06,.68,.19),opacity .24s ease}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body.page-enter> *,body.page-enter.page-enter-active> *,body.page-exit> *{opacity:1;transform:none;transition:none}}
+
+/* Torque schematics: keep the original white drawing surface in dark mode so labels remain readable. */
+body.theme-dark .setup-card{background:#fff!important;border-color:rgba(255,255,255,.18)!important}
+body.theme-dark .setup-card.selected{background:#fff!important;border-color:#25a5ff!important}
+body.theme-dark .setup-card svg{background:#fff!important}
