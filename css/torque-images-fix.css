@@ -1,4 +1,4 @@
-/* Air Tahiti Tools — Torque schematic image layout V4 */
+/* Air Tahiti Tools — Torque schematic image layout V5 */
 .setup-grid{display:grid!important;grid-template-columns:1fr!important;gap:14px!important}
 .setup-card{box-sizing:border-box!important;width:100%!important;aspect-ratio:unset!important;height:150px!important;min-height:150px!important;max-height:150px!important;overflow:hidden!important;padding:6px!important;display:flex!important;align-items:center!important;justify-content:center!important}
 .setup-card svg{display:none!important}
@@ -6,3 +6,51 @@
 .setup-card .setup-name,.setup-card .setup-callout,.setup-card .setup-formula,.setup-card .setup-note{display:none!important}
 .setup-number{z-index:10!important}
 @media(max-width:560px){.setup-card{height:150px!important;min-height:150px!important;max-height:150px!important;padding:6px!important}.setup-card img,.setup-card .extracted-torque-schematic{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important}}
+
+/* LIGHT MODE — white cards must always use dark readable text and white form controls. */
+body.theme-light .torque-content .card-title,
+body.theme-light .torque-content .card-subtitle,
+body.theme-light .torque-content .input-group label,
+body.theme-light .torque-content .calc-title,
+body.theme-light .torque-content .formula-title,
+body.theme-light .torque-content .formula-card code,
+body.theme-light .torque-content .result-label,
+body.theme-light .torque-content .reference-item h3,
+body.theme-light .torque-content .reference-item p,
+body.theme-light .torque-content .legend-grid strong,
+body.theme-light .torque-content .legend-grid p,
+body.theme-light .torque-content .note-item,
+body.theme-light .torque-content .info-box h3,
+body.theme-light .torque-content .info-box p,
+body.theme-light .torque-content .warning-box p{color:#111827!important}
+
+body.theme-light .torque-content input,
+body.theme-light .torque-content select,
+body.theme-light .torque-content .input,
+body.theme-light .torque-content .input-unit,
+body.theme-light .torque-content .input-group input,
+body.theme-light .torque-content .input-group select{background:#fff!important;color:#111827!important;border-color:#cbd5e1!important;-webkit-text-fill-color:#111827!important}
+body.theme-light .torque-content input::placeholder{color:#64748b!important;opacity:1!important}
+body.theme-light .torque-content select option{background:#fff!important;color:#111827!important}
+body.theme-light .torque-content .result-card{background:#f8fafc!important;border-color:#dbe4ee!important}
+body.theme-light .torque-content .result-label{color:#334155!important}
+body.theme-light .torque-content .result-value{color:#0f172a!important}
+body.theme-light .torque-content .result-unit{color:#2563a8!important}
+body.theme-light .torque-content .formula-card{background:#f8fafc!important;border-color:#dbe4ee!important}
+body.theme-light .torque-content .formula-title{color:#475569!important}
+body.theme-light .torque-content .formula-card code{color:#0f172a!important}
+body.theme-light .torque-content .info-box{background:#eff6ff!important}
+body.theme-light .torque-content .info-box h3{color:#0f172a!important}
+body.theme-light .torque-content .info-box p{color:#334155!important}
+body.theme-light .torque-content .warning-box{background:#fff7d6!important}
+body.theme-light .torque-content .warning-box strong{color:#7c4a03!important}
+body.theme-light .torque-content .warning-box p{color:#4b5563!important}
+body.theme-light .torque-content .note-item{background:#f8fafc!important}
+body.theme-light .torque-content .reference-item,
+body.theme-light .torque-content .legend-grid div{background:#f8fafc!important}
+
+/* Keep schematic artwork itself untouched and readable in both themes. */
+body.theme-light .setup-card,
+body.theme-light .setup-card.active{background:#fff!important;border-color:#d7e1eb!important}
+body.theme-light .setup-card img,
+body.theme-light .setup-card .extracted-torque-schematic{background:#fff!important;filter:none!important}
