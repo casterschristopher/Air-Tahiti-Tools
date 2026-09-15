@@ -1,0 +1,4 @@
+.extracted-torque-schematic{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center!important;margin:0 auto!important}
+.setup-card{overflow:hidden!important}
+.setup-card .extracted-torque-schematic{aspect-ratio:auto!important}
+@media(max-width:560px){.setup-card .extracted-torque-schematic{width:100%!important;height:auto!important;max-height:none!important}}
